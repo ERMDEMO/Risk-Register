@@ -1,0 +1,45 @@
+name: Risk change request
+description: Ask for a change to a risk in the register (score, owner, action, status or wording).
+title: "Risk change: ER-"
+labels: ["risk-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The register owner reviews every request and makes the change in the register. The daily scan never changes a rating itself.
+        This repository is public: do not include confidential details, contract values or personal data.
+  - type: input
+    id: risk
+    attributes:
+      label: Risk ID
+      description: For example ER-03. Leave blank for a proposed new risk.
+      placeholder: ER-03
+  - type: dropdown
+    id: change
+    attributes:
+      label: What should change?
+      multiple: true
+      options:
+        - Likelihood
+        - Impact
+        - Owner
+        - Planned action
+        - Status (Watch, Assess, Treat, Closed)
+        - Title or description
+        - New risk
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The new values, for example "Likelihood 4 (Likely), Impact 4 (Major)".
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: Evidence, with links or signal ids (SQ-0042).
+    validations:
+      required: true
