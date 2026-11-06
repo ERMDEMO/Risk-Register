@@ -87,7 +87,7 @@ def main():
     # says where edits happen instead of asking for Contributor access.
     page = page.replace(
         "<b>View only.</b> You can read the register but not change it. Ask the owner to share it with you as a Contributor.",
-        "<b>Read-only copy.</b> This page is refreshed every morning from the main register. Signals are reviewed in the Issues tab of this repository, and risks are edited in the main register.",
+        "This page is refreshed every morning at 9 am.",
     )
     out = page.replace(MARKER, head + MARKER)
     with open(a.out, "w", encoding="utf-8") as f:

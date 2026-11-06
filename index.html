@@ -526,7 +526,7 @@ function renderTabs() {
 }
 function renderNotice() {
   var h = '';
-  if (S.canWrite === false) h += '<p class="banner warn"><b>Read-only copy.</b> This page is refreshed every morning from the main register. Signals are reviewed in the Issues tab of this repository, and risks are edited in the main register.</p>';
+  if (S.canWrite === false) h += '<p class="banner warn">This page is refreshed every morning at 9 am.</p>';
   if (S.dbError) h += '<p class="banner warn"><b>Some data could not load</b> (' + esc(S.dbError) + '). Reload the page; if it persists, the sharing settings may have changed.</p>';
   $('#notice').innerHTML = h;
 }
