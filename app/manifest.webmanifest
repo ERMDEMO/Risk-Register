@@ -1,0 +1,11 @@
+{
+  "name": "Emerging Risk Register",
+  "short_name": "Risk Register",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f1f4f7",
+  "theme_color": "#1a5ccf",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

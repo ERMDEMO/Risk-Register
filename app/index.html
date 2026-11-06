@@ -1,0 +1,1262 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Emerging Risk Register</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a5ccf">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: control-room register. Header and KPI strip, tabbed workspace, right-hand drawer for every edit. */
+:root {
+  --bg: #f1f4f7; --panel: #ffffff; --panel2: #e8edf2; --line: #d2dae2; --ink: #131f2a; --muted: #55677a;
+  --accent: #1a5ccf; --accent-ink: #ffffff; --tint: rgba(26, 92, 207, .09);
+  --high: #b92521; --med: #8f5a00; --low: #146d47; --high-bg: #fbe2e0; --med-bg: #fbedcf; --low-bg: #dcf2e6;
+  --dot-high: #d9453f; --dot-med: #eea21a; --dot-low: #2eae78; --dot-none: #8a99a8;
+  --cell-a: #f6f8fa; --cell-b: #ffffff; --shadow: 0 10px 40px rgba(10, 20, 30, .22);
+  --f-display: 'Barlow Semi Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --f-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d141b; --panel: #151f29; --panel2: #1d2a36; --line: #2a3b4b; --ink: #e6edf4; --muted: #92a4b6;
+    --accent: #5ea4ff; --accent-ink: #06192f; --tint: rgba(94, 164, 255, .13);
+    --high: #ff8a82; --med: #f3bb5c; --low: #55d6a0; --high-bg: #3a1c1d; --med-bg: #3a2c12; --low-bg: #123626;
+    --dot-high: #ef5a53; --dot-med: #f2a824; --dot-low: #34c386; --dot-none: #6f8194;
+    --cell-a: #121b24; --cell-b: #151f29; --shadow: 0 10px 40px rgba(0, 0, 0, .6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d141b; --panel: #151f29; --panel2: #1d2a36; --line: #2a3b4b; --ink: #e6edf4; --muted: #92a4b6;
+  --accent: #5ea4ff; --accent-ink: #06192f; --tint: rgba(94, 164, 255, .13);
+  --high: #ff8a82; --med: #f3bb5c; --low: #55d6a0; --high-bg: #3a1c1d; --med-bg: #3a2c12; --low-bg: #123626;
+  --dot-high: #ef5a53; --dot-med: #f2a824; --dot-low: #34c386; --dot-none: #6f8194;
+  --cell-a: #121b24; --cell-b: #151f29; --shadow: 0 10px 40px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 14px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 14px 40px;
+}
+.wrap { max-width: 1320px; margin: 0 auto; }
+h1, h2, h3, p, ol, ul, dl, dd { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--f-mono); font-size: .92em; }
+.muted { color: var(--muted); }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* header */
+.top { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.brand { min-width: 0; }
+.brand h1 { font-family: var(--f-display); font-weight: 700; font-size: 30px; line-height: 1.05; letter-spacing: .01em; text-transform: uppercase; }
+.brand p { color: var(--muted); margin-top: 3px; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.me { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
+.me img { width: 24px; height: 24px; border-radius: 50%; }
+.btn { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 12px; cursor: pointer; line-height: 1.2; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.danger { color: var(--high); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn.sm { padding: 3px 9px; font-size: 13px; }
+.menu { position: relative; }
+.menu summary { list-style: none; }
+.menu summary::-webkit-details-marker { display: none; }
+.menu .pop { position: absolute; right: 0; top: calc(100% + 4px); z-index: 20; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); padding: 6px; display: grid; gap: 2px; min-width: 15rem; }
+.menu .pop button { text-align: left; border: 0; background: none; padding: 7px 10px; border-radius: 6px; cursor: pointer; }
+.menu .pop button:hover { background: var(--tint); }
+.banner { margin-bottom: 12px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--muted); }
+.banner.warn { border-color: var(--med); }
+.banner b { color: var(--ink); }
+
+/* tabs */
+.tabs { display: flex; gap: 2px; overflow-x: auto; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.tabs button { background: none; border: 0; border-bottom: 3px solid transparent; padding: 9px 14px; cursor: pointer; color: var(--muted); white-space: nowrap; font-family: var(--f-display); font-size: 17px; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tabs button:hover { color: var(--ink); }
+.tabs .n { font-family: var(--f-body); font-size: 12px; font-weight: 600; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--panel2); color: var(--ink); letter-spacing: 0; }
+.tabs .n.hot { background: var(--accent); color: var(--accent-ink); }
+
+/* kpis */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 10px; margin-bottom: 12px; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px 9px; }
+.kpi .kl { display: block; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.kpi .kv { display: block; font-family: var(--f-display); font-weight: 600; font-size: 36px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.kpi.hi .kv { color: var(--high); } .kpi.md .kv { color: var(--med); } .kpi.ac .kv { color: var(--accent); }
+.scan { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin-bottom: 12px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.scan .sd { width: 10px; height: 10px; border-radius: 50%; flex: none; background: var(--dot-none); }
+.scan.fresh .sd { background: var(--dot-low); } .scan.aging .sd { background: var(--dot-med); } .scan.stale .sd { background: var(--dot-high); }
+.scan .sl { font-weight: 600; } .scan .sm { color: var(--muted); } .scan .btn { margin-left: auto; }
+
+/* cards and grids */
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; min-width: 0; }
+.card h2 { font-family: var(--f-display); font-weight: 600; font-size: 20px; letter-spacing: .02em; text-transform: uppercase; }
+.card-h { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.note { color: var(--muted); font-size: 13px; }
+.grid-main { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 12px; align-items: start; }
+.col { display: grid; gap: 12px; min-width: 0; }
+@media (max-width: 900px) { .grid-main { grid-template-columns: 1fr; } }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { border: 1px solid var(--line); background: var(--panel2); border-radius: 999px; padding: 2px 12px; cursor: pointer; font-size: 13px; }
+.chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.chip .n { opacity: .75; margin-left: 4px; }
+.sel, .inp { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 5px 8px; min-width: 0; }
+.inp.search { width: min(100%, 18rem); }
+
+/* rating chips */
+.rt { display: inline-block; border-radius: 4px; padding: 1px 8px; font-weight: 600; font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rt.High { background: var(--high-bg); color: var(--high); } .rt.Medium { background: var(--med-bg); color: var(--med); } .rt.Low { background: var(--low-bg); color: var(--low); }
+.rt.None { background: var(--panel2); color: var(--muted); }
+.st { display: inline-block; border-radius: 4px; padding: 1px 8px; font-size: 12px; background: var(--panel2); color: var(--ink); }
+.st.done { background: var(--low-bg); color: var(--low); } .st.wait { background: var(--med-bg); color: var(--med); }
+.st.prop { background: var(--tint); color: var(--accent); } .st.bad { background: var(--high-bg); color: var(--high); }
+.st.closed { background: var(--panel2); color: var(--muted); }
+
+/* radar */
+.radar-box { width: 100%; max-width: 760px; margin: 0 auto; }
+.radar-box svg { display: block; width: 100%; height: auto; }
+.cellp { stroke: var(--line); stroke-width: 1; }
+.hub { fill: var(--bg); stroke: var(--line); }
+.ringlbl { fill: var(--muted); font-size: 11px; font-weight: 600; text-anchor: middle; paint-order: stroke; stroke: var(--panel); stroke-width: 3px; letter-spacing: .04em; }
+.wlbl { fill: var(--ink); font-size: 13px; font-weight: 600; }
+.dot { cursor: pointer; outline: none; }
+.dotc { stroke: var(--panel); stroke-width: 2; }
+.dot:hover .dotc, .dot:focus-visible .dotc { stroke: var(--ink); }
+.dot.off { opacity: .15; pointer-events: none; }
+.d-High { fill: var(--dot-high); } .d-Medium { fill: var(--dot-med); } .d-Low { fill: var(--dot-low); } .d-None { fill: var(--dot-none); }
+.dotn { fill: #fff; font-weight: 700; font-size: 11px; pointer-events: none; font-family: var(--f-body); }
+.dot.rt-Medium .dotn { fill: #2a1b00; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; color: var(--muted); font-size: 13px; margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.areakey { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--muted); font-size: 12px; justify-content: center; margin-top: 4px; }
+
+
+/* movement */
+.mv-sum { margin-bottom: 12px; display: grid; gap: 6px; }
+.mv-head { font-size: 16px; line-height: 1.5; }
+.kpi.lo .kv { color: var(--low); }
+.heat-box { width: 100%; max-width: 640px; margin: 0 auto; }
+.heat-box svg { display: block; width: 100%; height: auto; }
+.hm-cell { stroke: var(--panel); stroke-width: 2; }
+.hm-high { fill: var(--high-bg); } .hm-med { fill: var(--med-bg); } .hm-low { fill: var(--low-bg); }
+.hm-sc { fill: var(--muted); font-size: 10px; }
+.hm-ax { fill: var(--muted); font-size: 12px; }
+.hm-title { fill: var(--ink); font-size: 12px; font-weight: 600; letter-spacing: .06em; }
+.mv-arrow { stroke-width: 2.5; fill: none; }
+.mv-arrow.mv-up { stroke: var(--high); } .mv-arrow.mv-down { stroke: var(--low); }
+.mv-head-up { fill: var(--high); } .mv-head-down { fill: var(--low); }
+.mv-ghost circle { fill: var(--panel); fill-opacity: .7; stroke-width: 2; stroke-dasharray: 3 3; }
+.mv-ghost.mv-up circle { stroke: var(--high); } .mv-ghost.mv-down circle { stroke: var(--low); }
+.mv-ghost text { fill: var(--muted); font-size: 10px; font-weight: 700; font-family: var(--f-body); }
+.mv-newring { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.sw-ghost { background: transparent; border: 2px dashed var(--muted); box-sizing: border-box; }
+.sw-up { background: var(--high); border-radius: 2px; height: 3px; width: 16px; }
+.sw-down { background: var(--low); border-radius: 2px; height: 3px; width: 16px; }
+.sw-new { background: transparent; border: 2.5px solid var(--accent); box-sizing: border-box; }
+.mvlist { list-style: none; padding: 0; display: grid; gap: 2px; }
+.mvrow { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 8px; border-radius: 6px; cursor: pointer; border: 0; background: none; text-align: left; width: 100%; }
+.mvrow:hover { background: var(--tint); }
+.mvrow .tt { min-width: 0; overflow-wrap: anywhere; }
+.mvrow .ts { color: var(--muted); font-size: 12px; }
+.mvright { display: grid; gap: 4px; justify-items: end; }
+.why { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.why span { font-size: 12px; border-radius: 4px; padding: 1px 7px; background: var(--panel2); color: var(--ink); }
+.why .w-up { background: var(--high-bg); color: var(--high); } .why .w-new { background: var(--tint); color: var(--accent); }
+.why .w-pr { background: var(--med-bg); color: var(--med); } .why .w-down { background: var(--low-bg); color: var(--low); }
+.trend { font-size: 12px; font-weight: 700; white-space: nowrap; }
+.trend.up { color: var(--high); } .trend.down { color: var(--low); } .trend.flat { color: var(--muted); font-weight: 500; } .trend.new { color: var(--accent); }
+.wk { display: inline-flex; gap: 3px; vertical-align: middle; }
+.wk i { width: 13px; height: 13px; border-radius: 3px; background: var(--panel2); display: inline-block; }
+.wk i.w1, .wk i.w2, .wk i.w3 { background: var(--accent); }
+.wk i.w1 { opacity: .35; } .wk i.w2 { opacity: .65; }
+.only-narrow { display: none; }
+.ent { display: grid; gap: 10px; }
+.ent-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 14px 28px; align-items: start; }
+@media (max-width: 760px) { .ent-grid { grid-template-columns: 1fr; } }
+.ent-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ent-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.ent-num { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 6px 0 10px; }
+.ent-v { font-family: var(--f-mono); font-weight: 500; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums; }
+.ent-High { color: var(--high); } .ent-Medium { color: var(--med); } .ent-Low { color: var(--low); }
+.ent-of { color: var(--muted); font-size: 15px; }
+.ent-gauge { position: relative; display: flex; gap: 3px; height: 10px; }
+.ent-gauge i { display: block; height: 100%; border-radius: 5px; }
+.ent-gauge .z-low { width: 32%; background: var(--dot-low); } .ent-gauge .z-med { width: 28%; background: var(--dot-med); } .ent-gauge .z-high { width: 40%; background: var(--dot-high); }
+.ent-gauge b { position: absolute; top: -11px; margin-left: -6px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--ink); }
+.ent-ticks { position: relative; height: 16px; margin-top: 4px; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.ent-ticks span { position: absolute; transform: translateX(-50%); } .ent-ticks span:first-child { transform: none; } .ent-ticks span:last-child { transform: translateX(-100%); }
+.ent-right { display: grid; gap: 6px; }
+.ent-dim { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.ent-dim b { font-family: var(--f-mono); font-weight: 500; }
+.ent-dim.zero { color: var(--muted); }
+.ent-c-High { color: var(--high); } .ent-c-Medium { color: var(--med); } .ent-c-Low { color: var(--low); } .ent-c-none { color: var(--muted); }
+.ent-flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.ent-flags span { font-size: 12px; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--line); background: var(--panel2); }
+.ent-flags .f-hi { background: var(--high-bg); color: var(--high); border-color: transparent; } .ent-flags .f-md { background: var(--med-bg); color: var(--med); border-color: transparent; }
+.ent-what { border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; }
+.ent-what::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: middle; }
+@media (max-width: 760px) { .only-narrow { display: block; max-width: 11rem; } .wk { gap: 2px; } .wk i { width: 9px; height: 9px; border-radius: 2px; } }
+
+/* lists */
+.toplist { list-style: none; padding: 0; display: grid; gap: 2px; }
+.toprow { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 6px; cursor: pointer; border: 0; background: none; text-align: left; width: 100%; }
+.toprow:hover { background: var(--tint); }
+.toprow .tt { min-width: 0; overflow-wrap: anywhere; }
+.toprow .ts { color: var(--muted); font-size: 12px; }
+.fbars { display: grid; gap: 7px; }
+.frow { display: grid; grid-template-columns: minmax(0, 1fr) 6.5rem 1.6rem; gap: 8px; align-items: center; font-size: 13px; }
+.frow.zero { color: var(--muted); }
+.bar { display: flex; height: 10px; border-radius: 3px; overflow: hidden; background: var(--panel2); }
+.bar i { display: block; height: 100%; }
+.attn { display: grid; gap: 6px; }
+.attn button { display: flex; justify-content: space-between; gap: 10px; align-items: center; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 7px 10px; cursor: pointer; text-align: left; }
+.attn button:hover { border-color: var(--accent); }
+.attn b { font-family: var(--f-display); font-size: 20px; font-weight: 600; }
+
+/* tables */
+.tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; background: var(--panel); position: sticky; top: 0; }
+.tbl th.sortable { cursor: pointer; }
+.tbl td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tbl tbody tr { cursor: pointer; }
+.tbl tbody tr:hover { background: var(--tint); }
+.tbl tbody tr:last-child td { border-bottom: 0; }
+.tbl td.sum { min-width: 16rem; max-width: 34rem; }
+.tbl td.mono { white-space: nowrap; }
+.clamp { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.empty { padding: 28px 16px; text-align: center; color: var(--muted); }
+.empty h3 { color: var(--ink); font-family: var(--f-display); font-size: 20px; text-transform: uppercase; margin-bottom: 4px; }
+.bar-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+@media (max-width: 760px) { .hm { display: none; } .brand h1 { font-size: 24px; } }
+
+/* drawer */
+.scrim { position: fixed; inset: 0; background: rgba(8, 14, 20, .5); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(620px, 100%); background: var(--panel); border-left: 1px solid var(--line); z-index: 41; display: flex; flex-direction: column; box-shadow: var(--shadow); padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+@media (prefers-reduced-motion: no-preference) { .drawer { animation: slidein .16s ease-out; } @keyframes slidein { from { transform: translateX(24px); } } }
+.dh { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 14px 16px 10px; border-bottom: 1px solid var(--line); }
+.dh .eyebrow { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.dh h2 { font-family: var(--f-display); font-size: 22px; font-weight: 600; line-height: 1.15; overflow-wrap: anywhere; }
+.x { border: 0; background: none; font-size: 26px; line-height: 1; cursor: pointer; padding: 0 6px; color: var(--muted); }
+.dbody { padding: 14px 16px; overflow-y: auto; flex: 1; display: grid; gap: 14px; align-content: start; }
+.dfoot { padding: 10px 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.dfoot .err { color: var(--high); flex-basis: 100%; }
+.sect { display: grid; gap: 8px; }
+.sect > h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.step { display: grid; gap: 6px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; }
+.step h3 { font-size: 14px; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.step h3 span { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 12px; margin-right: 6px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 10px; }
+.fld { display: grid; gap: 3px; min-width: 0; }
+.fld > span { font-size: 12px; color: var(--muted); }
+.fld input, .fld select, .fld textarea { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 8px; width: 100%; min-width: 0; }
+.fld textarea { min-height: 4.2rem; resize: vertical; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.seg button:disabled { opacity: .5; cursor: not-allowed; }
+.kv2 { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 12px; }
+.kv2 dt { color: var(--muted); } .kv2 dd { overflow-wrap: anywhere; }
+.box { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--bg); }
+.box.prop { border-color: var(--accent); background: var(--tint); }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.linkrow { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); cursor: pointer; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; }
+.scoreprev { font-family: var(--f-display); font-size: 22px; font-weight: 600; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 9px 16px; border-radius: 8px; z-index: 60; max-width: calc(100% - 32px); box-shadow: var(--shadow); }
+.guide { display: grid; gap: 14px; max-width: 70ch; }
+.guide ol { padding-left: 20px; display: grid; gap: 6px; }
+.skeleton { color: var(--muted); padding: 30px 0; text-align: center; }
+</style>
+
+<div class="wrap" id="app">
+  <header class="top">
+    <div class="brand">
+      <h1>Emerging Risk Register</h1>
+      <p>Horizon scanning for power and water networks in Abu Dhabi</p>
+    </div>
+    <div class="tools">
+      <span class="me" id="me"></span>
+      <details class="menu" id="exp-menu">
+        <summary class="btn" role="button">Download</summary>
+        <div class="pop">
+          <button type="button" data-act="export" data-v="risks">Risk register (CSV)</button>
+          <button type="button" data-act="export" data-v="signals">Signal queue (CSV)</button>
+          <button type="button" data-act="export" data-v="sources">Sources (CSV)</button>
+        </div>
+      </details>
+    </div>
+  </header>
+  <div id="notice"></div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <main id="main"><p class="skeleton">Loading the register…</p></main>
+</div>
+<div id="drawer-root"></div>
+<div id="toast-root"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="adapter.js"></script>
+<script>
+(function () {
+'use strict';
+
+/* ---------- constants ---------- */
+var AREAS = ['Supply chain', 'Operations', 'Finance', 'Cyber', 'HSE', 'Legal and regulatory', 'Workforce', 'Reputation', 'Strategy and projects'];
+var AREA_SHORT = { 'Legal and regulatory': 'Legal & regulatory', 'Strategy and projects': 'Strategy & projects' };
+var HORIZONS = ['Short', 'Medium', 'Long'];
+var HZ_LABEL = { Short: 'Short · 0–12 months', Medium: 'Medium · 1–3 years', Long: 'Long · 3–10 years' };
+var HZ_RING = { Short: 'Short', Medium: 'Medium', Long: 'Long' };
+var LEVELS = ['Global', 'Regional', 'Local'];
+var FUNCS = ['Network operations and control', 'Asset management and maintenance', 'Network planning and engineering', 'Projects and construction', 'Metering and customer services', 'Procurement and supply chain', 'Finance and treasury', 'HSE', 'IT and OT security', 'Legal, regulatory and compliance', 'HR and workforce', 'Communications and strategy'];
+var DEPTS = ['ERM', 'Procurement and logistics', 'Operations and security', 'IT and OT security', 'Finance and treasury', 'Legal and compliance', 'Commercial', 'Projects and strategy', 'HSE', 'Communications', 'Human resources'];
+var LEAD = { 'Network operations and control': 'Operations and security', 'Asset management and maintenance': 'Operations and security', 'Network planning and engineering': 'Projects and strategy', 'Projects and construction': 'Projects and strategy', 'Metering and customer services': 'Commercial', 'Procurement and supply chain': 'Procurement and logistics', 'Finance and treasury': 'Finance and treasury', 'HSE': 'HSE', 'IT and OT security': 'IT and OT security', 'Legal, regulatory and compliance': 'Legal and compliance', 'HR and workforce': 'Human resources', 'Communications and strategy': 'Communications' };
+var IMPACT = ['', 'Negligible', 'Minor', 'Moderate', 'Major', 'Severe'];
+var LIKE = ['', 'Rare', 'Unlikely', 'Possible', 'Likely', 'Almost certain'];
+var STATUSES = ['Watch', 'Assess', 'Treat', 'Closed'];
+var DECISIONS = ['New risk', 'Add to existing risk', 'Watch', 'Reject'];
+var GRADES = ['A', 'B', 'C'];
+var REVIEW_DAYS = 30;
+var TABS = [['radar', 'Radar'], ['movement', 'Movement'], ['signals', 'Signals'], ['register', 'Register'], ['sources', 'Sources'], ['activity', 'Activity'], ['guide', 'How it works']];
+
+/* ---------- state ---------- */
+var S = {
+  risks: {}, signals: {}, sources: {}, log: [], scan: null, snaps: {},
+  ready: { risks: false, signals: false, sources: false, log: false },
+  db: null, user: null, downloads: null, uid: null, me: null, canWrite: null, dbError: '',
+  tab: 'radar',
+  f: { radarFunc: '', radarRating: '', sigView: 'await', sigQ: '', regQ: '', regRating: '', regHz: '', regFunc: '', regClosed: false, regSort: 'score', srcQ: '', srcLevel: '', mvBase: '30' }
+};
+var D = null; // open drawer
+
+/* ---------- helpers ---------- */
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function isoDate(d) { var z = new Date(d.getTime() - d.getTimezoneOffset() * 60000); return z.toISOString().slice(0, 10); }
+function today() { return isoDate(new Date()); }
+function addDays(s, n) { var d = new Date(s + 'T12:00:00'); d.setDate(d.getDate() + n); return isoDate(d); }
+var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+function fmt(s) {
+  if (!s) return '—';
+  var m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(s);
+  if (!m) return s;
+  return (m[3] ? Number(m[3]) + ' ' : '') + MON[Number(m[2]) - 1] + ' ' + m[1];
+}
+function fmtTime(iso) { try { return new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } }
+function num(v) { if (v === '' || v == null) return null; var n = Number(v); return isFinite(n) ? n : null; }
+function score(r) { return r.likelihood && r.impact ? r.likelihood * r.impact : null; }
+function rating(sc) { return sc == null ? null : sc >= 15 ? 'High' : sc >= 8 ? 'Medium' : 'Low'; }
+function wr() { return S.canWrite !== false && !!S.db; }
+function riskList() { return Object.keys(S.risks).map(function (k) { return S.risks[k]; }); }
+function openRisks() { return riskList().filter(function (r) { return r.status !== 'Closed'; }); }
+function sigList() { return Object.keys(S.signals).map(function (k) { return S.signals[k]; }); }
+function byId(a, b) { return a.id < b.id ? -1 : a.id > b.id ? 1 : 0; }
+function linked(rid) { return sigList().filter(function (s) { return s.risk_id === rid && (s.decision === 'New risk' || s.decision === 'Add to existing risk'); }); }
+function awaiting(s) { return !s.decision || !!s.proposed; }
+function missing(r) {
+  var m = [];
+  if (!r.likelihood) m.push('likelihood');
+  if (!r.impact) m.push('impact');
+  if (!r.owner) m.push('owner');
+  if (!r.exposure) m.push('exposure statement');
+  if (!r.action) m.push('planned action');
+  return m;
+}
+function nextStep(s) {
+  var rk = s.risk_id && S.risks[s.risk_id];
+  if (!s.decision) return { t: s.checked === 'Yes' ? 'Pick a decision' : 'Open the source, set Checked, then decide', k: 'wait' };
+  if (s.proposed) return { t: 'Proposed by the system: confirm or change', k: 'prop' };
+  if (s.decision === 'Reject') return { t: 'Closed: rejected', k: 'closed' };
+  if (s.decision === 'Watch') return { t: 'Watching: no register entry needed', k: 'closed' };
+  if (s.checked !== 'Yes') return { t: 'Not allowed yet: set Checked to Yes', k: 'bad' };
+  if (s.decision === 'Add to existing risk') return s.risk_id ? { t: 'Done: evidence for ' + s.risk_id, k: 'done' } : { t: 'Pick the existing risk', k: 'wait' };
+  if (!rk) return { t: 'Create the risk', k: 'wait' };
+  return score(rk) == null ? { t: rk.id + ' added: set likelihood and impact', k: 'wait' } : { t: 'Done: ' + rk.id + ' is on the radar', k: 'done' };
+}
+function ratingChip(r) {
+  var sc = score(r), rt = rating(sc);
+  return '<span class="rt ' + (rt || 'None') + '">' + (rt ? esc(rt) + ' ' + sc : 'Not scored') + '</span>';
+}
+function who(uid) {
+  if (uid === 'claude') return 'System (proposed)';
+  if (!uid) return 'Someone';
+  return '<span class="who" data-uid="' + esc(uid) + '">A team member</span>';
+}
+function toast(msg) {
+  var root = $('#toast-root'); root.innerHTML = '<div class="toast" role="status">' + esc(msg) + '</div>';
+  clearTimeout(toast.t); toast.t = setTimeout(function () { root.innerHTML = ''; }, 3200);
+}
+function keepFocus(fn) {
+  var a = document.activeElement, id = a && a.id, s = null, e = null;
+  if (a && (a.tagName === 'INPUT' || a.tagName === 'TEXTAREA') && id) { try { s = a.selectionStart; e = a.selectionEnd; } catch (x) { s = null; } }
+  fn();
+  if (id) { var n = document.getElementById(id); if (n) { n.focus({ preventScroll: true }); if (s != null) { try { n.setSelectionRange(s, e); } catch (x) {} } } }
+}
+function opts(list, val, blank) {
+  var h = blank != null ? '<option value="">' + esc(blank) + '</option>' : '';
+  list.forEach(function (o) { var v = Array.isArray(o) ? o[0] : o, l = Array.isArray(o) ? o[1] : o; h += '<option value="' + esc(v) + '"' + (String(v) === String(val == null ? '' : val) ? ' selected' : '') + '>' + esc(l) + '</option>'; });
+  return h;
+}
+function fld(label, inner) { return '<label class="fld"><span>' + esc(label) + '</span>' + inner + '</label>'; }
+function selF(g, f, label, list, val, blank) { return fld(label, '<select id="' + g + '-' + f + '" data-g="' + g + '" data-f="' + f + '">' + opts(list, val, blank) + '</select>'); }
+function inpF(g, f, label, val, type, extra) { return fld(label, '<input id="' + g + '-' + f + '" data-g="' + g + '" data-f="' + f + '" type="' + (type || 'text') + '" value="' + esc(val) + '" ' + (extra || '') + '>'); }
+function areaF(g, f, label, val, rows) { return fld(label, '<textarea id="' + g + '-' + f + '" data-g="' + g + '" data-f="' + f + '" rows="' + (rows || 3) + '">' + esc(val) + '</textarea>'); }
+function seg(g, f, list, val, dis) {
+  return '<div class="seg" role="group">' + list.map(function (o) { return '<button type="button" data-act="seg" data-g="' + g + '" data-f="' + f + '" data-v="' + esc(o) + '" aria-pressed="' + (val === o) + '"' + (dis ? ' disabled' : '') + '>' + esc(o) + '</button>'; }).join('') + '</div>';
+}
+function csvText(rows) {
+  return '﻿' + rows.map(function (r) { return r.map(function (v) { v = v == null ? '' : String(v); return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(','); }).join('\r\n');
+}
+
+/* ---------- writes ---------- */
+function stamp() { return { by: S.uid || '', at: new Date().toISOString() }; }
+function logEvent(text, ref) {
+  if (!S.db) return Promise.resolve();
+  var d = stamp(); d.text = text; d.ref = ref || '';
+  return S.db.collection('log').add(d).catch(function () {});
+}
+function nextId(prefix, map, width) {
+  var max = 0;
+  Object.keys(map).forEach(function (k) { var m = new RegExp('^' + prefix + '-(\\d+)$').exec(k); if (m) max = Math.max(max, Number(m[1])); });
+  var n = max + 1, s = String(n);
+  while (s.length < width) s = '0' + s;
+  return prefix + '-' + s;
+}
+function setDoc(path, data) { return S.db.doc(path).set(data); }
+function upd(path, data) { var d = Object.assign({}, data, stamp()); return S.db.doc(path).update(d); }
+
+/* ---------- subscriptions ---------- */
+function snapMap(snap) { var o = {}; snap.docs.forEach(function (d) { var v = d.data(); if (v) o[d.id] = Object.assign({ id: d.id }, v); }); return o; }
+function subscribe() {
+  var onErr = function (name) { return function (e) { S.dbError = (e && e.code) || 'unavailable'; S.ready[name] = true; schedule(); }; };
+  S.db.collection('risks').onSnapshot(function (s) { S.risks = snapMap(s); S.ready.risks = true; schedule(); }, onErr('risks'));
+  S.db.collection('signals').onSnapshot(function (s) { S.signals = snapMap(s); S.ready.signals = true; schedule(); }, onErr('signals'));
+  S.db.collection('sources').onSnapshot(function (s) { S.sources = snapMap(s); S.ready.sources = true; schedule(); }, onErr('sources'));
+  S.db.collection('log').orderBy('at', 'desc').limit(120).onSnapshot(function (s) { S.log = s.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); }); S.ready.log = true; schedule(); }, onErr('log'));
+  S.db.collection('snapshots').onSnapshot(function (s) { S.snaps = snapMap(s); schedule(); }, function () {});
+  S.db.doc('meta/scan').onSnapshot(function (d) { S.scan = d && d.exists ? d.data() : null; schedule(); }, function () {});
+}
+var raf = 0;
+function schedule() { if (raf) return; raf = requestAnimationFrame(function () { raf = 0; render(); }); }
+
+/* ---------- render shell ---------- */
+function allReady() { return S.ready.risks && S.ready.signals && S.ready.sources; }
+function render() {
+  keepFocus(function () {
+    renderTabs(); renderNotice();
+    var main = $('#main');
+    if (!S.db) { main.innerHTML = '<div class="card empty"><h3>Shared data is not available here</h3><p>Open this page from your Claude app while signed in to see and edit the register.</p></div>'; return; }
+    if (!allReady()) { main.innerHTML = '<p class="skeleton">Loading the register…</p>'; return; }
+    var scroller = window.scrollY;
+    main.innerHTML = ({ radar: viewRadar, movement: viewMovement, signals: viewSignals, register: viewRegister, sources: viewSources, activity: viewActivity, guide: viewGuide })[S.tab]();
+    if (S.tab === 'radar') drawRadar();
+    if (S.tab === 'movement') drawHeat();
+    window.scrollTo(0, scroller);
+  });
+  hydrateNames();
+}
+function renderTabs() {
+  var nAwait = sigList().filter(awaiting).length;
+  $('#tabs').innerHTML = TABS.map(function (t) {
+    var n = '';
+    if (t[0] === 'signals' && allReady()) n = '<span class="n' + (nAwait ? ' hot' : '') + '">' + nAwait + '</span>';
+    if (t[0] === 'register' && allReady()) n = '<span class="n">' + openRisks().length + '</span>';
+    return '<button type="button" role="tab" data-act="tab" data-v="' + t[0] + '" aria-selected="' + (S.tab === t[0]) + '">' + t[1] + n + '</button>';
+  }).join('');
+}
+function renderNotice() {
+  var h = '';
+  if (S.canWrite === false) h += '<p class="banner warn"><b>View only.</b> You can read the register but not change it. Ask the owner to share it with you as a Contributor.</p>';
+  if (S.dbError) h += '<p class="banner warn"><b>Some data could not load</b> (' + esc(S.dbError) + '). Reload the page; if it persists, the sharing settings may have changed.</p>';
+  $('#notice').innerHTML = h;
+}
+
+/* ---------- radar tab ---------- */
+function exposure() {
+  var ex = {};
+  FUNCS.forEach(function (f) { ex[f] = { n: 0, High: 0, Medium: 0, Low: 0, none: 0, max: 0 }; });
+  openRisks().forEach(function (r) {
+    [r.func, r.func2].forEach(function (f) {
+      if (!f || !ex[f]) return;
+      var e = ex[f], sc = score(r), rt = rating(sc);
+      e.n++; if (rt) e[rt]++; else e.none++;
+      if (sc && sc > e.max) e.max = sc;
+    });
+  });
+  return ex;
+}
+function scanInfo() {
+  var at = S.scan && S.scan.at ? new Date(S.scan.at) : null;
+  if (!at || isNaN(at.getTime())) return null;
+  var hrs = Math.max(0, (Date.now() - at.getTime()) / 36e5);
+  return { at: at, hrs: hrs, cls: hrs <= 26 ? 'fresh' : hrs <= 50 ? 'aging' : 'stale' };
+}
+function fmtScan(d) {
+  try { return d.toLocaleString('en-GB', { timeZone: 'Asia/Dubai', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) + ' Abu Dhabi time'; } catch (x) { return d.toISOString(); }
+}
+function agoText(h) {
+  if (h < 1) return 'less than an hour ago';
+  if (h < 36) { var n = Math.round(h); return n + (n === 1 ? ' hour ago' : ' hours ago'); }
+  return Math.round(h / 24) + ' days ago';
+}
+function scanStrip() {
+  var si = scanInfo(), aw = sigList().filter(awaiting);
+  var oldest = aw.reduce(function (m, s) { var c = s.captured || ''; return c && (!m || c < m) ? c : m; }, '');
+  var days = oldest ? Math.max(0, Math.round((new Date(today() + 'T12:00:00') - new Date(oldest + 'T12:00:00')) / 864e5)) : 0;
+  var label, cls, detail = [];
+  if (!si) { cls = 'none'; label = 'No scan recorded yet'; detail.push('New signals appear after a scan'); }
+  else {
+    cls = si.cls;
+    label = cls === 'fresh' ? 'Scanned ' + agoText(si.hrs) : cls === 'aging' ? 'Last scan over a day ago' : 'Last scan over two days ago';
+    detail.push(fmtScan(si.at));
+    if (S.scan.count !== undefined && S.scan.count !== '' && S.scan.count !== null) detail.push(S.scan.count + ' new signal' + (Number(S.scan.count) === 1 ? '' : 's') + ' added');
+  }
+  if (aw.length) detail.push(aw.length + ' waiting for a decision' + (days > 0 ? ', oldest ' + days + ' day' + (days === 1 ? '' : 's') : ''));
+  return '<div class="scan ' + cls + '" role="status"' + (S.scan && S.scan.note ? ' title="' + esc(S.scan.note) + '"' : '') + '><span class="sd" aria-hidden="true"></span><span class="sl">' + esc(label) + '</span><span class="sm">' + esc(detail.join(' · ')) + '</span>' +
+    (wr() ? '<button type="button" class="btn sm" data-act="record-scan" title="Stamp the time after you have checked the sources yourself">Record scan</button>' : '') + '</div>';
+}
+function viewRadar() {
+  var open = openRisks(), t = today();
+  var high = open.filter(function (r) { return rating(score(r)) === 'High'; }).length;
+  var aw = sigList().filter(awaiting).length;
+  var watch = sigList().filter(function (s) { return s.decision === 'Watch' && !s.proposed; }).length;
+  var due = open.filter(function (r) { return r.next_review && r.next_review < t; }).length;
+  var noOwner = open.filter(function (r) { return !r.owner; }).length;
+  var kp = '<div class="kpis">' +
+    kpi('Open risks', open.length, '') + kpi('High rated', high, high ? 'hi' : '') + kpi('Signals to decide', aw, aw ? 'ac' : '') +
+    kpi('On watch', watch, '') + kpi('Reviews due', due, due ? 'md' : '') + kpi('No owner yet', noOwner, noOwner ? 'md' : '') + '</div>';
+  var funcSel = '<select class="sel" id="rd-func" data-act="rd-func" aria-label="Filter by function">' + opts(FUNCS, S.f.radarFunc, 'All functions') + '</select>';
+  var chips = ['', 'High', 'Medium', 'Low'].map(function (r) { return '<button type="button" class="chip' + (S.f.radarRating === r ? ' on' : '') + '" data-act="rd-rating" data-v="' + r + '">' + (r || 'All') + '</button>'; }).join('');
+  var top = open.slice().sort(function (a, b) { return (score(b) || 0) - (score(a) || 0) || (b.impact || 0) - (a.impact || 0) || byId(a, b); }).slice(0, 8);
+  var topH = top.length ? '<ol class="toplist">' + top.map(function (r) {
+    return '<li><button type="button" class="toprow" data-act="open-risk" data-id="' + esc(r.id) + '"><span class="mono muted">' + esc(r.id) + '</span><span class="tt">' + esc(r.title) + '<div class="ts">' + esc(HZ_LABEL[r.horizon] || r.horizon) + ' · ' + esc(AREA_SHORT[r.area] || r.area) + '</div></span>' + ratingChip(r) + '</button></li>';
+  }).join('') + '</ol>' : '<p class="empty">No open risks yet.</p>';
+  var ex = exposure();
+  var fl = FUNCS.map(function (f) { return [f, ex[f]]; }).sort(function (a, b) { return b[1].n - a[1].n || b[1].max - a[1].max; });
+  var fbars = '<div class="fbars">' + fl.map(function (p) {
+    var e = p[1], tot = Math.max(e.n, 1);
+    var bar = e.n ? '<div class="bar" title="High ' + e.High + ', Medium ' + e.Medium + ', Low ' + e.Low + (e.none ? ', not scored ' + e.none : '') + '">' +
+      '<i style="width:' + (e.High / tot * 100) + '%;background:var(--dot-high)"></i><i style="width:' + (e.Medium / tot * 100) + '%;background:var(--dot-med)"></i><i style="width:' + (e.Low / tot * 100) + '%;background:var(--dot-low)"></i><i style="width:' + (e.none / tot * 100) + '%;background:var(--dot-none)"></i></div>' : '<div class="bar"></div>';
+    return '<div class="frow' + (e.n ? '' : ' zero') + '"><span>' + esc(p[0]) + (e.n ? '' : ' · no risk yet') + '</span>' + bar + '<b class="tnum">' + e.n + '</b></div>';
+  }).join('') + '</div>';
+  var unscored = open.filter(function (r) { return score(r) == null; }).length;
+  var attn = '<div class="attn">' +
+    attnBtn('Signals waiting for a decision', aw, 'go-signals') +
+    attnBtn('Risks without an owner', noOwner, 'go-noowner') +
+    attnBtn('Risks not yet scored', unscored, 'go-unscored') +
+    attnBtn('Reviews overdue', due, 'go-due') + '</div>';
+  return scanStrip() + kp + '<div class="grid-main">' +
+    '<div class="col"><section class="card"><div class="card-h"><div><h2>Risk radar</h2><p class="note">Wedge = impact area, ring = when it could hit, dot size = impact.</p></div><div class="chips">' + funcSel + chips + '</div></div><div class="radar-box" id="radar-box"></div><div id="radar-legend"></div></section>' + entityCard() + '</div>' +
+    '<div class="col"><section class="card"><div class="card-h"><h2>Top risks</h2></div>' + topH + '</section>' +
+    '<section class="card"><div class="card-h"><h2>Functions exposed</h2><p class="note">Primary or secondary function</p></div>' + fbars + '</section>' +
+    '<section class="card"><div class="card-h"><h2>Needs attention</h2></div>' + attn + '</section></div></div>';
+}
+function kpi(label, v, cls) { return '<div class="kpi ' + cls + '"><span class="kl">' + esc(label) + '</span><span class="kv">' + v + '</span></div>'; }
+function attnBtn(label, n, act) { return '<button type="button" data-act="' + act + '"><span>' + esc(label) + '</span><b class="tnum">' + n + '</b></button>'; }
+
+function polar(cx, cy, r, deg) { var a = deg * Math.PI / 180; return [cx + r * Math.sin(a), cy - r * Math.cos(a)]; }
+function p1(v) { return Math.round(v * 10) / 10; }
+function sector(cx, cy, r0, r1, a0, a1) {
+  var A = polar(cx, cy, r1, a0), B = polar(cx, cy, r1, a1), C = polar(cx, cy, r0, a1), E = polar(cx, cy, r0, a0);
+  return 'M' + p1(A[0]) + ',' + p1(A[1]) + 'A' + r1 + ',' + r1 + ' 0 0 1 ' + p1(B[0]) + ',' + p1(B[1]) + 'L' + p1(C[0]) + ',' + p1(C[1]) + 'A' + r0 + ',' + r0 + ' 0 0 0 ' + p1(E[0]) + ',' + p1(E[1]) + 'Z';
+}
+function wrap2(s) {
+  if (s.length <= 13) return [s];
+  var w = s.split(' '), best = 1, bd = 99;
+  for (var i = 1; i < w.length; i++) { var d = Math.abs(w.slice(0, i).join(' ').length - w.slice(i).join(' ').length); if (d < bd) { bd = d; best = i; } }
+  return [w.slice(0, best).join(' '), w.slice(best).join(' ')];
+}
+function drawRadar() {
+  var box = $('#radar-box'); if (!box) return;
+  var W = Math.max(300, Math.min(box.clientWidth || 640, 760)), narrow = W < 560;
+  var R = Math.floor(W / 2 - (narrow ? 20 : 104)), vm = narrow ? 26 : 48, H = 2 * (R + vm), hub = Math.round(R * 0.16), T = (R - hub) / 3, cx = W / 2, cy = H / 2;
+  var seg = 360 / AREAS.length, svg = '';
+  AREAS.forEach(function (a, i) {
+    HORIZONS.forEach(function (h, j) {
+      svg += '<path class="cellp" d="' + sector(cx, cy, hub + j * T, hub + (j + 1) * T, i * seg, (i + 1) * seg) + '" fill="' + (((i + j) % 2) ? 'var(--cell-a)' : 'var(--cell-b)') + '"/>';
+    });
+    var m = polar(cx, cy, R + (narrow ? 11 : 16), (i + 0.5) * seg), sx = Math.sin((i + 0.5) * seg * Math.PI / 180), cs = Math.cos((i + 0.5) * seg * Math.PI / 180);
+    var anchor = sx > 0.3 ? 'start' : sx < -0.3 ? 'end' : 'middle';
+    if (narrow) svg += '<text class="wlbl" x="' + p1(m[0]) + '" y="' + p1(m[1]) + '" text-anchor="middle" dy=".35em">' + (i + 1) + '</text>';
+    else {
+      var lines = wrap2(AREA_SHORT[a] || a), y0 = m[1] + (cs > 0.6 ? -(lines.length - 1) * 14 - 2 : cs < -0.6 ? 12 : 4 - (lines.length - 1) * 7);
+      svg += '<text class="wlbl" x="' + p1(m[0]) + '" text-anchor="' + anchor + '">' + lines.map(function (l, k) { return '<tspan x="' + p1(m[0]) + '" y="' + p1(y0 + k * 14) + '">' + esc(l) + '</tspan>'; }).join('') + '</text>';
+    }
+  });
+  svg += '<circle class="hub" cx="' + cx + '" cy="' + cy + '" r="' + hub + '"/>';
+  var cells = {};
+  openRisks().forEach(function (r) {
+    var ai = AREAS.indexOf(r.area), hj = HORIZONS.indexOf(r.horizon); if (ai < 0 || hj < 0) return;
+    (cells[ai + '|' + hj] = cells[ai + '|' + hj] || []).push(r);
+  });
+  Object.keys(cells).forEach(function (k) {
+    var ps = k.split('|').map(Number), ai = ps[0], hj = ps[1], list = cells[k].sort(function (a, b) { return (score(b) || 0) - (score(a) || 0) || byId(a, b); });
+    var n = list.length, cols = n <= 1 ? 1 : 2, rows = Math.ceil(n / cols), a0 = ai * seg, r0 = hub + hj * T;
+    list.forEach(function (r, idx) {
+      var row = Math.floor(idx / cols), col = idx % cols, cnt = row === rows - 1 ? n - row * cols : cols;
+      var rr = r0 + (row + 0.5) * (T / rows), th = a0 + seg * ((col + 0.5) / cnt), pos = polar(cx, cy, rr, th);
+      var sc = score(r), rt = rating(sc), rad = n > 4 ? 10 : Math.min(15, 8 + (r.impact || 3) * 1.4);
+      var off = (S.f.radarFunc && r.func !== S.f.radarFunc && r.func2 !== S.f.radarFunc) || (S.f.radarRating && rt !== S.f.radarRating);
+      var label = r.id.replace(/^ER-0*/, '') || r.id;
+      svg += '<g class="dot rt-' + (rt || 'None') + (off ? ' off' : '') + '" tabindex="' + (off ? -1 : 0) + '" role="button" data-act="open-risk" data-id="' + esc(r.id) + '" aria-label="' + esc(r.id + ' ' + r.title + ', ' + (rt ? rt + ' ' + sc : 'not scored')) + '" transform="translate(' + p1(pos[0]) + ',' + p1(pos[1]) + ')"><title>' + esc(r.id + ': ' + r.title + ' (' + (rt ? rt + ', score ' + sc : 'not scored') + ')') + '</title><circle class="dotc d-' + (rt || 'None') + '" r="' + p1(rad) + '"/><text class="dotn" text-anchor="middle" dy=".35em">' + esc(label) + '</text></g>';
+    });
+  });
+  box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Risk radar by impact area and time horizon">' + svg + '</svg>';
+  $('#radar-legend').innerHTML = '<div class="legend"><span><i class="sw" style="background:var(--dot-high)"></i>High</span><span><i class="sw" style="background:var(--dot-med)"></i>Medium</span><span><i class="sw" style="background:var(--dot-low)"></i>Low</span><span><i class="sw" style="background:var(--dot-none)"></i>Not scored</span><span>Number = risk ID</span></div><div class="legend"><span>Rings from the centre: Short 0–12 months</span><span>Medium 1–3 years</span><span>Long 3–10 years</span></div>' +
+    (narrow ? '<div class="areakey">' + AREAS.map(function (a, i) { return '<span>' + (i + 1) + ' ' + esc(AREA_SHORT[a] || a) + '</span>'; }).join('') + '</div>' : '');
+}
+
+/* ---------- movement tab ---------- */
+var MV_BASES = [['30', '1 month ago'], ['90', '3 months ago'], ['start', 'Start of register']];
+function snapDates() { return Object.keys(S.snaps).filter(function (k) { return S.snaps[k] && S.snaps[k].risks; }).sort(); }
+function histStart() {
+  var d = snapDates()[0] || '';
+  riskList().forEach(function (r) { if (r.added && (!d || r.added < d)) d = r.added; });
+  return d;
+}
+function mvBaseline() {
+  var dates = snapDates(); if (!dates.length) return null;
+  var want = S.f.mvBase === 'start' ? dates[0] : addDays(today(), -Number(S.f.mvBase || 30)), pick = null;
+  dates.forEach(function (d) { if (d <= want) pick = d; });
+  var short = !pick && S.f.mvBase !== 'start';
+  if (!pick) pick = dates[0];
+  return { date: pick, short: short, first: dates[0], risks: S.snaps[pick].risks || {} };
+}
+function pressure(rid) {
+  var t = today(), a30 = addDays(t, -30), a60 = addDays(t, -60), hs = histStart();
+  var ls = sigList().filter(function (s) { return s.risk_id === rid && (s.decision === 'New risk' || s.decision === 'Add to existing risk'); });
+  var last = ls.filter(function (s) { return (s.captured || '') > a30; });
+  var prev = ls.filter(function (s) { var c = s.captured || ''; return c > a60 && c <= a30; });
+  var weeks = [];
+  for (var i = 7; i >= 0; i--) {
+    var end = addDays(t, -7 * i), start = addDays(end, -7);
+    weeks.push({ end: end, n: ls.filter(function (s) { var c = s.captured || ''; return c > start && c <= end; }).length });
+  }
+  var complete = !!hs && hs <= a60;
+  return {
+    last: last.length, conf: last.filter(function (s) { return !s.proposed; }).length, prev: prev.length, complete: complete, weeks: weeks, total: ls.length,
+    flag: complete ? (last.length > prev.length && last.length >= 2) : last.length >= 3
+  };
+}
+function mvRows(b) {
+  return riskList().map(function (r) {
+    var p = b ? b.risks[r.id] : null;
+    var cur = score(r), prev = p && p.likelihood && p.impact ? p.likelihood * p.impact : null;
+    var closedNow = r.status === 'Closed', closedThen = p ? p.status === 'Closed' : null, kind;
+    if (!p) kind = closedNow ? 'gone' : 'new';
+    else if (closedNow && !closedThen) kind = 'closed';
+    else if (closedNow) kind = 'gone';
+    else if (closedThen) kind = 'reopened';
+    else if (cur != null && prev != null && cur > prev) kind = 'up';
+    else if (cur != null && prev != null && cur < prev) kind = 'down';
+    else kind = 'same';
+    return { r: r, p: p, cur: cur, prev: prev, kind: kind, rt: rating(cur), prt: rating(prev), pr: pressure(r.id) };
+  });
+}
+function nRisks(n, verb) { return (n === 1 ? '1 risk ' : n + ' risks ') + verb; }
+function mvWhy(m, b) {
+  var w = [];
+  if (m.kind === 'up') w.push(['w-up', 'Score ' + m.prev + ' → ' + m.cur + (m.prt !== m.rt ? ', now ' + m.rt + ' (was ' + m.prt + ')' : '')]);
+  if (m.kind === 'reopened') w.push(['w-up', 'Reopened since ' + fmt(b.date)]);
+  if (m.kind === 'new') w.push(['w-new', 'New since ' + fmt(b.date)]);
+  if (m.kind === 'down') w.push(['w-down', 'Score ' + m.prev + ' → ' + m.cur + (m.prt !== m.rt ? ', now ' + m.rt + ' (was ' + m.prt + ')' : '')]);
+  if (m.kind === 'closed') w.push(['w-down', 'Closed since ' + fmt(b.date)]);
+  if (m.pr.last) {
+    var t = m.pr.last + ' signal' + (m.pr.last === 1 ? '' : 's') + ' in 30 days';
+    if (m.pr.complete && m.pr.last !== m.pr.prev) t += ' (' + (m.pr.last > m.pr.prev ? 'up' : 'down') + ' from ' + m.pr.prev + ')';
+    if (m.pr.conf < m.pr.last) t += ', ' + (m.pr.last - m.pr.conf) + ' still to confirm';
+    w.push([m.pr.flag ? 'w-pr' : '', t]);
+  }
+  return w.length ? '<div class="why">' + w.map(function (x) { return '<span class="' + x[0] + '">' + esc(x[1]) + '</span>'; }).join('') + '</div>' : '';
+}
+function trendChip(m) {
+  if (m.kind === 'new') return '<span class="trend new">New</span>';
+  if (m.kind === 'reopened') return '<span class="trend up">Reopened</span>';
+  if (m.kind === 'closed') return '<span class="trend down">Closed</span>';
+  if (m.prev == null || m.cur == null) return '';
+  var d = m.cur - m.prev;
+  return '<span class="trend ' + (d > 0 ? 'up' : d < 0 ? 'down' : 'flat') + '">' + (d > 0 ? '▲ +' + d : d < 0 ? '▼ ' + d : 'No change') + '</span>';
+}
+function mvRow(m, b) {
+  return '<li><button type="button" class="mvrow" data-act="open-risk" data-id="' + esc(m.r.id) + '"><span class="mono muted">' + esc(m.r.id) + '</span><span class="tt">' + esc(m.r.title) +
+    '<div class="ts">' + esc(m.r.owner ? 'Owner: ' + m.r.owner : 'No owner yet') + ' · ' + esc(HZ_LABEL[m.r.horizon] || m.r.horizon || '') + '</div>' + mvWhy(m, b) + '</span><span class="mvright">' + ratingChip(m.r) + trendChip(m) + '</span></button></li>';
+}
+function viewMovement() {
+  var b = mvBaseline();
+  var chips = '<div class="chips"><span class="note">Compare with</span>' + MV_BASES.map(function (o) { return '<button type="button" class="chip' + (S.f.mvBase === o[0] ? ' on' : '') + '" data-act="mv-base" data-v="' + o[0] + '">' + esc(o[1]) + '</button>'; }).join('') + '</div>';
+  if (!b) return '<section class="card mv-sum"><h2>Movement</h2><p>Movement tracking starts with the first daily snapshot of the register. Check back after the next scan.</p></section>';
+  var ms = mvRows(b), open = ms.filter(function (m) { return m.r.status !== 'Closed'; });
+  var c = { up: 0, down: 0, 'new': 0, closed: 0, reopened: 0 };
+  ms.forEach(function (m) { if (c[m.kind] !== undefined) c[m.kind]++; });
+  var pressured = open.filter(function (m) { return m.pr.flag; });
+  var worse = open.filter(function (m) { return m.kind === 'up' || m.kind === 'reopened' || m.kind === 'new' || m.pr.flag; }).sort(function (x, y) {
+    var rk = function (m) { return (m.kind === 'up' ? 1000 + (m.cur - m.prev) * 10 : 0) + (m.kind === 'reopened' ? 900 : 0) + (m.kind === 'new' ? 500 : 0) + (m.rt === 'High' ? 50 : 0) + m.pr.last * 5 + (m.cur || 0); };
+    return rk(y) - rk(x) || byId(x.r, y.r);
+  });
+  var better = ms.filter(function (m) { return m.kind === 'down' || m.kind === 'closed'; }).sort(function (x, y) { return byId(x.r, y.r); });
+  var parts = [];
+  if (c.up + c.reopened) parts.push(nRisks(c.up + c.reopened, 'got worse'));
+  if (c['new']) parts.push(c['new'] + ' new');
+  if (c.down) parts.push(nRisks(c.down, 'eased'));
+  if (c.closed) parts.push(c.closed + ' closed');
+  var top = open.slice().sort(function (x, y) { return y.pr.last - x.pr.last || (y.cur || 0) - (x.cur || 0); })[0];
+  var head = 'Since ' + fmt(b.date) + ': ' + (parts.length ? parts.join(', ') + '.' : 'no risk has been re-scored, opened or closed.');
+  var eNow = entityScore(riskList()), eThen = entityAt(b);
+  if (eNow && eThen) head += ' Entity risk score ' + eNow.v.toFixed(1) + ' (' + eNow.band + ')' + (eNow.v === eThen.v ? ', unchanged.' : ', ' + (eNow.v > eThen.v ? 'up' : 'down') + ' from ' + eThen.v.toFixed(1) + '.');
+  var press = top && top.pr.last ? ' Most new evidence: ' + top.r.id + ' ' + top.r.title + ' (' + top.pr.last + ' signal' + (top.pr.last === 1 ? '' : 's') + ' in 30 days).' : '';
+  var notes = [];
+  if (b.short) notes.push('Tracking started on ' + fmt(b.first) + ', so the comparison uses that date until enough history exists.');
+  if (!(c.up + c.down + c.reopened)) notes.push('Arrows appear on the heat map when the ERM team changes a risk\'s likelihood or impact.');
+  var sum = '<section class="card mv-sum"><div class="card-h"><h2>What changed</h2>' + chips + '</div><p class="mv-head">' + esc(head + press) + '</p>' + (notes.length ? '<p class="note">' + esc(notes.join(' ')) + '</p>' : '') + '</section>';
+  var kp = '<div class="kpis">' + kpi('Got worse', c.up + c.reopened, c.up + c.reopened ? 'hi' : '') + kpi('New risks', c['new'], c['new'] ? 'ac' : '') + kpi('Eased', c.down, c.down ? 'lo' : '') + kpi('Closed', c.closed, '') + kpi('Under signal pressure', pressured.length, pressured.length ? 'md' : '') + '</div>';
+  var worseH = worse.length ? '<ol class="mvlist">' + worse.map(function (m) { return mvRow(m, b); }).join('') + '</ol>' : '<p class="empty">Nothing is getting worse since ' + esc(fmt(b.date)) + '.</p>';
+  var betterH = better.length ? '<ol class="mvlist">' + better.map(function (m) { return mvRow(m, b); }).join('') + '</ol>' : '<p class="note">Nothing has eased or closed since ' + esc(fmt(b.date)) + '.</p>';
+  var pr = open.filter(function (m) { return m.pr.total; }).sort(function (x, y) { return y.pr.last - x.pr.last || y.pr.total - x.pr.total || byId(x.r, y.r); });
+  var prRows = pr.map(function (m) {
+    var mx = 0; m.pr.weeks.forEach(function (w) { if (w.n > mx) mx = w.n; });
+    var strip = '<span class="wk" aria-hidden="true">' + m.pr.weeks.map(function (w) { var lv = w.n === 0 ? 0 : w.n === 1 ? 1 : w.n === 2 ? 2 : 3; return '<i class="w' + lv + '" title="' + esc('Week to ' + fmt(w.end) + ': ' + w.n + ' signal' + (w.n === 1 ? '' : 's')) + '"></i>'; }).join('') + '</span>';
+    var prevTxt = m.pr.complete ? String(m.pr.prev) : '—';
+    return '<tr tabindex="0" data-act="open-risk" data-id="' + esc(m.r.id) + '"><td><span class="mono">' + esc(m.r.id) + '</span><div class="note only-narrow">' + esc(m.r.title) + '</div></td><td class="sum hm">' + esc(m.r.title) + '</td><td>' + strip + '</td><td class="tnum"><b>' + m.pr.last + '</b>' + (m.pr.conf < m.pr.last ? '<div class="note">' + m.pr.conf + ' confirmed</div>' : '') + '</td><td class="tnum hm">' + prevTxt + '</td></tr>';
+  }).join('');
+  var prTable = pr.length ? '<div class="tblwrap"><table class="tbl"><thead><tr><th>Risk</th><th class="hm">Title</th><th>Last 8 weeks</th><th>Last 30 days</th><th class="hm">Previous 30</th></tr></thead><tbody>' + prRows + '</tbody></table></div>' +
+    '<p class="note" style="margin-top:8px">Each square is one week, darker = more signals linked to the risk. ' + (pr.some(function (m) { return !m.pr.complete; }) ? 'Previous 30 days shows — until the register has 60 days of history.' : '') + '</p>' : '<p class="note">No signals are linked to risks yet.</p>';
+  return sum + kp + '<div class="grid-main">' +
+    '<section class="card"><div class="card-h"><div><h2>Heat map</h2><p class="note">Now, against ' + esc(fmt(b.date)) + '. Select a dot for the detail.</p></div></div><div class="heat-box" id="heat-box"></div><div id="heat-legend"></div></section>' +
+    '<div class="col"><section class="card"><div class="card-h"><h2>Getting worse</h2><p class="note">Rose, new, or drawing more signals</p></div>' + worseH + '</section>' +
+    '<section class="card"><div class="card-h"><h2>Easing or closed</h2></div>' + betterH + '</section></div></div>' +
+    '<section class="card" style="margin-top:12px"><div class="card-h"><h2>Signal pressure</h2><p class="note">Signals linked to each open risk, including those still to confirm</p></div>' + prTable + '</section>';
+}
+function drawHeat() {
+  var box = $('#heat-box'); if (!box) return;
+  var b = mvBaseline(); if (!b) return;
+  var ms = mvRows(b);
+  var W = Math.max(300, Math.min(box.clientWidth || 560, 640)), narrow = W < 480;
+  var L = narrow ? 44 : 146, Rm = 6, Tp = 6, B = narrow ? 44 : 52, cell = Math.floor((W - L - Rm) / 5), H = Tp + cell * 5 + B, svg = '';
+  svg += '<defs><marker id="mv-h-up" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" class="mv-head-up"/></marker>' +
+    '<marker id="mv-h-down" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" class="mv-head-down"/></marker></defs>';
+  var li, ii;
+  for (li = 5; li >= 1; li--) for (ii = 1; ii <= 5; ii++) {
+    var x = L + (ii - 1) * cell, y = Tp + (5 - li) * cell, sc = li * ii, band = sc >= 15 ? 'high' : sc >= 8 ? 'med' : 'low';
+    svg += '<rect class="hm-cell hm-' + band + '" x="' + x + '" y="' + y + '" width="' + cell + '" height="' + cell + '"/><text class="hm-sc" x="' + (x + cell - 5) + '" y="' + (y + 12) + '" text-anchor="end">' + sc + '</text>';
+  }
+  for (var k = 1; k <= 5; k++) {
+    var yy = Tp + (5 - k) * cell + cell / 2, xx = L + (k - 1) * cell + cell / 2;
+    svg += '<text class="hm-ax" x="' + (L - 8) + '" y="' + p1(yy) + '" text-anchor="end" dy=".35em">' + (narrow ? k : k + ' ' + esc(LIKE[k])) + '</text>';
+    svg += '<text class="hm-ax" x="' + p1(xx) + '" y="' + (Tp + 5 * cell + 18) + '" text-anchor="middle">' + (narrow ? k : k + ' ' + esc(IMPACT[k])) + '</text>';
+  }
+  svg += '<text class="hm-title" x="' + p1(L + 2.5 * cell) + '" y="' + (H - 8) + '" text-anchor="middle">Impact →</text>';
+  svg += '<text class="hm-title" transform="translate(' + (narrow ? 12 : 14) + ',' + p1(Tp + 2.5 * cell) + ') rotate(-90)" text-anchor="middle">Likelihood →</text>';
+  /* gather what sits in each cell: current dots first, then earlier positions of risks that moved */
+  var occ = {}, keyOf = function (l, i) { return l + '|' + i; };
+  ms.forEach(function (m) { var r = m.r; if (r.status === 'Closed' || !r.likelihood || !r.impact) return; (occ[keyOf(r.likelihood, r.impact)] = occ[keyOf(r.likelihood, r.impact)] || { cur: [], ghost: [] }).cur.push(m); });
+  ms.forEach(function (m) {
+    var r = m.r, p = m.p; if (r.status === 'Closed' || !r.likelihood || !r.impact || !p || !p.likelihood || !p.impact || p.status === 'Closed') return;
+    if (p.likelihood === r.likelihood && p.impact === r.impact) return;
+    (occ[keyOf(p.likelihood, p.impact)] = occ[keyOf(p.likelihood, p.impact)] || { cur: [], ghost: [] }).ghost.push(m);
+  });
+  var pos = {}, gpos = {};
+  Object.keys(occ).forEach(function (key) {
+    var lp = key.split('|').map(Number), o = occ[key], all = o.cur.sort(function (a, c) { return byId(a.r, c.r); }).concat(o.ghost.sort(function (a, c) { return byId(a.r, c.r); }));
+    var n = all.length, cols = n <= 1 ? 1 : n <= 4 ? 2 : 3, rws = Math.ceil(n / cols), x0 = L + (lp[1] - 1) * cell, y0 = Tp + (5 - lp[0]) * cell;
+    var rad = Math.max(7, Math.min(narrow ? 10 : 14, (cell - 8) / (2 * Math.max(cols, rws)) - 2));
+    all.forEach(function (m, idx) {
+      var row = Math.floor(idx / cols), col = idx % cols, cnt = row === rws - 1 ? n - row * cols : cols;
+      var at = [x0 + cell * (col + 0.5) / cnt, y0 + 8 + (cell - 10) * (row + 0.5) / rws, rad];
+      if (idx < o.cur.length) pos[m.r.id] = at; else gpos[m.r.id] = at;
+    });
+  });
+  var ghosts = '', arrows = '', dots = '';
+  ms.forEach(function (m) {
+    var g = gpos[m.r.id], c = pos[m.r.id]; if (!g || !c) return;
+    var dir = (m.cur || 0) >= (m.prev || 0) ? 'up' : 'down', label = m.r.id.replace(/^ER-0*/, '') || m.r.id;
+    var dx = c[0] - g[0], dy = c[1] - g[1], d = Math.sqrt(dx * dx + dy * dy) || 1, ux = dx / d, uy = dy / d;
+    ghosts += '<g class="mv-ghost mv-' + dir + '"><title>' + esc(m.r.id + ' on ' + fmt(b.date) + ': score ' + m.prev) + '</title><circle cx="' + p1(g[0]) + '" cy="' + p1(g[1]) + '" r="' + p1(g[2]) + '"/><text x="' + p1(g[0]) + '" y="' + p1(g[1]) + '" text-anchor="middle" dy=".35em">' + esc(label) + '</text></g>';
+    arrows += '<line class="mv-arrow mv-' + dir + '" x1="' + p1(g[0] + ux * (g[2] + 2)) + '" y1="' + p1(g[1] + uy * (g[2] + 2)) + '" x2="' + p1(c[0] - ux * (c[2] + 5)) + '" y2="' + p1(c[1] - uy * (c[2] + 5)) + '" marker-end="url(#mv-h-' + dir + ')"/>';
+  });
+  ms.forEach(function (m) {
+    var c = pos[m.r.id]; if (!c) return;
+    var r = m.r, rt = m.rt || 'None', label = r.id.replace(/^ER-0*/, '') || r.id;
+    var tip = r.id + ': ' + r.title + ' (' + (m.cur != null ? rt + ', score ' + m.cur : 'not scored') + (m.kind === 'new' ? ', new' : m.prev != null && m.prev !== m.cur ? ', was ' + m.prev : '') + ')';
+    dots += '<g class="dot rt-' + rt + '" tabindex="0" role="button" data-act="open-risk" data-id="' + esc(r.id) + '" aria-label="' + esc(tip) + '" transform="translate(' + p1(c[0]) + ',' + p1(c[1]) + ')"><title>' + esc(tip) + '</title>' +
+      (m.kind === 'new' ? '<circle class="mv-newring" r="' + p1(c[2] + 4) + '"/>' : '') + '<circle class="dotc d-' + rt + '" r="' + p1(c[2]) + '"/><text class="dotn" text-anchor="middle" dy=".35em">' + esc(label) + '</text></g>';
+  });
+  box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="group" aria-label="Heat map of likelihood and impact, now against ' + esc(fmt(b.date)) + '">' + svg + ghosts + arrows + dots + '</svg>';
+  var unscored = ms.filter(function (m) { return m.r.status !== 'Closed' && (!m.r.likelihood || !m.r.impact); }).map(function (m) { return m.r.id; });
+  $('#heat-legend').innerHTML = '<div class="legend"><span><i class="sw" style="background:var(--dot-high)"></i>High</span><span><i class="sw" style="background:var(--dot-med)"></i>Medium</span><span><i class="sw" style="background:var(--dot-low)"></i>Low</span><span>Number = risk ID</span></div>' +
+    '<div class="legend"><span><i class="sw sw-ghost"></i>Position on ' + esc(fmt(b.date)) + '</span><span><i class="sw sw-up"></i>Arrow: got worse</span><span><i class="sw sw-down"></i>Arrow: eased</span><span><i class="sw sw-new"></i>New risk</span></div>' +
+    (unscored.length ? '<p class="note" style="text-align:center;margin-top:6px">Not on the map until scored: ' + esc(unscored.join(', ')) + '</p>' : '');
+}
+
+/* ---------- entity risk score ---------- */
+/* Four weighted dimensions. Each dimension = average score of its open, scored risks on a 0–100
+   scale (High-rated risks count double). Entity score = weighted sum; dimensions without risks are
+   left out and the other weights are scaled up. Bands match the risk bands: 60+ High, 32–59 Medium. */
+var ENT_DIMS = [
+  ['Operations and supply chain', 35, ['Operations', 'Supply chain', 'HSE']],
+  ['Security and cyber', 25, ['Cyber']],
+  ['Financial and regulatory', 20, ['Finance', 'Legal and regulatory']],
+  ['Strategic and people', 20, ['Strategy and projects', 'Workforce', 'Reputation']]
+];
+var ENT_ACTION = {
+  High: 'High: brief the CEO and the risk committee this month; every High risk needs a named owner and an action plan within 30 days.',
+  Medium: 'Medium: monthly ERM review; owners and actions for all High risks; brief the Chief Risk Officer on anything rising.',
+  Low: 'Low: quarterly review; keep the daily scan and weekly signal triage running.'
+};
+function entBand(v) { return v >= 60 ? 'High' : v >= 32 ? 'Medium' : 'Low'; }
+function entityScore(list) {
+  var open = list.filter(function (r) { return r && r.status !== 'Closed' && r.likelihood && r.impact; });
+  if (!open.length) return null;
+  var dims = ENT_DIMS.map(function (d) {
+    var w = 0, t = 0, n = 0;
+    open.forEach(function (r) { if (d[2].indexOf(r.area) < 0) return; var sc = r.likelihood * r.impact, k = sc >= 15 ? 2 : 1; w += k; t += k * sc; n++; });
+    return { name: d[0], weight: d[1], n: n, v: n ? t / w / 25 * 100 : null };
+  });
+  var wsum = 0; dims.forEach(function (d) { if (d.v != null) wsum += d.weight; });
+  var total = 0;
+  dims.forEach(function (d) { d.contrib = d.v != null ? d.v * d.weight / wsum : 0; total += d.contrib; });
+  var v = Math.round(total * 10) / 10;
+  return { v: v, band: entBand(v), n: open.length, high: open.filter(function (r) { return r.likelihood * r.impact >= 15; }).length, dims: dims, scaled: wsum < 100 };
+}
+function entityAt(b) {
+  if (!b) return null;
+  return entityScore(Object.keys(b.risks).map(function (k) { var x = b.risks[k], cur = S.risks[k] || {}; return { likelihood: x.likelihood, impact: x.impact, status: x.status, area: x.area || cur.area }; }));
+}
+function entityCard() {
+  var e = entityScore(riskList());
+  if (!e) return '';
+  var b = mvBaseline(), then = entityAt(b), trend = '';
+  if (then) {
+    var d = Math.round((e.v - then.v) * 10) / 10;
+    trend = '<span class="trend ' + (d > 0 ? 'up' : d < 0 ? 'down' : 'flat') + '">' + (d > 0 ? '▲ +' + d : d < 0 ? '▼ ' + d : 'No change') + ' since ' + esc(fmt(b.date)) + '</span>';
+  }
+  var open = openRisks(), noOwner = open.filter(function (r) { return !r.owner; }).length, aw = sigList().filter(awaiting).length;
+  var press = open.filter(function (r) { return pressure(r.id).flag; }).map(function (r) { return r.id; });
+  var flags = [];
+  if (e.high) flags.push(['f-hi', e.high + ' High-rated risk' + (e.high === 1 ? '' : 's')]);
+  if (noOwner) flags.push(['f-md', noOwner + ' without an owner']);
+  if (aw) flags.push(['f-md', aw + ' signals to decide']);
+  if (press.length) flags.push(['f-md', 'Signal pressure: ' + press.join(', ')]);
+  var unscored = open.filter(function (r) { return score(r) == null; }).length;
+  if (unscored) flags.push(['', unscored + ' not yet scored']);
+  var dimRows = e.dims.map(function (d) {
+    return '<div class="ent-dim' + (d.v == null ? ' zero' : '') + '"><span>' + esc(d.name) + ' · ' + d.weight + '%</span><b class="tnum ent-c-' + (d.v == null ? 'none' : entBand(d.v)) + '">' + (d.v == null ? 'no risks' : (Math.round(d.contrib * 10) / 10).toFixed(1)) + '</b></div>';
+  }).join('');
+  return '<section class="card ent" aria-label="Entity risk score"><div class="ent-grid"><div class="ent-left">' +
+    '<div class="ent-top"><span class="ent-label">Entity risk score</span><span class="rt ' + e.band + '">' + e.band + ' risk</span></div>' +
+    '<div class="ent-num"><span class="ent-v ent-' + e.band + '">' + e.v.toFixed(1) + '</span><span class="ent-of">/ 100</span> ' + trend + '</div>' +
+    '<div class="ent-gauge" role="img" aria-label="' + e.v.toFixed(1) + ' out of 100, ' + e.band + '"><i class="z-low"></i><i class="z-med"></i><i class="z-high"></i><b style="left:' + Math.min(99, Math.max(1, e.v)) + '%"></b></div>' +
+    '<div class="ent-ticks"><span style="left:0">0</span><span style="left:32%">32</span><span style="left:60%">60</span><span style="left:100%">100</span></div></div>' +
+    '<div class="ent-right">' + dimRows + '<div class="ent-flags">' + flags.map(function (f) { return '<span class="' + f[0] + '">' + esc(f[1]) + '</span>'; }).join('') + '</div></div></div>' +
+    '<p class="ent-what">' + esc(ENT_ACTION[e.band]) + '</p>' +
+    '<p class="note">Each dimension is the average score of its open risks on a 0–100 scale (High-rated risks count double), weighted as shown' + (e.scaled ? '; dimensions with no risks are left out' : '') + '. Points add up to the entity score. Based on ' + e.n + ' open scored risks.</p></section>';
+}
+
+/* ---------- signals tab ---------- */
+function sigViews() {
+  var all = sigList();
+  return [
+    ['await', 'To decide', all.filter(awaiting)],
+    ['watch', 'Watching', all.filter(function (s) { return s.decision === 'Watch' && !s.proposed; })],
+    ['linked', 'Linked to a risk', all.filter(function (s) { return (s.decision === 'New risk' || s.decision === 'Add to existing risk') && !s.proposed; })],
+    ['rej', 'Rejected', all.filter(function (s) { return s.decision === 'Reject' && !s.proposed; })],
+    ['all', 'All', all]
+  ];
+}
+function viewSignals() {
+  var views = sigViews(), cur = views.filter(function (v) { return v[0] === S.f.sigView; })[0] || views[0];
+  var q = S.f.sigQ.toLowerCase();
+  var list = cur[2].filter(function (s) { return !q || (s.id + ' ' + s.summary + ' ' + s.source + ' ' + s.func + ' ' + s.area).toLowerCase().indexOf(q) >= 0; }).sort(function (a, b) { return (b.captured || '').localeCompare(a.captured || '') || (a.id < b.id ? 1 : -1); });
+  var chips = views.map(function (v) { return '<button type="button" class="chip' + (v[0] === cur[0] ? ' on' : '') + '" data-act="sig-view" data-v="' + v[0] + '">' + v[1] + '<span class="n">' + v[2].length + '</span></button>'; }).join('');
+  var rows = list.map(function (s) {
+    var ns = nextStep(s);
+    return '<tr tabindex="0" data-act="open-sig" data-id="' + esc(s.id) + '"><td class="mono">' + esc(s.id) + '</td><td class="hm tnum">' + esc(fmt(s.captured)) + '</td><td class="sum"><div class="clamp">' + esc(s.summary) + '</div><div class="note">' + esc(s.source) + (s.url ? ' · <a href="' + esc(s.url) + '" target="_blank" rel="noopener">open source</a>' : '') + '</div></td><td class="hm">' + esc(s.func) + '<div class="note">' + esc(s.level) + ' · ' + esc(AREA_SHORT[s.area] || s.area) + '</div></td><td><span class="st ' + ns.k + '">' + esc(ns.t) + '</span></td></tr>';
+  }).join('');
+  var table = list.length ? '<div class="tblwrap"><table class="tbl"><thead><tr><th>ID</th><th class="hm">Captured</th><th>Signal</th><th class="hm">Likely function</th><th>Next step</th></tr></thead><tbody>' + rows + '</tbody></table></div>' :
+    '<div class="card empty"><h3>' + (sigList().length ? 'Nothing in this view' : 'No signals yet') + '</h3><p>' + (sigList().length ? 'Try another view or clear the search.' : 'Add the first signal you found, with its source link.') + '</p></div>';
+  return '<div class="bar-row"><div class="chips">' + chips + '</div><div class="chips"><input class="inp search" id="sig-q" type="search" placeholder="Search signals" value="' + esc(S.f.sigQ) + '" data-act="sig-q" aria-label="Search signals">' + (wr() ? '<button type="button" class="btn primary" data-act="new-sig">Add signal</button>' : '') + '</div></div>' + table;
+}
+
+/* ---------- register tab ---------- */
+function viewRegister() {
+  var f = S.f, q = f.regQ.toLowerCase();
+  var list = riskList().filter(function (r) {
+    if (!f.regClosed && r.status === 'Closed') return false;
+    if (f.regRating && rating(score(r)) !== f.regRating) return false;
+    if (f.regHz && r.horizon !== f.regHz) return false;
+    if (f.regFunc && r.func !== f.regFunc && r.func2 !== f.regFunc) return false;
+    if (f.regFilter === 'noowner' && r.owner) return false;
+    if (f.regFilter === 'unscored' && score(r) != null) return false;
+    if (f.regFilter === 'due' && !(r.next_review && r.next_review < today())) return false;
+    return !q || (r.id + ' ' + r.title + ' ' + r.detail + ' ' + r.area + ' ' + r.func + ' ' + (r.owner || '')).toLowerCase().indexOf(q) >= 0;
+  });
+  var hzo = { Short: 0, Medium: 1, Long: 2 };
+  list.sort(function (a, b) {
+    if (f.regSort === 'id') return byId(a, b);
+    if (f.regSort === 'horizon') return hzo[a.horizon] - hzo[b.horizon] || (score(b) || 0) - (score(a) || 0);
+    return (score(b) || -1) - (score(a) || -1) || (b.impact || 0) - (a.impact || 0) || byId(a, b);
+  });
+  var rows = list.map(function (r) {
+    var m = missing(r), lk = linked(r.id).length;
+    return '<tr tabindex="0" data-act="open-risk" data-id="' + esc(r.id) + '"><td class="mono">' + esc(r.id) + '</td><td class="sum"><div>' + esc(r.title) + '</div><div class="note">' + esc(r.area) + ' · ' + esc(r.level) + (m.length ? ' · missing: ' + esc(m.join(', ')) : '') + '</div></td><td>' + ratingChip(r) + '</td><td class="hm">' + esc(HZ_LABEL[r.horizon] || r.horizon) + '</td><td class="hm">' + esc(r.func) + (r.func2 ? '<div class="note">also ' + esc(r.func2) + '</div>' : '') + '</td><td class="hm">' + (r.owner ? esc(r.owner) : '<span class="muted">Not assigned</span>') + '</td><td class="hm">' + esc(r.status) + '</td><td class="hm tnum">' + lk + '</td></tr>';
+  }).join('');
+  var filt = '<select class="sel" id="rg-rating" data-act="rg-rating" aria-label="Rating">' + opts(['High', 'Medium', 'Low'], f.regRating, 'All ratings') + '</select>' +
+    '<select class="sel" id="rg-hz" data-act="rg-hz" aria-label="Horizon">' + opts(HORIZONS.map(function (h) { return [h, HZ_LABEL[h]]; }), f.regHz, 'All horizons') + '</select>' +
+    '<select class="sel" id="rg-func" data-act="rg-func" aria-label="Function">' + opts(FUNCS, f.regFunc, 'All functions') + '</select>' +
+    '<select class="sel" id="rg-sort" data-act="rg-sort" aria-label="Sort">' + opts([['score', 'Highest score first'], ['horizon', 'Soonest first'], ['id', 'By ID']], f.regSort) + '</select>' +
+    '<button type="button" class="chip' + (f.regClosed ? ' on' : '') + '" data-act="rg-closed" aria-pressed="' + f.regClosed + '">Show closed</button>';
+  var extra = f.regFilter ? '<button type="button" class="chip on" data-act="rg-clearfilter">' + esc({ noowner: 'No owner', unscored: 'Not scored', due: 'Review overdue' }[f.regFilter]) + ' ×</button>' : '';
+  var table = list.length ? '<div class="tblwrap"><table class="tbl"><thead><tr><th>ID</th><th>Risk</th><th>Rating</th><th class="hm">Horizon</th><th class="hm">Function</th><th class="hm">Owner</th><th class="hm">Status</th><th class="hm" title="Signals linked">Signals</th></tr></thead><tbody>' + rows + '</tbody></table></div>' :
+    '<div class="card empty"><h3>No risks match</h3><p>' + (riskList().length ? 'Clear a filter to see more.' : 'Add the first risk, or create one from a signal.') + '</p></div>';
+  return '<div class="bar-row"><div class="chips">' + filt + extra + '</div><div class="chips"><input class="inp search" id="rg-q" type="search" placeholder="Search risks" value="' + esc(f.regQ) + '" data-act="rg-q" aria-label="Search risks">' + (wr() ? '<button type="button" class="btn primary" data-act="new-risk">Add risk</button>' : '') + '</div></div>' + table;
+}
+
+/* ---------- sources tab ---------- */
+function viewSources() {
+  var q = S.f.srcQ.toLowerCase(), lv = S.f.srcLevel;
+  var all = Object.keys(S.sources).map(function (k) { return S.sources[k]; });
+  var lo = { Local: 0, Regional: 1, Global: 2 };
+  var list = all.filter(function (s) { return (!lv || s.level === lv) && (!q || (s.name + ' ' + s.why + ' ' + s.area).toLowerCase().indexOf(q) >= 0); }).sort(function (a, b) { return lo[a.level] - lo[b.level] || a.name.localeCompare(b.name); });
+  var chips = ['', 'Local', 'Regional', 'Global'].map(function (l) { var n = l ? all.filter(function (s) { return s.level === l; }).length : all.length; return '<button type="button" class="chip' + (lv === l ? ' on' : '') + '" data-act="src-level" data-v="' + l + '">' + (l || 'All') + '<span class="n">' + n + '</span></button>'; }).join('');
+  var rows = list.map(function (s) {
+    return '<tr tabindex="0" data-act="open-src" data-id="' + esc(s.id) + '"><td class="sum"><div>' + esc(s.name) + '</div><div class="note">' + esc(s.why) + '</div></td><td>' + esc(s.level) + '</td><td class="hm">' + esc(AREA_SHORT[s.area] || s.area) + '</td><td class="hm">' + esc(s.freq) + '</td><td class="hm">' + esc(s.feed) + '</td><td><span class="st ' + (s.grade === 'A' ? 'done' : s.grade === 'B' ? 'wait' : '') + '" title="A authoritative, B reputable, C lead only">' + esc(s.grade) + '</span></td><td>' + (s.url && /^https?:/.test(s.url) ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">Open</a>' : '<span class="muted">—</span>') + '</td></tr>';
+  }).join('');
+  var table = list.length ? '<div class="tblwrap"><table class="tbl"><thead><tr><th>Source and why it matters</th><th>Level</th><th class="hm">Area</th><th class="hm">Updates</th><th class="hm">Feed</th><th title="A authoritative, B reputable, C lead only">Grade</th><th>Link</th></tr></thead><tbody>' + rows + '</tbody></table></div>' : '<div class="card empty"><h3>No sources</h3><p>Add the sites and feeds you read.</p></div>';
+  return '<div class="bar-row"><div class="chips">' + chips + '</div><div class="chips"><input class="inp search" id="src-q" type="search" placeholder="Search sources" value="' + esc(S.f.srcQ) + '" data-act="src-q" aria-label="Search sources">' + (wr() ? '<button type="button" class="btn primary" data-act="new-src">Add source</button>' : '') + '</div></div>' + table +
+    '<p class="note" style="margin-top:8px">Grade A = authoritative, B = reputable, C = lead only (confirm with another source before accepting).</p>';
+}
+
+/* ---------- activity and guide ---------- */
+function viewActivity() {
+  if (!S.log.length) return '<div class="card empty"><h3>No activity yet</h3><p>Decisions, new risks and edits appear here with who made them and when.</p></div>';
+  return '<div class="tblwrap"><table class="tbl"><thead><tr><th>When</th><th>Who</th><th>What</th></tr></thead><tbody>' + S.log.map(function (l) {
+    var act = l.ref && /^ER-/.test(l.ref) ? 'open-risk' : l.ref && /^SQ-/.test(l.ref) ? 'open-sig' : '';
+    return '<tr' + (act ? ' tabindex="0" data-act="' + act + '" data-id="' + esc(l.ref) + '"' : ' style="cursor:default"') + '><td class="tnum" style="white-space:nowrap">' + esc(fmtTime(l.at)) + '</td><td>' + who(l.by) + '</td><td>' + esc(l.text) + '</td></tr>';
+  }).join('') + '</tbody></table></div>';
+}
+function viewGuide() {
+  return '<div class="guide"><section class="card" style="display:grid;gap:10px"><h2>From signal to risk</h2><ol>' +
+    '<li><b>Add the signal.</b> Paste what you found with its source link on the Signals tab.</li>' +
+    '<li><b>Check it.</b> Open the source. Set Checked to Yes only if the source is authoritative (or a second one confirms it), it says what the summary says, and you can name the asset, contract or function it touches.</li>' +
+    '<li><b>Decide.</b> New risk, Add to existing risk, Watch or Reject. Watch and Reject finish the job.</li>' +
+    '<li><b>Add to existing risk:</b> pick the risk. Done.</li>' +
+    '<li><b>New risk:</b> check the pre-filled risk, enter likelihood, impact and owner, and create it. It appears on the radar at once.</li></ol></section>' +
+    '<section class="card" style="display:grid;gap:8px"><h2>Daily scan</h2><p>A scan reads the sources and adds <b>proposed</b> signals, marked "Proposed by the system". The strip at the top of the Radar shows when the last scan ran and how many signals are waiting. A scan never changes a rating or creates a risk: a person confirms every signal first.</p><p class="note">If you checked the sources yourself, press Record scan on the Radar to stamp the time.</p></section>' +
+    '<section class="card" style="display:grid;gap:8px"><h2>Movement and entity score</h2><p>The Movement tab compares today with an earlier date (1 month, 3 months or the start of the register). On the heat map a dashed circle shows where a risk was and an arrow shows where it moved. Getting worse lists risks that rose, are new, or are drawing more signals. The daily scan saves each day\'s positions.</p><p>The entity risk score (0 to 100), under the radar, combines four weighted dimensions: operations and supply chain 35%, security and cyber 25%, financial and regulatory 20%, strategic and people 20%. Each dimension is the average score of its open risks on a 0 to 100 scale, with High-rated risks counted double. 0 to 31 is Low, 32 to 59 Medium, 60 and above High.</p></section>' +
+    '<section class="card" style="display:grid;gap:8px"><h2>Scoring</h2><p>Score = likelihood × impact (each 1 to 5). <b>High</b> is 15 or more, <b>Medium</b> 8 to 14, <b>Low</b> below 8. These bands are proposals; change them to match the organisation\'s risk appetite.</p>' +
+    '<p class="note">Impact: ' + IMPACT.slice(1).map(function (n, i) { return (i + 1) + ' ' + n; }).join(', ') + '. Likelihood: ' + LIKE.slice(1).map(function (n, i) { return (i + 1) + ' ' + n; }).join(', ') + '.</p>' +
+    '<p class="note">Horizons: short 0–12 months, medium 1–3 years, long 3–10 years. Next review defaults to ' + REVIEW_DAYS + ' days after a risk is added or reviewed.</p></section>' +
+    '<section class="card" style="display:grid;gap:8px"><h2>Sharing and exports</h2><p>Everyone with Contributor access can change the register; people with view access can read it. Every decision and edit is recorded on the Activity tab.</p><p>The Download menu gives CSV snapshots that open in Excel. The CSV files are copies; this page is the live register.</p>' +
+    '<p class="note">The lists of functions, departments and impact areas are fixed in the page. Ask Claude to change them.</p></section></div>';
+}
+
+/* ---------- drawer ---------- */
+function openDrawer(d) { D = d; drawerRender(true); }
+function closeDrawer() { D = null; $('#drawer-root').innerHTML = ''; }
+function drawerRender(focusFirst) {
+  if (!D) return;
+  var c = D.type === 'sig' ? sigDrawer() : D.type === 'risk' ? riskDrawer() : D.type === 'src' ? srcDrawer() : newSigDrawer();
+  var root = $('#drawer-root');
+  var html = '<div class="scrim" data-act="close-drawer"></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dtitle"><header class="dh"><div><div class="eyebrow">' + c.eyebrow + '</div><h2 id="dtitle">' + c.title + '</h2></div><button type="button" class="x" data-act="close-drawer" aria-label="Close">×</button></header><div class="dbody" id="dbody">' + c.body + '</div><footer class="dfoot">' + (D.err ? '<div class="err" role="alert">' + esc(D.err) + '</div>' : '') + c.foot + '</footer></aside>';
+  var body = $('#dbody'), keep = body ? body.scrollTop : 0;
+  keepFocus(function () { root.innerHTML = html; });
+  var nb = $('#dbody'); if (nb) nb.scrollTop = keep;
+  if (focusFirst) { var f = $('.drawer .x'); if (f) f.focus(); }
+  hydrateNames();
+}
+function footBtns(save, saveLabel, extra) {
+  var dis = D.busy ? ' disabled' : '';
+  return '<div>' + (extra || '') + '</div><div class="chips"><button type="button" class="btn" data-act="close-drawer">' + (save && wr() ? 'Cancel' : 'Close') + '</button>' + (save && wr() ? '<button type="button" class="btn primary" data-act="' + save + '"' + dis + '>' + (D.busy ? 'Saving…' : saveLabel) + '</button>' : '') + '</div>';
+}
+
+/* signal drawer */
+function sigDrawer() {
+  var s = S.signals[D.id] || {}, d = D.draft, dis = !wr() || D.busy;
+  var prop = s.proposed ? '<div class="box prop"><b>Proposed by the system' + (s.decided_on ? ' on ' + esc(fmt(s.decided_on)) : '') + '.</b> The system opened the source and suggested this decision. Confirm it as it is, or change it, then save.</div>' : '';
+  var checkMsg = '<span class="note">Yes only if: the source is authoritative (or a second source confirms it), you opened it and it says this, and you can name the asset, contract or function it touches.</span>';
+  var step2 = '';
+  if (d.decision === 'Add to existing risk') {
+    var risks = openRisks().sort(byId).map(function (r) { return [r.id, r.id + ' · ' + r.title]; });
+    step2 = selF('draft', 'risk_id', 'Which risk does it support?', risks, d.risk_id, 'Choose a risk');
+  } else if (d.decision === 'New risk') {
+    if (s.risk_id && S.risks[s.risk_id]) step2 = '<p class="note">Already created as ' + esc(s.risk_id) + '. Open it from the register to edit.</p>';
+    else {
+      var n = D.nr;
+      step2 = '<div class="box" style="display:grid;gap:10px"><b>New risk, pre-filled from this signal</b>' +
+        areaF('nr', 'title', 'Risk title', n.title, 2) +
+        '<div class="grid2">' + selF('nr', 'level', 'Level', LEVELS, n.level) + selF('nr', 'horizon', 'Horizon', HORIZONS.map(function (h) { return [h, HZ_LABEL[h]]; }), n.horizon) + selF('nr', 'area', 'Impact area', AREAS, n.area) + selF('nr', 'func', 'Primary function', FUNCS, n.func) + selF('nr', 'lead_dept', 'Lead department', DEPTS, n.lead_dept) + inpF('nr', 'owner', 'Named owner (optional)', n.owner) + selF('nr', 'likelihood', 'Likelihood', [1, 2, 3, 4, 5].map(function (i) { return [i, i + ' ' + LIKE[i]]; }), n.likelihood, 'Set later') + selF('nr', 'impact', 'Impact on the organisation', [1, 2, 3, 4, 5].map(function (i) { return [i, i + ' ' + IMPACT[i]]; }), n.impact, 'Set later') + '</div></div>';
+    }
+  }
+  var body = prop +
+    '<div class="sect"><h3>Signal</h3><p>' + esc(s.summary) + '</p><dl class="kv2"><dt>Source</dt><dd>' + esc(s.source) + (s.url ? ' · <a href="' + esc(s.url) + '" target="_blank" rel="noopener">Open the source</a>' : '') + '</dd><dt>Published</dt><dd>' + esc(fmt(s.published)) + '</dd><dt>Captured</dt><dd>' + esc(fmt(s.captured)) + '</dd><dt>Level · area</dt><dd>' + esc(s.level) + ' · ' + esc(s.area) + '</dd><dt>Likely function</dt><dd>' + esc(s.func) + '</dd><dt>Horizon</dt><dd>' + esc(HZ_LABEL[s.horizon] || s.horizon) + '</dd><dt>AI confidence</dt><dd>' + esc(s.conf) + '</dd></dl>' +
+    (s.check ? '<div class="box"><b>Analyst must check.</b> ' + esc(s.check) + '</div>' : '') + '</div>' +
+    '<div class="step"><h3><span>1</span>Checked?</h3>' + seg('draft', 'checked', ['Yes', 'Unsure', 'No'], d.checked, dis) + checkMsg + '</div>' +
+    '<div class="step"><h3><span>2</span>Decision</h3>' + seg('draft', 'decision', DECISIONS, d.decision, dis) + (step2 ? '<div style="margin-top:6px">' + step2 + '</div>' : '') + '</div>' +
+    '<div class="sect">' + areaF('draft', 'notes', 'Notes (what you checked, who you asked)', d.notes, 4) + '</div>' +
+    (s.decided_by ? '<p class="note">Last decision by ' + who(s.decided_by) + (s.decided_on ? ' on ' + esc(fmt(s.decided_on)) : '') + '.</p>' : '');
+  return { eyebrow: 'Signal ' + esc(s.id), title: esc(s.source || s.id), body: body, foot: footBtns('save-sig', s.proposed ? 'Confirm decision' : 'Save decision', '') };
+}
+function shortTitle(t) {
+  t = String(t || '').split(/;|\. /)[0];
+  if (t.length > 110) t = t.slice(0, 110).replace(/\s+\S*$/, '').replace(/[,:(]\s*$/, '');
+  return t;
+}
+function startSig(id) {
+  var s = S.signals[id]; if (!s) return;
+  var rk = s.risk_id && S.risks[s.risk_id];
+  openDrawer({
+    type: 'sig', id: id, busy: false, err: '',
+    draft: { checked: s.checked || '', decision: s.decision || '', risk_id: s.risk_id || '', notes: s.notes || '' },
+    nr: { title: shortTitle(s.summary), level: s.level, horizon: s.horizon, area: s.area, func: s.func, lead_dept: LEAD[s.func] || 'ERM', owner: '', likelihood: '', impact: '' }
+  });
+}
+function saveSig() {
+  var s = S.signals[D.id], d = D.draft, n = D.nr;
+  if (!d.decision) return fail('Pick a decision first.');
+  if ((d.decision === 'New risk' || d.decision === 'Add to existing risk') && d.checked !== 'Yes') return fail('Set Checked to Yes first. A signal that has not been checked cannot join the register.');
+  if (d.decision === 'Add to existing risk' && !d.risk_id) return fail('Choose which risk this signal supports.');
+  var isNew = d.decision === 'New risk' && !(s.risk_id && S.risks[s.risk_id]);
+  if (isNew && !String(n.title).trim()) return fail('Give the new risk a title.');
+  D.busy = true; D.err = ''; drawerRender();
+  var rid = d.decision === 'Add to existing risk' ? d.risk_id : (d.decision === 'New risk' ? (s.risk_id || '') : '');
+  var chain = Promise.resolve();
+  if (isNew) {
+    rid = nextId('ER', S.risks, 2);
+    var rk = { id: rid, title: String(n.title).trim(), detail: s.summary, level: n.level, horizon: n.horizon, area: n.area, lead_dept: n.lead_dept, func: n.func, func2: '', owner: String(n.owner || '').trim(), likelihood: num(n.likelihood), impact: num(n.impact), exposure: '', triggers: '', action: '', action_due: '', next_review: addDays(today(), REVIEW_DAYS), status: 'Assess', evidence: s.url || '', added: today(), reviewed: '', src: s.id };
+    Object.assign(rk, stamp());
+    chain = setDoc('risks/' + rid, rk);
+  }
+  chain.then(function () {
+    return upd('signals/' + s.id, { checked: d.checked, decision: d.decision, risk_id: rid, notes: d.notes || '', decided_on: today(), decided_by: S.uid || 'analyst', proposed: false });
+  }).then(function () {
+    var what = isNew ? 'created ' + rid + ' from ' + s.id : d.decision === 'Add to existing risk' ? 'added ' + s.id + ' as evidence for ' + rid : d.decision === 'Watch' ? 'put ' + s.id + ' on watch' : 'rejected ' + s.id;
+    logEvent(what.charAt(0).toUpperCase() + what.slice(1) + '.', isNew ? rid : s.id);
+    closeDrawer(); toast(isNew ? rid + ' created and linked' : 'Decision saved');
+    if (isNew) { S.tab = 'register'; schedule(); }
+  }).catch(function (e) { D.busy = false; fail(errText(e)); });
+}
+function fail(msg) { if (D) { D.busy = false; D.err = msg; drawerRender(); } return false; }
+function errText(e) {
+  var c = e && e.code;
+  if (c === 'invalid_argument') return 'You do not have permission to change the register, or the data is invalid. Ask the owner for Contributor access.';
+  if (c === 'quota_exceeded') return 'The register is full. Delete old entries or ask Claude to clear space.';
+  if (c === 'revoked') return 'Your access changed while the page was open. Reload the page.';
+  return 'Could not save. Check your connection and try again.';
+}
+
+/* new signal drawer */
+function newSigDrawer() {
+  var d = D.draft;
+  var names = Object.keys(S.sources).map(function (k) { return S.sources[k].name; }).sort();
+  var body = '<div class="sect"><p class="note">Use public information only. Keep confidential company data out of the summary.</p>' +
+    fld('Source', '<input id="draft-source" data-g="draft" data-f="source" list="src-list" value="' + esc(d.source) + '"><datalist id="src-list">' + names.map(function (n) { return '<option value="' + esc(n) + '">'; }).join('') + '</datalist>') +
+    inpF('draft', 'url', 'Link to the item', d.url, 'url', 'placeholder="https://"') +
+    areaF('draft', 'summary', 'One-line summary (public facts only)', d.summary, 3) +
+    '<div class="grid2">' + inpF('draft', 'published', 'Published (date or month)', d.published, 'text', 'placeholder="2026-10-12"') + selF('draft', 'level', 'Level', LEVELS, d.level) + selF('draft', 'area', 'Impact area', AREAS, d.area) + selF('draft', 'func', 'Likely function', FUNCS, d.func) + selF('draft', 'horizon', 'Proposed horizon', HORIZONS.map(function (h) { return [h, HZ_LABEL[h]]; }), d.horizon) + selF('draft', 'conf', 'Confidence', ['High', 'Medium', 'Low'], d.conf) + '</div>' +
+    areaF('draft', 'check', 'What must be checked before accepting', d.check, 2) + '</div>';
+  return { eyebrow: 'New signal', title: 'Add a signal', body: body, foot: footBtns('save-newsig', 'Add signal', '') };
+}
+function saveNewSig() {
+  var d = D.draft;
+  if (!d.summary.trim()) return fail('Write a one-line summary.');
+  if (!d.source.trim()) return fail('Say where it came from.');
+  D.busy = true; D.err = ''; drawerRender();
+  var id = nextId('SQ', S.signals, 4);
+  var doc = { id: id, captured: today(), published: d.published.trim(), source: d.source.trim(), url: d.url.trim(), summary: d.summary.trim(), level: d.level, area: d.area, func: d.func, horizon: d.horizon, touches: 'Unsure', conf: d.conf, check: d.check.trim(), checked: '', decision: '', risk_id: '', decided_on: '', decided_by: '', proposed: false, notes: '' };
+  Object.assign(doc, stamp());
+  setDoc('signals/' + id, doc).then(function () { logEvent('Added signal ' + id + '.', id); closeDrawer(); toast(id + ' added'); S.f.sigView = 'await'; S.tab = 'signals'; schedule(); })
+    .catch(function (e) { D.busy = false; fail(errText(e)); });
+}
+
+/* risk drawer */
+function riskDrawer() {
+  var d = D.draft, isNew = !D.id, r = S.risks[D.id] || {}, dis = !wr() || D.busy;
+  var sc = d.likelihood && d.impact ? d.likelihood * d.impact : null, rt = rating(sc);
+  var ls = linked(D.id || '').sort(byId);
+  var linkH = ls.length ? ls.map(function (s) { return '<button type="button" class="linkrow" data-act="open-sig" data-id="' + esc(s.id) + '"><span><span class="mono">' + esc(s.id) + '</span> ' + esc(s.source) + (s.proposed ? ' <span class="st prop">proposed</span>' : '') + '</span><span class="note">' + esc(fmt(s.published || s.captured)) + '</span></button>'; }).join('') : '<p class="note">No signals linked yet.</p>';
+  var ro = dis ? ' disabled' : '';
+  var body = (isNew ? '' : '<div class="pills">' + ratingChip(Object.assign({}, r, d, { likelihood: d.likelihood, impact: d.impact })) + '<span class="st">' + esc(d.status) + '</span>' + missing(d).map(function (m) { return '<span class="st wait">needs ' + esc(m) + '</span>'; }).join('') + '</div>') +
+    '<div class="sect">' + areaF('draft', 'title', 'Risk title', d.title, 2) + areaF('draft', 'detail', 'What could happen', d.detail, 3) + '</div>' +
+    '<div class="grid2">' + selF('draft', 'level', 'Level', LEVELS, d.level) + selF('draft', 'horizon', 'Horizon', HORIZONS.map(function (h) { return [h, HZ_LABEL[h]]; }), d.horizon) + selF('draft', 'area', 'Impact area', AREAS, d.area) + selF('draft', 'status', 'Status', STATUSES, d.status) + selF('draft', 'func', 'Primary function', FUNCS, d.func) + selF('draft', 'func2', 'Secondary function', FUNCS, d.func2, 'None') + selF('draft', 'lead_dept', 'Lead department', DEPTS, d.lead_dept) + inpF('draft', 'owner', 'Named owner', d.owner) + '</div>' +
+    '<div class="step"><h3>Score</h3><div class="grid2">' + selF('draft', 'likelihood', 'Likelihood', [1, 2, 3, 4, 5].map(function (i) { return [i, i + ' ' + LIKE[i]]; }), d.likelihood, 'Not set') + selF('draft', 'impact', 'Impact on the organisation', [1, 2, 3, 4, 5].map(function (i) { return [i, i + ' ' + IMPACT[i]]; }), d.impact, 'Not set') + '</div><div id="score-prev" class="scoreprev">' + scoreText(sc) + '</div></div>' +
+    '<div class="sect">' + areaF('draft', 'exposure', 'Exposure statement', d.exposure, 3) + areaF('draft', 'triggers', 'Trigger indicators to watch', d.triggers, 3) + areaF('draft', 'action', 'Planned action', d.action, 3) + '</div>' +
+    '<div class="grid2">' + inpF('draft', 'action_due', 'Action due', d.action_due, 'date') + inpF('draft', 'next_review', 'Next review', d.next_review, 'date') + '</div>' +
+    '<div class="sect">' + inpF('draft', 'evidence', 'Evidence link', d.evidence, 'url') + '</div>' +
+    (isNew ? '' : '<div class="sect"><h3>Linked signals (' + ls.length + ')</h3>' + linkH + '</div><p class="note">Added ' + esc(fmt(r.added)) + (r.reviewed ? ' · last reviewed ' + esc(fmt(r.reviewed)) : '') + (r.by ? ' · last changed by ' + who(r.by) + ' on ' + esc(fmtTime(r.at)) : '') + '</p>');
+  var extra = isNew || !wr() ? '' : '<button type="button" class="btn sm" data-act="risk-reviewed">Mark reviewed today</button> ' + (r.status === 'Closed' ? '<button type="button" class="btn sm" data-act="risk-reopen">Reopen</button>' : '<button type="button" class="btn sm danger" data-act="risk-close">Close risk</button>');
+  return { eyebrow: isNew ? 'New risk' : 'Risk ' + esc(D.id), title: isNew ? 'Add a risk' : esc(r.title || D.id), body: body, foot: footBtns('save-risk', isNew ? 'Add risk' : 'Save changes', extra) };
+}
+function scoreText(sc) { var rt = rating(sc); return sc ? 'Score ' + sc + ' · ' + rt : 'Set likelihood and impact to score this risk'; }
+function riskDraft(r) {
+  return { title: r.title || '', detail: r.detail || '', level: r.level || 'Regional', horizon: r.horizon || 'Short', area: r.area || 'Supply chain', status: r.status || 'Assess', func: r.func || FUNCS[0], func2: r.func2 || '', lead_dept: r.lead_dept || 'ERM', owner: r.owner || '', likelihood: r.likelihood || '', impact: r.impact || '', exposure: r.exposure || '', triggers: r.triggers || '', action: r.action || '', action_due: r.action_due || '', next_review: r.next_review || addDays(today(), REVIEW_DAYS), evidence: r.evidence || '' };
+}
+function startRisk(id) { var r = S.risks[id]; if (!r) return; openDrawer({ type: 'risk', id: id, busy: false, err: '', draft: riskDraft(r) }); }
+function riskPayload(d) {
+  return { title: d.title.trim(), detail: d.detail.trim(), level: d.level, horizon: d.horizon, area: d.area, status: d.status, func: d.func, func2: d.func2 || '', lead_dept: d.lead_dept, owner: d.owner.trim(), likelihood: num(d.likelihood), impact: num(d.impact), exposure: d.exposure.trim(), triggers: d.triggers.trim(), action: d.action.trim(), action_due: d.action_due || '', next_review: d.next_review || '', evidence: d.evidence.trim() };
+}
+function saveRisk(extra, msg) {
+  var d = D.draft;
+  if (!d.title.trim()) return fail('Give the risk a title.');
+  D.busy = true; D.err = ''; drawerRender();
+  var p;
+  if (!D.id) {
+    var id = nextId('ER', S.risks, 2), doc = Object.assign({ id: id }, riskPayload(d), { added: today(), reviewed: '', src: '' }, extra || {}); Object.assign(doc, stamp());
+    p = setDoc('risks/' + id, doc).then(function () { logEvent('Added risk ' + id + '.', id); return id; });
+  } else {
+    p = upd('risks/' + D.id, Object.assign(riskPayload(d), extra || {})).then(function () { logEvent((msg || 'Updated') + ' ' + D.id + '.', D.id); return D.id; });
+  }
+  p.then(function (id) { closeDrawer(); toast(msg ? msg + ' ' + id : id + ' saved'); }).catch(function (e) { D.busy = false; fail(errText(e)); });
+}
+
+/* source drawer */
+function srcDrawer() {
+  var d = D.draft, isNew = !D.id;
+  var body = '<div class="sect">' + inpF('draft', 'name', 'Source name', d.name) + inpF('draft', 'url', 'Link', d.url, 'url') + areaF('draft', 'why', 'Why it matters', d.why, 3) + '</div>' +
+    '<div class="grid2">' + selF('draft', 'level', 'Level', LEVELS, d.level) + selF('draft', 'area', 'Impact area', AREAS, d.area) + inpF('draft', 'freq', 'Update frequency', d.freq) + inpF('draft', 'feed', 'Feed or alert type', d.feed) + selF('draft', 'grade', 'Grade', [['A', 'A authoritative'], ['B', 'B reputable'], ['C', 'C lead only']], d.grade) + selF('draft', 'terms', 'Terms of use checked?', ['Not yet', 'Yes', 'No'], d.terms) + inpF('draft', 'owner', 'Owner (analyst)', d.owner) + '</div>';
+  var del = !isNew && wr() ? (D.confirmDel ? '<button type="button" class="btn sm danger" data-act="src-del-yes">Yes, delete this source</button>' : '<button type="button" class="btn sm danger" data-act="src-del">Delete</button>') : '';
+  return { eyebrow: isNew ? 'New source' : 'Source', title: isNew ? 'Add a source' : esc(d.name), body: body, foot: footBtns('save-src', isNew ? 'Add source' : 'Save changes', del) };
+}
+function srcDraft(s) { return { name: s.name || '', url: s.url || '', why: s.why || '', level: s.level || 'Global', area: s.area || 'Supply chain', freq: s.freq || 'As issued', feed: s.feed || 'Web', grade: s.grade || 'B', terms: s.terms || 'Not yet', owner: s.owner || '' }; }
+function saveSrc() {
+  var d = D.draft; if (!d.name.trim()) return fail('Give the source a name.');
+  D.busy = true; D.err = ''; drawerRender();
+  var id = D.id || ('s' + String(Date.now()).slice(-8)), doc = Object.assign({ id: id }, d, { name: d.name.trim(), url: d.url.trim(), why: d.why.trim() }); Object.assign(doc, stamp());
+  setDoc('sources/' + id, doc).then(function () { logEvent((D.id ? 'Updated' : 'Added') + ' source: ' + doc.name + '.', ''); closeDrawer(); toast('Source saved'); }).catch(function (e) { D.busy = false; fail(errText(e)); });
+}
+
+/* ---------- names ---------- */
+function hydrateNames() {
+  var nodes = $$('.who[data-uid]'); if (!nodes.length || !S.user) return;
+  var ids = {}; nodes.forEach(function (n) { ids[n.getAttribute('data-uid')] = 1; });
+  S.user.profiles(Object.keys(ids)).then(function (ps) {
+    nodes.forEach(function (n) { var p = ps[n.getAttribute('data-uid')]; if (p) n.textContent = p.isMe ? 'You' : (p.name || 'A team member'); });
+  }).catch(function () {});
+}
+
+/* ---------- export ---------- */
+function exportCsv(kind) {
+  if (!S.downloads) return toast('Downloads are not available in this view.');
+  var rows, name;
+  if (kind === 'risks') {
+    rows = [['Risk ID', 'Emerging risk', 'Detail', 'Level', 'Horizon', 'Impact area', 'Lead department', 'Primary function', 'Secondary function', 'Named owner', 'Likelihood', 'Impact', 'Score', 'Rating', 'Exposure statement', 'Trigger indicators', 'Planned action', 'Action due', 'Next review', 'Status', 'Source signal', 'Evidence link', 'Date added', 'Last reviewed', 'Signals linked']];
+    riskList().sort(byId).forEach(function (r) { var sc = score(r); rows.push([r.id, r.title, r.detail, r.level, HZ_LABEL[r.horizon] || r.horizon, r.area, r.lead_dept, r.func, r.func2, r.owner, r.likelihood, r.impact, sc, rating(sc), r.exposure, r.triggers, r.action, r.action_due, r.next_review, r.status, r.src, r.evidence, r.added, r.reviewed, linked(r.id).length]); });
+    name = 'Emerging_Risk_Register_';
+  } else if (kind === 'signals') {
+    rows = [['Signal ID', 'Captured', 'Published', 'Source', 'Link', 'Summary', 'Level', 'Impact area', 'Likely function', 'Horizon', 'AI confidence', 'Checked', 'Decision', 'Risk ID', 'Decided on', 'Proposed by the system, unconfirmed', 'Notes']];
+    sigList().sort(byId).forEach(function (s) { rows.push([s.id, s.captured, s.published, s.source, s.url, s.summary, s.level, s.area, s.func, HZ_LABEL[s.horizon] || s.horizon, s.conf, s.checked, s.decision, s.risk_id, s.decided_on, s.proposed ? 'Yes' : '', s.notes]); });
+    name = 'Signal_Queue_';
+  } else {
+    rows = [['Source', 'Level', 'Impact area', 'Update frequency', 'Feed', 'Grade', 'Terms checked', 'Owner', 'Link', 'Why it matters']];
+    Object.keys(S.sources).map(function (k) { return S.sources[k]; }).sort(function (a, b) { return a.name.localeCompare(b.name); }).forEach(function (s) { rows.push([s.name, s.level, s.area, s.freq, s.feed, s.grade, s.terms, s.owner, s.url, s.why]); });
+    name = 'Scanning_Sources_';
+  }
+  var det = $('#exp-menu'); if (det) det.removeAttribute('open');
+  S.downloads.save({ filename: name + today() + '.csv', data: csvText(rows) }).then(function () { toast('Saved'); }).catch(function (e) { if (e && e.code !== 'declined') toast('Could not save the file.'); });
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', function (e) {
+  var t = e.target.closest('[data-act]'); if (!t) { var m = $('#exp-menu'); if (m && m.open && !e.target.closest('#exp-menu')) m.removeAttribute('open'); return; }
+  if (e.target.closest('a') && t.tagName === 'TR') return;
+  var a = t.getAttribute('data-act'), v = t.getAttribute('data-v'), id = t.getAttribute('data-id');
+  switch (a) {
+    case 'tab': S.tab = v; S.f.regFilter = S.f.regFilter; render(); break;
+    case 'export': exportCsv(v); break;
+    case 'rd-rating': S.f.radarRating = v; render(); break;
+    case 'mv-base': S.f.mvBase = v; render(); break;
+    case 'open-risk': if (D) { D = null; } startRisk(id); break;
+    case 'open-sig': if (D) { D = null; } startSig(id); break;
+    case 'open-src': startSrc(id); break;
+    case 'go-signals': S.tab = 'signals'; S.f.sigView = 'await'; render(); break;
+    case 'go-noowner': S.tab = 'register'; S.f.regFilter = 'noowner'; render(); break;
+    case 'go-unscored': S.tab = 'register'; S.f.regFilter = 'unscored'; render(); break;
+    case 'go-due': S.tab = 'register'; S.f.regFilter = 'due'; render(); break;
+    case 'rg-closed': S.f.regClosed = !S.f.regClosed; render(); break;
+    case 'rg-clearfilter': S.f.regFilter = ''; render(); break;
+    case 'sig-view': S.f.sigView = v; render(); break;
+    case 'src-level': S.f.srcLevel = v; render(); break;
+    case 'new-sig': openDrawer({ type: 'newsig', busy: false, err: '', draft: { source: '', url: '', summary: '', published: '', level: 'Global', area: 'Supply chain', func: FUNCS[0], horizon: 'Short', conf: 'Medium', check: '' } }); break;
+    case 'new-risk': openDrawer({ type: 'risk', id: '', busy: false, err: '', draft: riskDraft({}) }); break;
+    case 'new-src': openDrawer({ type: 'src', id: '', busy: false, err: '', draft: srcDraft({}) }); break;
+    case 'record-scan': {
+      var u = stamp();
+      S.db.doc('meta/scan').set({ at: u.at, by: u.by, note: 'Recorded by an analyst after checking the sources' }).then(function () { logEvent('Recorded a source scan.', ''); toast('Scan recorded'); }).catch(function (x) { toast(errText(x)); });
+      break;
+    }
+    case 'close-drawer': closeDrawer(); break;
+    case 'seg': if (!D) break; (D[t.getAttribute('data-g')])[t.getAttribute('data-f')] = v; if (D.type === 'sig' && t.getAttribute('data-f') === 'decision' && v === 'New risk') { D.nr.title = D.nr.title; } drawerRender(); break;
+    case 'save-sig': saveSig(); break;
+    case 'save-newsig': saveNewSig(); break;
+    case 'save-risk': saveRisk(); break;
+    case 'risk-reviewed': D.draft.next_review = addDays(today(), REVIEW_DAYS); saveRisk({ reviewed: today() }, 'Reviewed'); break;
+    case 'risk-close': D.draft.status = 'Closed'; saveRisk({}, 'Closed'); break;
+    case 'risk-reopen': D.draft.status = 'Assess'; saveRisk({}, 'Reopened'); break;
+    case 'save-src': saveSrc(); break;
+    case 'src-del': D.confirmDel = true; drawerRender(); break;
+    case 'src-del-yes':
+      D.busy = true; drawerRender();
+      S.db.doc('sources/' + D.id).delete().then(function () { logEvent('Deleted source ' + D.draft.name + '.', ''); closeDrawer(); toast('Source deleted'); }).catch(function (x) { D.busy = false; fail(errText(x)); });
+      break;
+  }
+});
+function startSrc(id) { var s = S.sources[id]; if (!s) return; openDrawer({ type: 'src', id: id, busy: false, err: '', draft: srcDraft(s) }); }
+document.addEventListener('input', function (e) {
+  var t = e.target, a = t.getAttribute && t.getAttribute('data-act');
+  if (a === 'sig-q') { S.f.sigQ = t.value; render(); return; }
+  if (a === 'rg-q') { S.f.regQ = t.value; render(); return; }
+  if (a === 'src-q') { S.f.srcQ = t.value; render(); return; }
+  var g = t.getAttribute && t.getAttribute('data-g'), f = t.getAttribute && t.getAttribute('data-f');
+  if (g && f && D && D[g]) {
+    D[g][f] = t.value;
+    if (D.type === 'risk' && (f === 'likelihood' || f === 'impact')) { var sc = num(D.draft.likelihood) && num(D.draft.impact) ? Number(D.draft.likelihood) * Number(D.draft.impact) : null; var p = $('#score-prev'); if (p) p.textContent = scoreText(sc); }
+  }
+});
+document.addEventListener('change', function (e) {
+  var t = e.target, a = t.getAttribute && t.getAttribute('data-act');
+  if (a === 'rd-func') { S.f.radarFunc = t.value; render(); }
+  else if (a === 'rg-rating') { S.f.regRating = t.value; render(); }
+  else if (a === 'rg-hz') { S.f.regHz = t.value; render(); }
+  else if (a === 'rg-func') { S.f.regFunc = t.value; render(); }
+  else if (a === 'rg-sort') { S.f.regSort = t.value; render(); }
+  else if (t.getAttribute && t.getAttribute('data-g') === 'nr' && t.getAttribute('data-f') === 'func' && D) { D.nr.lead_dept = LEAD[t.value] || D.nr.lead_dept; drawerRender(); }
+  else if (t.getAttribute && t.getAttribute('data-g') === 'draft' && t.getAttribute('data-f') === 'func' && D && D.type === 'risk' && !D.id) { D.draft.lead_dept = LEAD[t.value] || D.draft.lead_dept; drawerRender(); }
+  else if (D && D.type === 'risk' && t.getAttribute && t.getAttribute('data-f') && D.id) { /* edits are held until Save */ }
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && D) { closeDrawer(); return; }
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('tr[data-act], g.dot')) { e.preventDefault(); e.target.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+});
+var rz; window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(function () { if (S.tab === 'radar') drawRadar(); if (S.tab === 'movement') drawHeat(); }, 120); });
+function hashTab() { var h = (location.hash || '').replace('#', ''); if (TABS.some(function (t) { return t[0] === h; })) { S.tab = h; render(); } }
+window.addEventListener('hashchange', hashTab);
+
+/* ---------- start ---------- */
+function start() {
+  var c = window.claude;
+  hashTab(); renderTabs(); renderNotice();
+  if (!c || !c.use) { render(); return; }
+  Promise.all([c.use('db'), c.use('user'), c.use('downloads')]).then(function (r) {
+    S.db = r[0]; S.user = r[1]; S.downloads = r[2];
+    var jobs = [];
+    if (S.user) {
+      jobs.push(S.user.id().then(function (i) { S.uid = i; }));
+      jobs.push(S.user.me().then(function (m) { S.me = m; $('#me').innerHTML = '<img alt="" src="' + esc(m.avatarUrl) + '"><span>' + esc(m.name || 'You') + '</span>'; }));
+      jobs.push(S.user.can('data.write').then(function (b) { S.canWrite = b; }));
+    }
+    return Promise.all(jobs.map(function (p) { return p.catch(function () {}); }));
+  }).then(function () {
+    if (S.db) subscribe();
+    render();
+  });
+}
+start();
+})();
+</script>
+
+</body></html>

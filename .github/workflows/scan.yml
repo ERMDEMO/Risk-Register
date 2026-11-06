@@ -1,0 +1,30 @@
+name: Emerging risk scan
+
+on:
+  schedule:
+    - cron: "35 4 * * *"      # daily scan, 08:35 Abu Dhabi time
+    - cron: "*/10 * * * *"    # every 10 minutes: run if someone pressed "Run scan now"
+  workflow_dispatch:           # run by hand from the Actions tab
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run the scanner
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ vars.SCAN_MODEL }}
+          MODE: ${{ github.event.schedule == '*/10 * * * *' && 'poll' || 'daily' }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_SERVICE_KEY" ] || [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "Secrets are not set yet (SUPABASE_URL, SUPABASE_SERVICE_KEY, ANTHROPIC_API_KEY). Skipping."; exit 0
+          fi
+          python3 scanner/scan.py
