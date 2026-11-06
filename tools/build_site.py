@@ -82,6 +82,12 @@ def main():
         "window.__READ_ONLY__ = true;</script>\n"
         "<script>\n" + shim + "</script>\n"
     )
+    # The published copy cannot be shared for editing, so the view-only banner
+    # says where edits happen instead of asking for Contributor access.
+    page = page.replace(
+        "<b>View only.</b> You can read the register but not change it. Ask the owner to share it with you as a Contributor.",
+        "<b>Read-only copy.</b> This page is refreshed every morning from the team's register. Signals are confirmed and risks are edited in the team's register, not here.",
+    )
     with open(a.out, "w", encoding="utf-8") as f:
         f.write(page.replace(MARKER, head + MARKER))
     print("Built %s: %s" % (a.out, {k: len(v) for k, v in seed.items()}))

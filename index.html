@@ -526,7 +526,7 @@ function renderTabs() {
 }
 function renderNotice() {
   var h = '';
-  if (S.canWrite === false) h += '<p class="banner warn"><b>View only.</b> You can read the register but not change it. Ask the owner to share it with you as a Contributor.</p>';
+  if (S.canWrite === false) h += '<p class="banner warn"><b>Read-only copy.</b> This page is refreshed every morning from the team's register. Signals are confirmed and risks are edited in the team's register, not here.</p>';
   if (S.dbError) h += '<p class="banner warn"><b>Some data could not load</b> (' + esc(S.dbError) + '). Reload the page; if it persists, the sharing settings may have changed.</p>';
   $('#notice').innerHTML = h;
 }
