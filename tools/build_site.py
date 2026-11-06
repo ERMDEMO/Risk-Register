@@ -16,6 +16,7 @@ import argparse
 import glob
 import json
 import os
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -86,10 +87,23 @@ def main():
     # says where edits happen instead of asking for Contributor access.
     page = page.replace(
         "<b>View only.</b> You can read the register but not change it. Ask the owner to share it with you as a Contributor.",
-        "<b>Read-only copy.</b> This page is refreshed every morning from the team's register. Signals are confirmed and risks are edited in the team's register, not here.",
+        "<b>Read-only copy.</b> This page is refreshed every morning from the main register. Signals are reviewed in the Issues tab of this repository, and risks are edited in the main register.",
     )
+    out = page.replace(MARKER, head + MARKER)
     with open(a.out, "w", encoding="utf-8") as f:
-        f.write(page.replace(MARKER, head + MARKER))
+        f.write(out)
+    # Safety check: every inline script must still parse, so a bad build never reaches the site.
+    import re, shutil, tempfile
+    if shutil.which("node"):
+        for i, js in enumerate(re.findall(r"<script>(.*?)</script>", out, re.S)):
+            with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as t:
+                t.write(js)
+            r = subprocess.run(["node", "--check", t.name], capture_output=True, text=True)
+            os.unlink(t.name)
+            if r.returncode != 0:
+                os.unlink(a.out)
+                print("Built page has a script error (script %d); nothing written. %s" % (i, r.stderr.strip()[:300]))
+                return 2
     print("Built %s: %s" % (a.out, {k: len(v) for k, v in seed.items()}))
     return 0
 
