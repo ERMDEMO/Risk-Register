@@ -23,7 +23,7 @@ Everyone uses one shared team account. People open the link, type the **team cod
 
 Share the link and the team code with your team, separately if you can (for example the link by email and the code by phone).
 
-To change the team code: **Authentication → Users** → the team account → **⋯ → Send password recovery** is not needed; instead delete the user and create it again with the same email and a new password. Everyone then enters the new code.
+To change the team code (for example when someone leaves): **Authentication → Users**, delete the team account, then create it again with the same email and a new password. Everyone then enters the new code.
 
 ## 3. Add the secrets the scanner needs (GitHub)
 
