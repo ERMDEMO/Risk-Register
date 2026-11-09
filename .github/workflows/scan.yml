@@ -1,9 +1,11 @@
 name: Emerging risk scan
 
+# Paid option (Anthropic API credit). Scans currently run free from Claude and are
+# loaded by import.yml. To switch back, restore the schedule lines below.
+#  schedule:
+#    - cron: "35 4 * * *"      # daily scan, 08:35 Abu Dhabi time
+#    - cron: "*/10 * * * *"    # every 10 minutes: run if someone pressed "Run scan now"
 on:
-  schedule:
-    - cron: "35 4 * * *"      # daily scan, 08:35 Abu Dhabi time
-    - cron: "*/10 * * * *"    # every 10 minutes: run if someone pressed "Run scan now"
   workflow_dispatch:           # run by hand from the Actions tab
 
 concurrency:

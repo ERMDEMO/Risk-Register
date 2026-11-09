@@ -6,5 +6,7 @@
 window.REGISTER_CONFIG = {
   url: 'https://axxqqoqlwremtxlehgvt.supabase.co',
   anonKey: 'sb_publishable_XZPwFjqS4J_I0xj0hVSifQ_GkrIm2jk',
-  teamEmail: 'team@risk-register.app'
+  teamEmail: 'team@risk-register.app',
+  // 'claude': scans run from Claude (free) and are imported by GitHub; 'button': show Run scan now (needs Anthropic API credit)
+  scanVia: 'claude'
 };

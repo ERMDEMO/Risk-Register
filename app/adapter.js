@@ -205,6 +205,14 @@
   }
   function scanControls() {
     var tools = document.querySelector('.tools'); if (!tools) return;
+    if (cfg.scanVia === 'claude') {
+      var info = document.createElement('span');
+      info.className = 'chips';
+      info.innerHTML = '<span class="scanstat">Daily scan at 08:35. For an extra scan, ask the register owner.</span><button type="button" class="linkbtn" id="sign-out">Not you?</button>';
+      tools.insertBefore(info, tools.firstChild);
+      info.querySelector('#sign-out').onclick = function () { setName(''); location.reload(); };
+      return;
+    }
     var box = document.createElement('span');
     box.className = 'chips';
     box.innerHTML = '<span class="scanstat" id="scan-stat" role="status"></span><button type="button" class="btn primary sm scanbtn" id="scan-run">Run scan now</button><button type="button" class="linkbtn" id="sign-out">Not you?</button>';

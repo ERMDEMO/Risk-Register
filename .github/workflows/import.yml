@@ -1,0 +1,33 @@
+name: Import scan results
+
+on:
+  push:
+    paths: ["inbox/scan-*.json"]   # a Claude scan saved new results
+  schedule:
+    - cron: "0 4 * * *"            # 08:00 Abu Dhabi: refresh context before the daily scan
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load results into the register and export context
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: python3 scanner/import_inbox.py
+      - name: Save the context file
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add inbox/context.json
+          git diff --cached --quiet || (git commit -m "Update scan context" && git pull --rebase -q origin main && git push)
