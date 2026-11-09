@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-09T10:40:00.000Z",
+ "by": "claude",
+ "note": "Afternoon scan: quiet; today's maritime and Iran items were already captured this morning. One new weather outlook.",
+ "signals": [
+  {
+   "captured": "2026-11-09",
+   "published": "2026-11-02",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/weather/weather-update-uae-braces-for-wetter-warmer-november-as-rainfall-and-temperatures-exceed-averages-1.500732571",
+   "summary": "The NCM expects November 2026 to be wetter and warmer than usual, with rainfall above the 6.9 mm November average and temperatures above the 24.8C average. It expects more fog and mist, possible convective rain mainly in eastern areas, and occasional stronger northerly winds. November 2024 had 21 foggy days.",
+   "level": "Local",
+   "area": "HSE",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Confirm the outlook on the NCM site and ask network operations whether fog, humidity and convective rain are in the November readiness plan (insulator flashover, field crew driving, flooding of ground-level assets).",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News (2 Nov, grade C) reporting the NCM outlook; NCM primary page not opened. Relates to ER-10 (extreme heat and weather) but not linked until confirmed."
+  }
+ ],
+ "new_sources": []
+}
