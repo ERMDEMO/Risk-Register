@@ -10,21 +10,20 @@ Do the steps in order. Steps 1 to 4 take about 15 minutes.
 2. Open `supabase/schema.sql` in this repository, copy all of it, paste it, click **Run**. You should see "Success. No rows returned".
 3. New query again: copy all of `supabase/seed.sql`, paste, **Run**. This loads the current risks, signals, sources and history.
 
-## 2. Add yourself and your team
+## 2. Set up the team code
 
-1. **Authentication → Sign In / Providers** (or **Authentication → Settings**): turn **off** "Allow new users to sign up". Only people you add can sign in.
-2. **Authentication → Users → Add user → Create new user**: enter the person's email and a password, tick **Auto Confirm User**, click **Create user**. Do this for yourself first, then each team member. Send each person their password privately.
-3. **SQL Editor → New query**, put one line per person, then **Run**:
+Everyone uses one shared team account. People open the link, type the **team code** once, and enter their own name, which is shown on their decisions. Nobody needs their own account.
 
-   ```sql
-   insert into public.team (email, name) values
-     ('you@example.com', 'Your Name'),
-     ('colleague@example.com', 'Colleague Name');
-   ```
+1. **Authentication → Sign In / Providers**: turn **off** "Allow new users to sign up", then **Save**.
+2. **Authentication → Users → Add user → Create new user**:
+   - Email: `team@risk-register.app` (exactly this; it is set in `app/config.js`)
+   - Password: choose the **team code**, at least 10 characters, for example three random words. This is what people type.
+   - Tick **Auto Confirm User**, then **Create user**.
+3. **SQL Editor → New query**: paste all of `supabase/team_access.sql`, **Run**. This puts the team account on the team list, keeps a history of every change, and limits **Run scan now** to 6 times a day.
 
-   Only emails in this list can read or change the register, even if they can sign in.
+Share the link and the team code with your team, separately if you can (for example the link by email and the code by phone).
 
-To remove someone later: delete them under **Authentication → Users**, then run `delete from public.team where email = 'their@email';`.
+To change the team code: **Authentication → Users** → the team account → **⋯ → Send password recovery** is not needed; instead delete the user and create it again with the same email and a new password. Everyone then enters the new code.
 
 ## 3. Add the secrets the scanner needs (GitHub)
 
@@ -42,7 +41,7 @@ Optional: **Variables** tab → `SCAN_MODEL` to choose the model (default `claud
 
 ## 4. Test
 
-1. Open **https://ermdemo.github.io/Risk-Register/app/** and sign in.
+1. Open **https://ermdemo.github.io/Risk-Register/app/**, enter the team code and your name.
 2. Check the Radar, Signals and Register look like the main register.
 3. Click **Run scan now**. Within about 10 to 20 minutes the status next to the button changes to "Scanning…" and then "Last scan … N new signals". You can also start a scan at once: **Actions → Emerging risk scan → Run workflow**.
 4. If a scan fails, open **Actions**, click the failed run, and read the last lines of "Run the scanner".

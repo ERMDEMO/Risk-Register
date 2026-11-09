@@ -9,7 +9,6 @@
   var sb = MISSING ? null : window.supabase.createClient(cfg.url, cfg.anonKey);
   var TABLE = 'docs';
   var me = { email: '', name: '', team: false };
-  var teamNames = {};
 
   /* ---------- small UI helpers ---------- */
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
@@ -33,35 +32,49 @@
     return d;
   }
 
-  function signIn() {
+  /* Team access: one shared team account. People enter the team code (its password)
+     and their own name, which is shown on their decisions. */
+  var NAME_KEY = 'risk_register_name';
+  function getName() { try { return localStorage.getItem(NAME_KEY) || ''; } catch (e) { return ''; } }
+  function setName(n) { try { localStorage.setItem(NAME_KEY, n); } catch (e) {} }
+
+  function signIn(needCode) {
     return new Promise(function (resolve) {
-      var root = screen('<h1>Emerging Risk Register</h1><p>Sign in with the email and password your register owner gave you.</p>' +
-        '<form id="auth-form" style="display:grid;gap:12px"><label>Email<input id="auth-email" type="email" autocomplete="username" required></label>' +
-        '<label>Password<input id="auth-pass" type="password" autocomplete="current-password" required></label>' +
-        '<div class="err" id="auth-err" role="alert"></div><button type="submit" id="auth-go">Sign in</button></form>');
+      var root = screen('<h1>Emerging Risk Register</h1><p>' + (needCode ? 'Enter the team code you were given, and your name.' : 'Enter your name. It is shown on the decisions you make.') + '</p>' +
+        '<form id="auth-form" style="display:grid;gap:12px">' +
+        (needCode ? '<label>Team code<input id="auth-pass" type="password" autocomplete="current-password" required minlength="6"></label>' : '') +
+        '<label>Your name<input id="auth-name" type="text" autocomplete="name" required maxlength="60" value="' + esc(getName()) + '"></label>' +
+        '<div class="err" id="auth-err" role="alert"></div><button type="submit" id="auth-go">Open the register</button></form>');
       root.querySelector('#auth-form').addEventListener('submit', function (e) {
         e.preventDefault();
         var btn = root.querySelector('#auth-go'), err = root.querySelector('#auth-err');
-        btn.disabled = true; btn.textContent = 'Signing in…'; err.textContent = '';
-        sb.auth.signInWithPassword({ email: root.querySelector('#auth-email').value.trim(), password: root.querySelector('#auth-pass').value })
+        var name = root.querySelector('#auth-name').value.trim().replace(/\s+/g, ' ');
+        if (!name) { err.textContent = 'Enter your name.'; return; }
+        if (!needCode) { setName(name); screen(''); resolve(null); return; }
+        btn.disabled = true; btn.textContent = 'Opening…'; err.textContent = '';
+        sb.auth.signInWithPassword({ email: cfg.teamEmail, password: root.querySelector('#auth-pass').value })
           .then(function (r) {
-            if (r.error) { err.textContent = 'Sign-in failed: check your email and password.'; btn.disabled = false; btn.textContent = 'Sign in'; return; }
-            screen(''); resolve(r.data.session);
+            if (r.error) { err.textContent = 'That team code is not right. Check it and try again.'; btn.disabled = false; btn.textContent = 'Open the register'; return; }
+            setName(name); screen(''); resolve(r.data.session);
           });
       });
     });
   }
 
-  var ready = MISSING
-    ? Promise.resolve(null).then(function () { screen('<h1>Not set up yet</h1><p>This app is not connected to its database. Add the Supabase URL and key to app/config.js.</p>'); return null; })
-    : sb.auth.getSession().then(function (r) { return (r.data && r.data.session) || signIn(); }).then(function (session) {
-        me.email = (session.user && session.user.email || '').toLowerCase();
+  var ready = MISSING || !cfg.teamEmail
+    ? Promise.resolve(null).then(function () { screen('<h1>Not set up yet</h1><p>This app is not connected to its database. Add the Supabase URL, key and team account to app/config.js.</p>'); return null; })
+    : sb.auth.getSession().then(function (r) {
+        var s = r.data && r.data.session;
+        if (!s) return signIn(true);
+        if (!getName()) return signIn(false).then(function () { return s; });
+        return s;
+      }).then(function (session) {
+        var email = (session.user && session.user.email || '').toLowerCase();
         return sb.from('team').select('email,name').then(function (r) {
-          (r.data || []).forEach(function (t) { teamNames[t.email.toLowerCase()] = t.name || t.email; });
-          me.team = !!teamNames[me.email];
-          me.name = teamNames[me.email] || me.email;
-          if (!me.team) {
-            screen('<h1>No access yet</h1><p>You are signed in as ' + esc(me.email) + ', but this email is not on the register team. Ask the register owner to add it.</p><button type="button" id="auth-out">Sign out</button>');
+          var ok = (r.data || []).some(function (t) { return t.email.toLowerCase() === email; });
+          me.team = ok; me.email = getName(); me.name = getName();
+          if (!ok) {
+            screen('<h1>No access</h1><p>The team account is not on the team list. Ask the register owner to check the setup.</p><button type="button" id="auth-out">Start again</button>');
             document.getElementById('auth-out').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
             return new Promise(function () {}); // stop here
           }
@@ -175,7 +188,7 @@
     can: function () { return ready.then(function () { return me.team; }); },
     profiles: function (ids) {
       var o = {};
-      ids.forEach(function (i) { var k = String(i).toLowerCase(); o[i] = { isMe: k === me.email, name: i === 'claude' ? 'System' : (teamNames[k] || (k.indexOf('@') > 0 ? k : 'A team member')) }; });
+      ids.forEach(function (i) { o[i] = { isMe: i === me.name, name: i === 'claude' ? 'System' : (i === 'analyst' ? 'An analyst' : String(i)) }; });
       return Promise.resolve(o);
     }
   };
@@ -194,10 +207,10 @@
     var tools = document.querySelector('.tools'); if (!tools) return;
     var box = document.createElement('span');
     box.className = 'chips';
-    box.innerHTML = '<span class="scanstat" id="scan-stat" role="status"></span><button type="button" class="btn primary sm scanbtn" id="scan-run">Run scan now</button><button type="button" class="linkbtn" id="sign-out">Sign out</button>';
+    box.innerHTML = '<span class="scanstat" id="scan-stat" role="status"></span><button type="button" class="btn primary sm scanbtn" id="scan-run">Run scan now</button><button type="button" class="linkbtn" id="sign-out">Not you?</button>';
     tools.insertBefore(box, tools.firstChild);
     var btn = box.querySelector('#scan-run'), stat = box.querySelector('#scan-stat');
-    box.querySelector('#sign-out').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
+    box.querySelector('#sign-out').onclick = function () { setName(''); location.reload(); };
     function latest() {
       var m = cache.scan_requests || {}, best = null;
       Object.keys(m).forEach(function (k) { if (!best || (m[k].at || '') > (best.at || '')) best = m[k]; });
