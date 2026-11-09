@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-09T10:13:55.000Z",
- "next_signal_id": "SQ-0077",
+ "exported_at": "2026-11-09T10:17:01.000Z",
+ "next_signal_id": "SQ-0078",
  "risks": [
   {
    "id": "ER-01",
@@ -774,6 +774,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "The IEA's Renewables 2026 report projects the UAE will become the world's largest solar power generator per capita by 2031, above 4,000 kWh "
+  },
+  {
+   "id": "SQ-0077",
+   "captured": "2026-11-09",
+   "url": "https://gulfnews.com/uae/weather/weather-update-uae-braces-for-wetter-warmer-november-as-rainfall-and-temperatures-exceed-averages-1.500732571",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "The NCM expects November 2026 to be wetter and warmer than usual, with rainfall above the 6.9 mm November average and temperatures above the"
   }
  ],
  "sources": [
