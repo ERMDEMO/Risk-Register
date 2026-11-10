@@ -38,7 +38,7 @@
   function runScan(card) {
     var bar = card.querySelector('.tour-bar i'), log = card.querySelector('.tour-log'), btn = card.querySelector('[data-t=act]');
     btn.disabled = true;
-    var lines = ['Reading the register: 12 risks, recent signals, 124 approved sources', 'Searching grade A sources: DoE, EWEC, NCM, UKMTO, CISA…', 'Searching grade B sources and news wires…',
+    var lines = ['Reading the register: 5 risks, recent signals, 124 approved sources', 'Searching grade A sources: DoE, EWEC, NCM, UKMTO, CISA…', 'Searching grade B sources and news wires…',
       'Opening and checking 9 candidate pages…', 'Dropping 6 duplicates of signals already captured', 'Saving ' + NEW_SIGNALS.length + ' proposed signals'];
     var p = Promise.resolve();
     lines.forEach(function (l, i) {
