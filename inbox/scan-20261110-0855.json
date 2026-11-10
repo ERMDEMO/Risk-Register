@@ -1,0 +1,52 @@
+{
+ "at": "2026-11-10T04:55:00.000Z",
+ "by": "claude",
+ "note": "Daily scan 10 Nov: new DoE aggregator licensing framework and a joint US cyber advisory on industrial controllers; maritime and Iran items already captured.",
+ "signals": [
+  {
+   "captured": "2026-11-10",
+   "published": "2026-11-09",
+   "source": "Abu Dhabi Media Office",
+   "url": "https://www.mediaoffice.abudhabi/en/energy/abu-dhabi-department-of-energy-issues-energy-aggregator-licensing-framework-to-strengthen-grid-flexibility-and-manage-peak-electricity-demand/",
+   "summary": "Abu Dhabi DoE issued a regulatory framework to license energy aggregators for demand response. The 2025 pilot cut peak load by up to 401 MW (average 251 MW vs 106 MW in 2024), with 30+ entities and over 408 MW of flexible capacity; participants got bill credits from Abu Dhabi's distribution company. DoE and EWEC are exploring AI and virtual power plants. Start dates and eligibility were not given.",
+   "level": "Local",
+   "area": "Legal and regulatory",
+   "func": "Metering and customer services",
+   "horizon": "Medium",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Get the framework text from DoE: start date, licence conditions, and what the distribution company must provide (metering data, settlement, bill credits, direct load control interfaces).",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-08",
+   "notes": "Opened the Abu Dhabi Media Office release (9 Nov, grade A). Also reported by Gulf News and Zawya. Eases peak demand growth under ER-08 but adds metering, settlement and control obligations; the framework document itself was not opened."
+  },
+  {
+   "captured": "2026-11-10",
+   "published": "2026-11-10",
+   "source": "The National: Abu Dhabi energy coverage",
+   "url": "https://www.thenationalnews.com/news/europe/2026/11/10/trail-of-irans-fridge-hackers-traced-to-us-equipment/",
+   "summary": "The National reports Paris prosecutors opened an investigation on 9 Nov into an attack on refrigeration controllers at about 700 French retail sites, attributed to IRGC cyber unit Shahid Kaveh, which it says also compromised industrial controllers (including Unitronics PLCs) in US and UK energy and water. Separately, CISA, the FBI and other US agencies warned of global attacks on internet-exposed refrigeration and cold-chain controllers.",
+   "level": "Global",
+   "area": "Cyber",
+   "func": "IT and OT security",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Ask OT security whether any Unitronics PLCs, refrigeration or building-management controllers in substations, depots or district cooling interfaces are reachable from the internet, and apply the CISA hardening steps.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened The National (10 Nov, grade B) and Security Affairs (9 Nov) on the joint advisory, which names no attacker; the CISA page itself could not be opened. The link between the French attack and US/UK energy and water compromises is as reported by The National. Relevant to ER-03; link once confirmed on CISA."
+  }
+ ],
+ "new_sources": [
+  {
+   "name": "Security Affairs",
+   "url": "https://securityaffairs.com",
+   "level": "Global",
+   "area": "Cyber",
+   "why": "Added by the daily scan for review: cybersecurity news site that reported the CISA/FBI cold-chain controller advisory."
+  }
+ ]
+}
