@@ -1,0 +1,3 @@
+{"keep_risks": ["ER-01", "ER-02", "ER-03", "ER-05", "ER-08"],
+ "keep_signals": ["SQ-0075", "SQ-0076", "SQ-0077", "SQ-0078", "SQ-0079"],
+ "note": "Register trimmed to an example set: the 5 highest-rated risks and the 5 newest signals. A full backup was saved first."}
