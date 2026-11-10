@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-09T10:17:01.000Z",
- "next_signal_id": "SQ-0078",
+ "exported_at": "2026-11-10T04:37:19.000Z",
+ "next_signal_id": "SQ-0080",
  "risks": [
   {
    "id": "ER-01",
@@ -783,6 +783,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "The NCM expects November 2026 to be wetter and warmer than usual, with rainfall above the 6.9 mm November average and temperatures above the"
+  },
+  {
+   "id": "SQ-0078",
+   "captured": "2026-11-10",
+   "url": "https://www.mediaoffice.abudhabi/en/energy/abu-dhabi-department-of-energy-issues-energy-aggregator-licensing-framework-to-strengthen-grid-flexibility-and-manage-peak-electricity-demand/",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-08",
+   "summary": "Abu Dhabi DoE issued a regulatory framework to license energy aggregators for demand response. The 2025 pilot cut peak load by up to 401 MW "
+  },
+  {
+   "id": "SQ-0079",
+   "captured": "2026-11-10",
+   "url": "https://www.thenationalnews.com/news/europe/2026/11/10/trail-of-irans-fridge-hackers-traced-to-us-equipment/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "The National reports Paris prosecutors opened an investigation on 9 Nov into an attack on refrigeration controllers at about 700 French reta"
   }
  ],
  "sources": [
@@ -1653,6 +1671,13 @@
    "level": "Global",
    "area": "Supply chain",
    "url": "https://maritime-executive.com"
+  },
+  {
+   "name": "Security Affairs",
+   "grade": "C",
+   "level": "Global",
+   "area": "Cyber",
+   "url": "https://securityaffairs.com"
   }
  ]
 }
