@@ -1,6 +1,6 @@
 {
-  "name": "Emerging Risk Register",
-  "short_name": "Risk Register",
+  "name": "Horizon Scanner",
+  "short_name": "Horizon Scanner",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f1f4f7",

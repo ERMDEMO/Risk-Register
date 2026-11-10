@@ -40,7 +40,7 @@
 
   function signIn(needCode) {
     return new Promise(function (resolve) {
-      var root = screen('<h1>Emerging Risk Register</h1><p>' + (needCode ? 'Enter the team code you were given, and your name.' : 'Enter your name. It is shown on the decisions you make.') + '</p>' +
+      var root = screen('<h1>Horizon Scanner</h1><p>' + (needCode ? 'Enter the team code you were given, and your name.' : 'Enter your name. It is shown on the decisions you make.') + '</p>' +
         '<form id="auth-form" style="display:grid;gap:12px">' +
         (needCode ? '<label>Team code<input id="auth-pass" type="password" autocomplete="current-password" required minlength="6"></label>' : '') +
         '<label>Your name<input id="auth-name" type="text" autocomplete="name" required maxlength="60" value="' + esc(getName()) + '"></label>' +

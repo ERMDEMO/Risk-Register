@@ -15,6 +15,9 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from page_tweaks import tweak  # noqa: E402
+
 MARKER = "<script>\n(function () {\n'use strict';"
 # Latest 2.x: needed for the new sb_publishable_ keys.
 SUPABASE_JS = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"
@@ -30,8 +33,9 @@ def main():
     if page.count(MARKER) != 1:
         print("Page layout changed: script start marker not found once. Nothing written.")
         return 2
-    page = page.replace("<title>Emerging Risk Register</title>",
-                        "<title>Emerging Risk Register</title>\n<link rel=\"manifest\" href=\"manifest.webmanifest\">\n<meta name=\"theme-color\" content=\"#1a5ccf\">", 1)
+    page = tweak(page)
+    page = page.replace("<title>Horizon Scanner</title>",
+                        "<title>Horizon Scanner</title>\n<link rel=\"manifest\" href=\"manifest.webmanifest\">\n<meta name=\"theme-color\" content=\"#1a5ccf\">", 1)
     head = ('<script src="%s"></script>\n<script src="config.js"></script>\n<script src="adapter.js"></script>\n' % SUPABASE_JS)
     out = page.replace(MARKER, head + MARKER)
     if shutil.which("node"):
