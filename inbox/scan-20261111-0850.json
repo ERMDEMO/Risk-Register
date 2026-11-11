@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-11T04:50:00.000Z",
+ "by": "claude",
+ "note": "Daily scan 11 Nov: attack on an ADNOC L&S vessel in UAE territorial waters, and two more tanker incidents near Hormuz.",
+ "signals": [
+  {
+   "captured": "2026-11-11",
+   "published": "2026-11-10",
+   "source": "WAM (Emirates News Agency): energy, cyber and government",
+   "url": "https://www.emirates247.com/uae/adnoc-logistics-and-services-vessel-damaged-in-uae-territorial-waters/7639",
+   "summary": "ADNOC Logistics and Services said one of its vessels was attacked and sustained damage in UAE territorial waters in the Arabian Gulf on the afternoon of 10 Nov. Response teams were working and further updates were promised; the public was urged to rely on official sources. The statement gave no detail on crew, extent of damage, cause or attacker.",
+   "level": "Local",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "High",
+   "check": "Watch for ADNOC or UAE Ministry of Defence follow-ups (cause, location, attacker). Ask operations and security whether coastal substations, desalination intakes and marine cable crossings need raised alert.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-02",
+   "notes": "Opened the WAM item carried by Emirates 24|7 (10 Nov, 19:08 UAE time). Also reported by Gulf News, Khaleej Times and gCaptain. First attack on a UAE energy company vessel inside UAE waters in this period; cause and attacker unverified."
+  },
+  {
+   "captured": "2026-11-11",
+   "published": "2026-11-11",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://gcaptain.com/adnoc-vessel-damaged-in-gulf-attack-as-ukmto-reports-fresh-tanker-strike-near-hormuz/",
+   "summary": "UKMTO Warning 201-26: a tanker was struck by an unidentified projectile about 19 nm NE of Lima, Oman, near the Strait of Hormuz at 1338 UTC on 10 Nov; crew safe, no pollution. On 11 Nov UKMTO reported another tanker incident in the Strait, with crew status and damage not yet known. JMIC kept the Hormuz threat level at SEVERE on 8 Nov and counts 177 incidents since 1 Mar.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Check the UKMTO advisories page for warnings 201-26 onwards, and ask procurement which inbound equipment shipments are routed through Hormuz this month.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened gCaptain (10 Nov) for warning 201-26 and Arab News carrying Reuters (11 Nov, 06:25 GMT) for the second incident. UKMTO pages not opened directly. Relevant to ER-01; link once confirmed on UKMTO."
+  }
+ ],
+ "new_sources": []
+}
