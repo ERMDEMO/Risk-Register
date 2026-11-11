@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-10T12:56:12.000Z",
- "next_signal_id": "SQ-0080",
+ "exported_at": "2026-11-11T04:37:24.000Z",
+ "next_signal_id": "SQ-0082",
  "risks": [
   {
    "id": "ER-01",
@@ -88,6 +88,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "The National reports Paris prosecutors opened an investigation on 9 Nov into an attack on refrigeration controllers at about 700 French reta"
+  },
+  {
+   "id": "SQ-0080",
+   "captured": "2026-11-11",
+   "url": "https://www.emirates247.com/uae/adnoc-logistics-and-services-vessel-damaged-in-uae-territorial-waters/7639",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-02",
+   "summary": "ADNOC Logistics and Services said one of its vessels was attacked and sustained damage in UAE territorial waters in the Arabian Gulf on the "
+  },
+  {
+   "id": "SQ-0081",
+   "captured": "2026-11-11",
+   "url": "https://gcaptain.com/adnoc-vessel-damaged-in-gulf-attack-as-ukmto-reports-fresh-tanker-strike-near-hormuz/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "UKMTO Warning 201-26: a tanker was struck by an unidentified projectile about 19 nm NE of Lima, Oman, near the Strait of Hormuz at 1338 UTC "
   }
  ],
  "sources": [
