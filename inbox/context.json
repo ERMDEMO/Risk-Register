@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-11T04:48:11.000Z",
- "next_signal_id": "SQ-0082",
+ "exported_at": "2026-11-12T04:36:48.000Z",
+ "next_signal_id": "SQ-0084",
  "risks": [
   {
    "id": "ER-01",
@@ -106,6 +106,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "UKMTO Warning 201-26: a tanker was struck by an unidentified projectile about 19 nm NE of Lima, Oman, near the Strait of Hormuz at 1338 UTC "
+  },
+  {
+   "id": "SQ-0082",
+   "captured": "2026-11-12",
+   "url": "https://www.marineinsight.com/vlcc-fujairah-energy-hit-projectile-persian-gulf/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "The Liberia-flagged VLCC MT Fujairah Energy was hit by a projectile in the Gulf on 10 Nov while sailing from Ruwais to Dubai. Four of its 22"
+  },
+  {
+   "id": "SQ-0083",
+   "captured": "2026-11-12",
+   "url": "https://www.brusselstimes.com/world/2403011/us-iran-war-has-caused-over-200-billion-in-damage-in-the-gulf-report",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Credit insurer Allianz Trade estimates the war has caused just over USD 200 bn of physical damage across the Gulf, mainly to energy infrastr"
   }
  ],
  "sources": [
@@ -983,6 +1001,20 @@
    "level": "Global",
    "area": "Cyber",
    "url": "https://securityaffairs.com"
+  },
+  {
+   "name": "Marine Insight",
+   "grade": "C",
+   "level": "Global",
+   "area": "Supply chain",
+   "url": "https://www.marineinsight.com"
+  },
+  {
+   "name": "Brussels Times",
+   "grade": "C",
+   "level": "Global",
+   "area": "Finance",
+   "url": "https://www.brusselstimes.com"
   }
  ]
 }
