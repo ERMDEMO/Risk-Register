@@ -1,0 +1,59 @@
+{
+ "at": "2026-11-12T04:55:00.000Z",
+ "by": "claude",
+ "note": "Daily scan 12 Nov: VLCC hit on the Ruwais-Dubai route with crew injured, and Allianz Trade's estimate of Gulf war damage.",
+ "signals": [
+  {
+   "captured": "2026-11-12",
+   "published": "2026-11-11",
+   "source": "Marine Insight",
+   "url": "https://www.marineinsight.com/vlcc-fujairah-energy-hit-projectile-persian-gulf/",
+   "summary": "The Liberia-flagged VLCC MT Fujairah Energy was hit by a projectile in the Gulf on 10 Nov while sailing from Ruwais to Dubai. Four of its 22 crew were injured, one taken ashore with minor injuries; the others are safe. Damage was not reported and no attacker was named. Gulf News reports it as separate from the attack on an ADNOC L&S vessel the same day.",
+   "level": "Local",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Confirm whether this is the same incident as SQ-0080 (ADNOC L&S vessel). Either way, strikes on the Ruwais-Dubai coastal route bring attacks closer to UAE coastal assets: review alert levels for coastal substations and desalination intakes.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Marine Insight (11 Nov) and Gulf News (11 Nov, grade C). No UKMTO or official UAE statement found. Relevant to ER-02 and ER-01; link once confirmed by an official source."
+  },
+  {
+   "captured": "2026-11-12",
+   "published": "2026-11-11",
+   "source": "Brussels Times",
+   "url": "https://www.brusselstimes.com/world/2403011/us-iran-war-has-caused-over-200-billion-in-damage-in-the-gulf-report",
+   "summary": "Credit insurer Allianz Trade estimates the war has caused just over USD 200 bn of physical damage across the Gulf, mainly to energy infrastructure: more than 80 energy facilities hit, mostly in Kuwait, Qatar and Bahrain, about a third severely. It puts cumulative GCC output losses at about USD 790 bn by 2030 (5.9% of GDP) and infrastructure and defence spending at USD 380-400 bn by 2030. No UAE-specific figures.",
+   "level": "Regional",
+   "area": "Finance",
+   "func": "Finance and treasury",
+   "horizon": "Medium",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Get the Allianz Trade report itself and check its UAE figures, and ask finance whether insurers are repricing property cover for utility assets in the Gulf.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Brussels Times (11 Nov); the same figures appear in Gulf News, The New Arab and Oman Observer. Allianz Trade report not opened. Context for ER-02 (attacks on Gulf energy sites)."
+  }
+ ],
+ "new_sources": [
+  {
+   "name": "Marine Insight",
+   "url": "https://www.marineinsight.com",
+   "level": "Global",
+   "area": "Supply chain",
+   "why": "Added by the daily scan for review: maritime news site with crew and vessel detail on Gulf shipping incidents."
+  },
+  {
+   "name": "Brussels Times",
+   "url": "https://www.brusselstimes.com",
+   "level": "Global",
+   "area": "Finance",
+   "why": "Added by the daily scan for review: carried the Allianz Trade Gulf war damage estimate."
+  }
+ ]
+}
