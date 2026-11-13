@@ -1,0 +1,62 @@
+{
+ "at": "2026-11-13T04:38:22Z",
+ "by": "claude",
+ "note": "Daily scan 13 Nov: new tanker strike off Ras Al Khaimah, escalation rhetoric, and a minister's call for spare capacity and harder infrastructure. Cyber items found were older than 14 days.",
+ "signals": [
+  {
+   "captured": "2026-11-13",
+   "published": "2026-11-12",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://gcaptain.com/tanker-ablaze-off-uae-as-more-attacks-rattle-gulf-shipping/",
+   "summary": "Crude tanker Dominica Prosperity was hit in the engine room by a projectile about 14 nm NW of Ras Al Khaimah on 11 Nov (UKMTO); fire broke out and the UAE Coast Guard evacuated all 22 crew. JMIC counts 181 maritime incidents since 1 Mar, and about 211 ships sit idle at anchorages east of Hormuz incl. Fujairah and Khor Fakkan.",
+   "level": "Local",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Third projectile strike in UAE waters in two days. Check lead times and shipping routes for critical imported spares (transformers, cables, meters) and whether suppliers are using Fujairah/Khor Fakkan anchorages now congested.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened gCaptain (12 Nov), citing UKMTO, Ambrey and JMIC. Distinct from SQ-0081 (Lima, 10 Nov) and SQ-0082 (Fujairah Energy). Also NCC Fajr hit north of Khasab on 11 Nov."
+  },
+  {
+   "captured": "2026-11-13",
+   "published": "2026-11-12",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/world/mena/us-israel-iran-conflict-what-uae-residents-need-to-know-this-evening-november-12-1.500745263",
+   "summary": "On 12 Nov Iran's Mohsen Rezaei said US bases 'from West Asia to Europe' would be legitimate targets if Washington starts another war; Israel's caretaker defence minister said no approval is needed for fresh operations; Trump said the US does not need a deal. Saudi Arabia intercepted Houthi missiles and drones aimed at Mecca and Riyadh regions. UAE airspace stays open.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Rhetoric points to a risk of renewed strikes. Confirm the crisis and business continuity plans are at the right alert level and that control-centre and substation staff know the shelter procedures.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (12 Nov, grade C). No attack on the UAE reported that day. Relevant to ER-02; recheck against an official UAE or wire source."
+  },
+  {
+   "captured": "2026-11-13",
+   "published": "2026-11-02",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://www.khaleejtimes.com/energy/uae-overhaul-infrastructure-build-spare-capacity-us-iran-conflict",
+   "summary": "At ADIPEC the UAE Minister of Energy and Infrastructure said the country cannot return to business as usual: critical energy infrastructure designs, including electricity, will be reviewed to add protective layers, and the UAE must build spare capacity and 'assume the worst'. No timeline or cost given.",
+   "level": "Local",
+   "area": "Legal and regulatory",
+   "func": "Asset management and engineering",
+   "horizon": "Medium",
+   "touches": "Yes",
+   "conf": "Medium",
+   "check": "Likely to lead to new resilience and redundancy requirements for networks. Track any DoE or ministry design standards and check capital plans allow for added protection and N-1 margins.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Khaleej Times (2 Nov). Policy direction, not yet a rule. Relevant to ER-02 and ER-08."
+  }
+ ],
+ "new_sources": []
+}
