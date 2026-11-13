@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-12T04:48:24.000Z",
- "next_signal_id": "SQ-0084",
+ "exported_at": "2026-11-13T04:38:41.000Z",
+ "next_signal_id": "SQ-0087",
  "risks": [
   {
    "id": "ER-01",
@@ -124,6 +124,33 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Credit insurer Allianz Trade estimates the war has caused just over USD 200 bn of physical damage across the Gulf, mainly to energy infrastr"
+  },
+  {
+   "id": "SQ-0084",
+   "captured": "2026-11-13",
+   "url": "https://gcaptain.com/tanker-ablaze-off-uae-as-more-attacks-rattle-gulf-shipping/",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "Crude tanker Dominica Prosperity was hit in the engine room by a projectile about 14 nm NW of Ras Al Khaimah on 11 Nov (UKMTO); fire broke o"
+  },
+  {
+   "id": "SQ-0085",
+   "captured": "2026-11-13",
+   "url": "https://gulfnews.com/world/mena/us-israel-iran-conflict-what-uae-residents-need-to-know-this-evening-november-12-1.500745263",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 12 Nov Iran's Mohsen Rezaei said US bases 'from West Asia to Europe' would be legitimate targets if Washington starts another war; Israel"
+  },
+  {
+   "id": "SQ-0086",
+   "captured": "2026-11-13",
+   "url": "https://www.khaleejtimes.com/energy/uae-overhaul-infrastructure-build-spare-capacity-us-iran-conflict",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "At ADIPEC the UAE Minister of Energy and Infrastructure said the country cannot return to business as usual: critical energy infrastructure "
   }
  ],
  "sources": [
