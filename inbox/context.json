@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-13T04:49:15.000Z",
- "next_signal_id": "SQ-0087",
+ "exported_at": "2026-11-14T04:36:52.000Z",
+ "next_signal_id": "SQ-0089",
  "risks": [
   {
    "id": "ER-01",
@@ -151,6 +151,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "At ADIPEC the UAE Minister of Energy and Infrastructure said the country cannot return to business as usual: critical energy infrastructure "
+  },
+  {
+   "id": "SQ-0087",
+   "captured": "2026-11-14",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-13-1.500746524",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 13 Nov the Houthis claimed drone and missile strikes on a Saudi East-West pipeline pumping station and a Yanbu oil facility (unconfirmed)"
+  },
+  {
+   "id": "SQ-0088",
+   "captured": "2026-11-14",
+   "url": "https://www.thenationalnews.com/news/mena/2026/11/13/iaea-expresses-concern-over-iranian-underground-uranium-enrichment-plant/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "A confidential IAEA report says the agency does not know the location or status of Iran's underground Isfahan enrichment plant and has lost "
   }
  ],
  "sources": [
