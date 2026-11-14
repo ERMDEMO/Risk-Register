@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-14T04:37:29Z",
+ "by": "claude",
+ "note": "Resubmit Hormuz mine-claim signal (skipped as duplicate URL).",
+ "signals": [
+  {
+   "captured": "2026-11-14",
+   "published": "2026-11-13",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-13-2026",
+   "summary": "The IRGC claimed on 13 Nov that a vessel hit a naval mine while crossing Hormuz without its approval (unverified); Iran still requires ships to seek its permission. The IEA says Gulf oil exports recovered to 18.4 mb/d, still 26% below pre-war, with October the first global surplus since the war began.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "A mine threat would raise transit risk for all ships, not only tankers. Check whether suppliers of critical spares route via Hormuz and what buffer stock covers a renewed closure.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Khaleej Times live blog and Gulf News evening briefing (13 Nov, grade C). Iran says an LPG carrier hit a mine. No UKMTO confirmation found yet. Relevant to ER-01; link once confirmed. Resubmitted: first copy shared a URL with SQ-0087."
+  }
+ ],
+ "new_sources": []
+}
