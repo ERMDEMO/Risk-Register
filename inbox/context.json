@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-14T04:36:52.000Z",
- "next_signal_id": "SQ-0089",
+ "exported_at": "2026-11-14T04:37:45.000Z",
+ "next_signal_id": "SQ-0090",
  "risks": [
   {
    "id": "ER-01",
@@ -169,6 +169,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "A confidential IAEA report says the agency does not know the location or status of Iran's underground Isfahan enrichment plant and has lost "
+  },
+  {
+   "id": "SQ-0089",
+   "captured": "2026-11-14",
+   "url": "https://www.khaleejtimes.com/world/mena/us-israel-iran-saudi-arabia-yemen-war-live-updates-november-13-2026",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "The IRGC claimed on 13 Nov that a vessel hit a naval mine while crossing Hormuz without its approval (unverified); Iran still requires ships"
   }
  ],
  "sources": [
