@@ -1,0 +1,62 @@
+{
+ "at": "2026-11-14T04:36:32Z",
+ "by": "claude",
+ "note": "Daily scan 14 Nov: Houthi claims on Saudi pipeline sites, IRGC Hormuz mine claim with IEA export data, IAEA report on Iran's enrichment.",
+ "signals": [
+  {
+   "captured": "2026-11-14",
+   "published": "2026-11-13",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-13-1.500746524",
+   "summary": "On 13 Nov the Houthis claimed drone and missile strikes on a Saudi East-West pipeline pumping station and a Yanbu oil facility (unconfirmed); the coalition intercepted drones over Riyadh and the Eastern Province. CENTCOM shot down two Iranian drones aimed at Bahrain after the IRGC claimed it hit a US radar there. No attack on UAE territory reported.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Attacks on Gulf energy sites continue in neighbouring states. Keep alert levels and shelter procedures current for control centres and key substations; watch for any shift of targeting toward UAE utilities.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing and Khaleej Times live blog (13 Nov, grade C). Houthi claims unverified. Relevant to ER-02."
+  },
+  {
+   "captured": "2026-11-14",
+   "published": "2026-11-13",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-13-1.500746524",
+   "summary": "The IRGC claimed on 13 Nov that a vessel hit a naval mine while crossing Hormuz without its approval (unverified); Iran still requires ships to seek its permission. The IEA says Gulf oil exports recovered to 18.4 mb/d, still 26% below pre-war, with October the first global surplus since the war began.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "A mine threat would raise transit risk for all ships, not only tankers. Check whether suppliers of critical spares route via Hormuz and what buffer stock covers a renewed closure.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News (13 Nov, grade C); Khaleej Times live blog also reports Iran saying an LPG carrier hit a mine. No UKMTO confirmation found yet. Relevant to ER-01; link once confirmed."
+  },
+  {
+   "captured": "2026-11-14",
+   "published": "2026-11-13",
+   "source": "The National: Abu Dhabi energy coverage",
+   "url": "https://www.thenationalnews.com/news/mena/2026/11/13/iaea-expresses-concern-over-iranian-underground-uranium-enrichment-plant/",
+   "summary": "A confidential IAEA report says the agency does not know the location or status of Iran's underground Isfahan enrichment plant and has lost continuity of knowledge over more than 400 kg of near-weapons-grade uranium for over a year. Iran says inspections cannot resume under threat of attack; the US says the nuclear issue must be part of any deal.",
+   "level": "Regional",
+   "area": "Strategy and projects",
+   "func": "Strategy and planning",
+   "horizon": "Medium",
+   "touches": "Unsure",
+   "conf": "High",
+   "check": "The nuclear dispute is a main obstacle to a settlement and a trigger for renewed strikes. Use it as a scenario driver for the conflict-duration assumptions in business continuity and capital plans.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened The National (13 Nov). Context signal for ER-01 and ER-02, not an event affecting assets directly."
+  }
+ ],
+ "new_sources": []
+}
