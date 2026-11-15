@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-15T04:36:25Z",
+ "by": "claude",
+ "note": "Daily scan 15 Nov: UKMTO severe threat rating with 8 Hormuz incidents in a week; signs of a decision point on renewed strikes. Quiet on UAE utilities.",
+ "signals": [
+  {
+   "captured": "2026-11-15",
+   "published": "2026-11-14",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://www.middleeasteye.net/live-blog/live-blog-update/ukmto-says-seven-hormuz-tanker-attacks-recorded-week",
+   "summary": "UKMTO's 13 Nov area overview lists eight incidents involving tankers in and around Hormuz in the week to 11 Nov (three needed assistance) and rates the threat as severe. On 14 Nov Iran's navy warned ships away from a restricted zone east of the strait, and the IRGC claimed two more tankers hit mines (unverified).",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Official threat rating is now severe, with roughly one attack a day. Review buffer stock and lead times for imported critical spares and confirm suppliers' routing and war-risk cover.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened Middle East Eye live update (14 Nov) citing the UKMTO Voluntary Reporting Area Overview of 13 Nov; Iran navy warning per Gulf News 14 Nov. Source name is the nearest listed; MEE is not in the source list."
+  },
+  {
+   "captured": "2026-11-15",
+   "published": "2026-11-14",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-14-1.500747461",
+   "summary": "Reuters reports Trump may hold off new strikes on Iran if Tehran and the Houthis avoid provocations, but a third US carrier is heading to the region and strikes on underground nuclear sites remain an option. Israel is reportedly preparing three scenarios for renewed fighting. Trump will discuss Iran with Xi and Putin in Shenzhen on 19 Nov.",
+   "level": "Regional",
+   "area": "Strategy and projects",
+   "func": "Strategy and planning",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Next week is a decision point (Shenzhen talks, carrier arrival). Keep crisis plans at the current alert level and plan for both a pause and a renewed strike scenario.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (14 Nov, grade C) citing Reuters and Channel 13. No attacks on the UAE reported. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
