@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-14T04:42:18.000Z",
- "next_signal_id": "SQ-0090",
+ "exported_at": "2026-11-15T04:36:47.000Z",
+ "next_signal_id": "SQ-0092",
  "risks": [
   {
    "id": "ER-01",
@@ -178,6 +178,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "The IRGC claimed on 13 Nov that a vessel hit a naval mine while crossing Hormuz without its approval (unverified); Iran still requires ships"
+  },
+  {
+   "id": "SQ-0090",
+   "captured": "2026-11-15",
+   "url": "https://www.middleeasteye.net/live-blog/live-blog-update/ukmto-says-seven-hormuz-tanker-attacks-recorded-week",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "UKMTO's 13 Nov area overview lists eight incidents involving tankers in and around Hormuz in the week to 11 Nov (three needed assistance) an"
+  },
+  {
+   "id": "SQ-0091",
+   "captured": "2026-11-15",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-14-1.500747461",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Reuters reports Trump may hold off new strikes on Iran if Tehran and the Houthis avoid provocations, but a third US carrier is heading to th"
   }
  ],
  "sources": [
