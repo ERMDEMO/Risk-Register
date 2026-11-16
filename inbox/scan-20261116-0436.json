@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-16T04:36:15Z",
+ "by": "claude",
+ "note": "Daily scan 16 Nov: new tanker attack near Hormuz with unverified Iranian mine and sinking claims; renewed Iranian strikes on Bahrain and interceptions in Saudi Arabia.",
+ "signals": [
+  {
+   "captured": "2026-11-16",
+   "published": "2026-11-15",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://ianslive.in/indian-shipping-authorities-report-attack-on-tanker-in-arabian-gulf-near-hormuz-crew-safe-ukmto--20261115185702",
+   "summary": "On 15 Nov UKMTO relayed an Indian report of an attack on an eastbound tanker in the Arabian Gulf just before Hormuz; crew safe, damage unknown, ships told to transit with caution. Iran claims three tankers hit mines on 14 Nov and that a supertanker with about 2m barrels sank (unverified). UKMTO already rates the strait's threat as severe.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "Medium",
+   "check": "Attacks continue daily inside the Gulf approach, not only in the strait. Keep checking supplier routing and buffer stock for critical imported spares; note any change to UAE port operations.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened IANS (15 Nov) quoting UKMTO; Iran claims per Gulf News 15 Nov. Seatrade page could not be opened. Follows SQ-0090 (ER-01); link if confirmed. Source name is the nearest listed."
+  },
+  {
+   "captured": "2026-11-16",
+   "published": "2026-11-15",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-things-uae-residents-need-to-know-today-nov-15-2026-1.500748341",
+   "summary": "On 15 Nov Bahrain intercepted Iranian drones aimed at US radar at Al-Rifaa base, the second such strike in three days, and residents were told to shelter. Saudi Arabia intercepted two ballistic missiles aimed at Riyadh and three drones over the Eastern Province. No UAE attacks. Iran's foreign minister is due in Muscat on 17 Nov for talks on Hormuz oversight.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Iranian strikes on GCC states hosting US forces have resumed. Keep shelter and alert procedures current for control centres and key substations, and track the Muscat talks for any de-escalation.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News (15 Nov, grade C) and Fox News live page citing Reuters and Bahrain's military. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
