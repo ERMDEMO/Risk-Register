@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-15T04:45:55.000Z",
- "next_signal_id": "SQ-0092",
+ "exported_at": "2026-11-16T04:36:33.000Z",
+ "next_signal_id": "SQ-0094",
  "risks": [
   {
    "id": "ER-01",
@@ -196,6 +196,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Reuters reports Trump may hold off new strikes on Iran if Tehran and the Houthis avoid provocations, but a third US carrier is heading to th"
+  },
+  {
+   "id": "SQ-0092",
+   "captured": "2026-11-16",
+   "url": "https://ianslive.in/indian-shipping-authorities-report-attack-on-tanker-in-arabian-gulf-near-hormuz-crew-safe-ukmto--20261115185702",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 15 Nov UKMTO relayed an Indian report of an attack on an eastbound tanker in the Arabian Gulf just before Hormuz; crew safe, damage unkno"
+  },
+  {
+   "id": "SQ-0093",
+   "captured": "2026-11-16",
+   "url": "https://gulfnews.com/uae/middle-east-war-things-uae-residents-need-to-know-today-nov-15-2026-1.500748341",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 15 Nov Bahrain intercepted Iranian drones aimed at US radar at Al-Rifaa base, the second such strike in three days, and residents were to"
   }
  ],
  "sources": [
