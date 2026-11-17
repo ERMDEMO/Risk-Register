@@ -1,0 +1,62 @@
+{
+ "at": "2026-11-17T04:36:36Z",
+ "by": "claude",
+ "note": "Daily scan 17 Nov: two more Hormuz tanker attacks, Houthi advance near Bab al-Mandab, and an oil spill near a northern desalination intake.",
+ "signals": [
+  {
+   "captured": "2026-11-17",
+   "published": "2026-11-16",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://gcaptain.com/ukmto-reports-two-tanker-attacks-in-strait-of-hormuz/",
+   "summary": "UKMTO reported two tanker attacks on 16 Nov: an outbound tanker hit by a projectile in Hormuz with an engine-room fire, and a tanker about 7 nm north of Khasab left disabled and on fire. Crews safe, no attribution. The IRGC claims six tankers hit mines on 15-16 Nov. This follows the 15 Nov attack before the strait entrance.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Attacks are now near daily and one vessel was disabled. Confirm buffer stock and lead times for critical imported spares and whether freight and insurance costs are flowing into supplier quotes.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened gCaptain (16 Nov) citing UKMTO; IRGC claim per Gulf News 16 Nov. Continues SQ-0090 and SQ-0092."
+  },
+  {
+   "captured": "2026-11-17",
+   "published": "2026-11-16",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-5-things-uae-residents-need-to-know-tonight-1.500749711",
+   "summary": "Saudi-backed Yemeni troops pulled back from areas near Bab al-Mandab to defend Aden as the Houthis advanced; Saudi Arabia replaced its coalition commander. A third US carrier has arrived in the region. Etihad cancelled Abu Dhabi flights to Riyadh and Dammam until 19 Nov, and EASA extended Gulf airspace advisories to 31 Jan 2027.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Medium",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "A Houthi hold on Bab al-Mandab would close the Red Sea alternative to Hormuz for Europe-Asia cargo. Check which critical equipment orders come from Europe by sea and allow for longer Cape routing.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (16 Nov, grade C) citing Reuters and AP. Relevant to ER-01 and ER-02."
+  },
+  {
+   "captured": "2026-11-17",
+   "published": "2026-11-03",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://guest.meed.com/?p=18467",
+   "summary": "Oil from the tanker Gem No. 2, struck in UAE waters on 9 Oct, spread off Umm Al-Quwain to within about 2 km of the 682,000 m3/day Naqa'a desalination plant. EtihadWE is monitoring intake seawater along the northern coast and says supply is not affected; the ministry says the leak was stopped at source. No confirmed contamination.",
+   "level": "Local",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Daily tanker strikes raise the chance of a spill near Abu Dhabi desalination intakes. Check with the water producers whether intake shutdown plans exist and what reduced water production would mean for the network.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened MEED (3 Nov, 14 days old). Northern Emirates, not Abu Dhabi. Source is MEED, not in the source list; nearest listed name used. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
