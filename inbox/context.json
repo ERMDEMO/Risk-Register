@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-16T05:23:14.000Z",
- "next_signal_id": "SQ-0094",
+ "exported_at": "2026-11-17T04:37:06.000Z",
+ "next_signal_id": "SQ-0097",
  "risks": [
   {
    "id": "ER-01",
@@ -214,6 +214,33 @@
    "proposed": true,
    "risk_id": "",
    "summary": "On 15 Nov Bahrain intercepted Iranian drones aimed at US radar at Al-Rifaa base, the second such strike in three days, and residents were to"
+  },
+  {
+   "id": "SQ-0094",
+   "captured": "2026-11-17",
+   "url": "https://gcaptain.com/ukmto-reports-two-tanker-attacks-in-strait-of-hormuz/",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "UKMTO reported two tanker attacks on 16 Nov: an outbound tanker hit by a projectile in Hormuz with an engine-room fire, and a tanker about 7"
+  },
+  {
+   "id": "SQ-0095",
+   "captured": "2026-11-17",
+   "url": "https://gulfnews.com/uae/middle-east-war-5-things-uae-residents-need-to-know-tonight-1.500749711",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Saudi-backed Yemeni troops pulled back from areas near Bab al-Mandab to defend Aden as the Houthis advanced; Saudi Arabia replaced its coali"
+  },
+  {
+   "id": "SQ-0096",
+   "captured": "2026-11-17",
+   "url": "https://guest.meed.com/?p=18467",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Oil from the tanker Gem No. 2, struck in UAE waters on 9 Oct, spread off Umm Al-Quwain to within about 2 km of the 682,000 m3/day Naqa'a des"
   }
  ],
  "sources": [
