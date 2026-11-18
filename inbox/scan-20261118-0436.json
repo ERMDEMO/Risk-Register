@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-18T04:36:28Z",
+ "by": "claude",
+ "note": "Daily scan 18 Nov: second strike on a disabled LPG tanker off Khasab, and a drone attack on Iraq's Khor Mor gas field that cut 2.8 GW of power.",
+ "signals": [
+  {
+   "captured": "2026-11-18",
+   "published": "2026-11-17",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-17-1.500750894",
+   "summary": "The LPG tanker Tara Gas, disabled 7 nm north of Khasab on 16 Nov, was struck a second time and the crew abandoned ship; one Indian sailor is missing. Armed men tried to board a cargo ship off Mukalla on 17 Nov. The IMO counts 136 security incidents in the region from 1 Mar to 11 Nov, 35 of them in October. Araghchi-Oman talks in Muscat brought no breakthrough.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Repeat strikes on disabled ships and the first missing crew member point to rising severity, likely pushing up war-risk premiums. Check supplier quotes and delivery dates for imported critical spares.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened Gulf News evening briefing (17 Nov, grade C) citing India's shipping minister and UKMTO; IMO figure per Al Jazeera 17 Nov. Continues SQ-0094."
+  },
+  {
+   "captured": "2026-11-18",
+   "published": "2026-11-17",
+   "source": "Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2026/11/17/tankers-hit-in-strait-of-hormuz-as-drone-raises-alarm-at-iraq-gas-field",
+   "summary": "Iraq's Khor Mor gas field, run partly by UAE-based Dana Gas, stopped production last week after a suspected drone attack caused a fire and cut 2.8 GW of power generation in the Kurdistan region; sirens sounded again on 16 Nov after another drone flew over. Kurdish officials blame Iran-backed groups.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Asset management and engineering",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Shows how one strike on gas supply can take gigawatts off a grid. Check how the network would cope with a sudden loss of gas-fired generation and whether load-shedding plans are current.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Al Jazeera (17 Nov) citing Reuters and Dana Gas. Outside the UAE; analogue for fuel-supply attack. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
