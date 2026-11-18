@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-17T04:49:10.000Z",
- "next_signal_id": "SQ-0097",
+ "exported_at": "2026-11-18T04:36:50.000Z",
+ "next_signal_id": "SQ-0099",
  "risks": [
   {
    "id": "ER-01",
@@ -241,6 +241,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Oil from the tanker Gem No. 2, struck in UAE waters on 9 Oct, spread off Umm Al-Quwain to within about 2 km of the 682,000 m3/day Naqa'a des"
+  },
+  {
+   "id": "SQ-0097",
+   "captured": "2026-11-18",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-17-1.500750894",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "The LPG tanker Tara Gas, disabled 7 nm north of Khasab on 16 Nov, was struck a second time and the crew abandoned ship; one Indian sailor is"
+  },
+  {
+   "id": "SQ-0098",
+   "captured": "2026-11-18",
+   "url": "https://www.aljazeera.com/news/2026/11/17/tankers-hit-in-strait-of-hormuz-as-drone-raises-alarm-at-iraq-gas-field",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Iraq's Khor Mor gas field, run partly by UAE-based Dana Gas, stopped production last week after a suspected drone attack caused a fire and c"
   }
  ],
  "sources": [
