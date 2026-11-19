@@ -1,0 +1,62 @@
+{
+ "at": "2026-11-19T04:36:33Z",
+ "by": "claude",
+ "note": "Daily scan 19 Nov: ADNOC vessel attacked with casualties, direct US-Iran strikes resume, early-season rain in the north and east.",
+ "signals": [
+  {
+   "captured": "2026-11-19",
+   "published": "2026-11-18",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-18-1.500752711",
+   "summary": "An ADNOC Logistics and Services vessel was attacked in the Strait of Hormuz on the evening of 17 Nov: one crew member missing, 11 injured, the rest evacuated. ADNOC did not name the vessel or attacker. It is the second attack on a UAE state energy vessel in about a week, after SQ-0080, and the most serious in casualties.",
+   "level": "Local",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "UAE state energy assets are now being hit with casualties. Confirm the crisis team's triggers for escalation and that fuel and gas supply contingencies for generation partners are known.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-02",
+   "notes": "Opened Gulf News evening briefing (18 Nov) and CBS News live updates citing ADNOC. Seatrade page could not be opened. Follows SQ-0080."
+  },
+  {
+   "captured": "2026-11-19",
+   "published": "2026-11-18",
+   "source": "News wires: Reuters, AFP, DPA (via republishing sites)",
+   "url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/",
+   "summary": "US jets struck an IRGC missile site on Iran's Qeshm Island on 17 Nov in response to attacks on US assets in Bahrain. Iran then sent drones at Ali Al-Salem air base in Kuwait and at Bahrain for the third time in a week; all were intercepted. Reuters reports Israel is urging renewed joint strikes. No attack on UAE territory.",
+   "level": "Regional",
+   "area": "Strategy and projects",
+   "func": "Strategy and planning",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "High",
+   "check": "Direct US-Iran strikes have resumed and Iran is widening targets across GCC states. Review the crisis alert level and the plan for a strike on UAE soil, including staff shelter and critical-site protection.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened CBS News live updates (18 Nov) citing US officials and Kuwait's military; Gulf News 18 Nov agrees. Relevant to ER-02."
+  },
+  {
+   "captured": "2026-11-19",
+   "published": "2026-11-18",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://www.khaleejtimes.com/uae/weather/uae-rains-november-18-2026",
+   "summary": "Heavy showers hit Fujairah and Ras Al Khaimah on 18 Nov, with wadis flowing and flooded roads. The NCM expects moderate to heavy rain in eastern, northern and some coastal areas until 20 Nov, with strong winds and blowing dust. No power outages reported; no Abu Dhabi detail.",
+   "level": "Local",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Early-season rain can cause flooding faults at substations and cable joints. Check NCM warnings for Abu Dhabi and Al Dhafra coastal areas over the next two days and that field crews are on standby.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Khaleej Times (18 Nov). No NCM yellow or orange warning cited."
+  }
+ ],
+ "new_sources": []
+}
