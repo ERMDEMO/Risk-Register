@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-18T04:51:25.000Z",
- "next_signal_id": "SQ-0099",
+ "exported_at": "2026-11-19T04:36:59.000Z",
+ "next_signal_id": "SQ-0102",
  "risks": [
   {
    "id": "ER-01",
@@ -259,6 +259,33 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Iraq's Khor Mor gas field, run partly by UAE-based Dana Gas, stopped production last week after a suspected drone attack caused a fire and c"
+  },
+  {
+   "id": "SQ-0099",
+   "captured": "2026-11-19",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-18-1.500752711",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-02",
+   "summary": "An ADNOC Logistics and Services vessel was attacked in the Strait of Hormuz on the evening of 17 Nov: one crew member missing, 11 injured, t"
+  },
+  {
+   "id": "SQ-0100",
+   "captured": "2026-11-19",
+   "url": "https://www.cbsnews.com/live-updates/iran-war-us-gulf-retaliation-strikes-strait-of-hormuz/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "US jets struck an IRGC missile site on Iran's Qeshm Island on 17 Nov in response to attacks on US assets in Bahrain. Iran then sent drones a"
+  },
+  {
+   "id": "SQ-0101",
+   "captured": "2026-11-19",
+   "url": "https://www.khaleejtimes.com/uae/weather/uae-rains-november-18-2026",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Heavy showers hit Fujairah and Ras Al Khaimah on 18 Nov, with wadis flowing and flooded roads. The NCM expects moderate to heavy rain in eas"
   }
  ],
  "sources": [
