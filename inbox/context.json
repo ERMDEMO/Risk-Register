@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-19T04:53:35.000Z",
- "next_signal_id": "SQ-0102",
+ "exported_at": "2026-11-20T04:36:18.000Z",
+ "next_signal_id": "SQ-0103",
  "risks": [
   {
    "id": "ER-01",
@@ -286,6 +286,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Heavy showers hit Fujairah and Ras Al Khaimah on 18 Nov, with wadis flowing and flooded roads. The NCM expects moderate to heavy rain in eas"
+  },
+  {
+   "id": "SQ-0102",
+   "captured": "2026-11-20",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-19-1.500753986",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "JMIC recorded four tanker attacks in 96 hours, including one near Khasab on the evening of 18 Nov, kept Hormuz at a severe threat level and "
   }
  ],
  "sources": [
