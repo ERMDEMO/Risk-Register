@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-20T04:36:00Z",
+ "by": "claude",
+ "note": "Daily scan 20 Nov: quieter day. JMIC severe rating holds; Hormuz crude flows at half pre-war. Houthi missile damage to a Riyadh tower left out as outside scope.",
+ "signals": [
+  {
+   "captured": "2026-11-20",
+   "published": "2026-11-19",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-19-1.500753986",
+   "summary": "JMIC recorded four tanker attacks in 96 hours, including one near Khasab on the evening of 18 Nov, kept Hormuz at a severe threat level and said more attacks are highly likely. Preliminary Kpler data put crude flows through Hormuz at about 8.5 mb/d, half the pre-war level, and Middle East oil shipments at 64% of pre-war volumes including pipelines.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "Medium",
+   "check": "Throughput through the strait has halved, and container traffic is likely to fall too. Check delivery dates for critical equipment due by sea in the next quarter and set triggers for switching to air or land routes via Saudi Arabia or Oman.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (19 Nov, grade C) citing JMIC and Kpler. AA page could not be opened. Context for ER-01; Kpler figures preliminary."
+  }
+ ],
+ "new_sources": []
+}
