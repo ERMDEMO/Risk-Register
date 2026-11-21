@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-21T04:36:01Z",
+ "by": "claude",
+ "note": "Daily scan 21 Nov: IRGC threat to strike infrastructure in retaliation; another Hormuz tanker hit, traffic two thirds below pre-conflict.",
+ "signals": [
+  {
+   "captured": "2026-11-21",
+   "published": "2026-11-20",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/world/mena/middle-east-war-6-key-updates-uae-residents-need-to-know-this-evening-november-20-1.500755450",
+   "summary": "On 20 Nov the IRGC's Khatam al-Anbiya commander said Iran would strike its enemies' infrastructure if its own is hit, after threats against Iranian dams. The IRGC said Hormuz stays closed until the US meets its demands and it rejects a prolonged 'neither war nor peace'. Trump said the US will 'see what happens' after 1 January.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "Medium",
+   "check": "Iran is explicitly naming infrastructure as a retaliation target, and the US has set a 1 January marker. Review physical protection and black-start or islanding plans for critical substations ahead of that date.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (20 Nov, grade C) citing Tasnim and Fox News. No UAE attacks. Relevant to ER-02."
+  },
+  {
+   "captured": "2026-11-21",
+   "published": "2026-11-20",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://gcaptain.com/another-tanker-hit-in-strait-of-hormuz-as-maritime-attacks-surge-worldwide/",
+   "summary": "UKMTO warning 214-26: an outbound tanker was hit in the port bow about 8 nm north of Khasab on 20 Nov, causing a fire; no casualties. Four tankers have been hit within 13 nm of Khasab in three days. Hormuz transits over the past week were 115 out and 148 in, about 65% below pre-conflict levels. JMIC keeps the threat at severe.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Total traffic through the strait, not only crude, is down by two thirds. Confirm which open purchase orders for network equipment depend on sea freight via Hormuz and agree alternative routes with suppliers.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened gCaptain (20 Nov) citing UKMTO, JMIC and Orbital Risk Intelligence. Follows SQ-0102. Context for ER-01."
+  }
+ ],
+ "new_sources": []
+}
