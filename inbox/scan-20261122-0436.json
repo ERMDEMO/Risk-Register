@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-22T04:36:31Z",
+ "by": "claude",
+ "note": "Daily scan 22 Nov: two more Hormuz tanker strikes; no UAE attacks or utility news. Houthi missiles at Riyadh left out as outside scope.",
+ "signals": [
+  {
+   "captured": "2026-11-22",
+   "published": "2026-11-21",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-21-1.500756425",
+   "summary": "UKMTO reported two tanker strikes near Khasab on 21 Nov: one hit on the stern about 11 nm north, and one hit in the engine room 17 nm east; no casualties. Iran's navy claimed another tanker hit a mine east of the strait, and Iranian TV showed a new underground missile launcher. US-Iran contacts continue through intermediaries with no deal.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Strikes are now daily, and a new launcher points to sustained capacity. No new action beyond SQ-0104; keep tracking supplier delivery dates through Hormuz.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (21 Nov, grade C) and The New Arab (21 Nov) citing UKMTO. Follows SQ-0104. Context for ER-01."
+  }
+ ],
+ "new_sources": []
+}
