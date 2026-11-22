@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-21T04:48:20.000Z",
- "next_signal_id": "SQ-0105",
+ "exported_at": "2026-11-22T04:36:49.000Z",
+ "next_signal_id": "SQ-0106",
  "risks": [
   {
    "id": "ER-01",
@@ -313,6 +313,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "UKMTO warning 214-26: an outbound tanker was hit in the port bow about 8 nm north of Khasab on 20 Nov, causing a fire; no casualties. Four t"
+  },
+  {
+   "id": "SQ-0105",
+   "captured": "2026-11-22",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-21-1.500756425",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "UKMTO reported two tanker strikes near Khasab on 21 Nov: one hit on the stern about 11 nm north, and one hit in the engine room 17 nm east; "
   }
  ],
  "sources": [
