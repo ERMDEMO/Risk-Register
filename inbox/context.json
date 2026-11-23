@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-22T04:49:26.000Z",
- "next_signal_id": "SQ-0106",
+ "exported_at": "2026-11-23T04:36:24.000Z",
+ "next_signal_id": "SQ-0107",
  "risks": [
   {
    "id": "ER-01",
@@ -322,6 +322,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "UKMTO reported two tanker strikes near Khasab on 21 Nov: one hit on the stern about 11 nm north, and one hit in the engine room 17 nm east; "
+  },
+  {
+   "id": "SQ-0106",
+   "captured": "2026-11-23",
+   "url": "https://www.euronews.com/2026/11/22/tanker-incident-involving-military-forces-reported-in-strait-of-hormuz",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "UKMTO reported a tanker incident involving 'military forces' near Chabahar on 22 Nov, close to the US blockade line, as Iran reportedly prep"
   }
  ],
  "sources": [
