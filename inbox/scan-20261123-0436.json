@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-23T04:36:07Z",
+ "by": "claude",
+ "note": "Daily scan 23 Nov: blockade stand-off near Chabahar and an Iranian threat to strike Gulf energy infrastructure if its tankers are stopped.",
+ "signals": [
+  {
+   "captured": "2026-11-23",
+   "published": "2026-11-22",
+   "source": "News wires: Reuters, AFP, DPA (via republishing sites)",
+   "url": "https://www.euronews.com/2026/11/22/tanker-incident-involving-military-forces-reported-in-strait-of-hormuz",
+   "summary": "UKMTO reported a tanker incident involving 'military forces' near Chabahar on 22 Nov, close to the US blockade line, as Iran reportedly prepares 14 tankers to break the blockade. Iran threatened immediate strikes on energy infrastructure across the Gulf if the US stops them. Iranian drones injured two people and caused an industrial fire in Bahrain on 21 Nov.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "Medium",
+   "check": "A US-Iran clash over the blockade could set off the threatened strikes on Gulf energy sites within days. Confirm crisis team readiness, the protection of critical substations and fuel back-up for key sites now, not at 1 January.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Euronews (22 Nov) citing UKMTO and Iran's deputy foreign minister; Bahrain and 14-tanker report per Gulf News 22 Nov evening. Raises the threat in SQ-0103. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
