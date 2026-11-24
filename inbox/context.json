@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-23T05:04:44.000Z",
- "next_signal_id": "SQ-0107",
+ "exported_at": "2026-11-24T04:37:09.000Z",
+ "next_signal_id": "SQ-0108",
  "risks": [
   {
    "id": "ER-01",
@@ -331,6 +331,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "UKMTO reported a tanker incident involving 'military forces' near Chabahar on 22 Nov, close to the US blockade line, as Iran reportedly prep"
+  },
+  {
+   "id": "SQ-0107",
+   "captured": "2026-11-24",
+   "url": "https://www.aljazeera.com/news/2026/11/23/iran-says-it-will-use-all-available-means-to-counter-us-blockade",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 23 Nov Iran's foreign ministry called the US blockade military aggression and said it will use 'all available means' against it, citing U"
   }
  ],
  "sources": [
