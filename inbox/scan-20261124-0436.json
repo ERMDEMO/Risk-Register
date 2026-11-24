@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-24T04:36:51Z",
+ "by": "claude",
+ "note": "Daily scan 24 Nov: Iran vows all means against the blockade but names conditions to reopen Hormuz within two days. No UAE attacks or utility news.",
+ "signals": [
+  {
+   "captured": "2026-11-24",
+   "published": "2026-11-23",
+   "source": "Al Jazeera",
+   "url": "https://www.aljazeera.com/news/2026/11/23/iran-says-it-will-use-all-available-means-to-counter-us-blockade",
+   "summary": "On 23 Nov Iran's foreign ministry called the US blockade military aggression and said it will use 'all available means' against it, citing UN Charter Article 51. It also said Hormuz could reopen within two days if the US ends hostilities, lifts the blockade and waives sanctions. A tanker may be loading Iranian crude via ship-to-ship transfer to test the blockade.",
+   "level": "Regional",
+   "area": "Strategy and projects",
+   "func": "Strategy and planning",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "High",
+   "check": "Two paths are open: a clash over a blockade-running tanker, or a quick reopening if terms are met. Keep both scenarios in the crisis plan; no change to SQ-0106 actions.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Al Jazeera (23 Nov) citing Iran's foreign ministry spokesman and TankerTrackers. Gulf News 23 Nov also reports a Houthi claim of a strike on Saudi Arabia's Rabigh refinery (unconfirmed) and Brent at $90.55. Relevant to ER-01 and ER-02."
+  }
+ ],
+ "new_sources": []
+}
