@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-24T04:55:55.000Z",
- "next_signal_id": "SQ-0108",
+ "exported_at": "2026-11-25T04:36:21.000Z",
+ "next_signal_id": "SQ-0110",
  "risks": [
   {
    "id": "ER-01",
@@ -340,6 +340,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "On 23 Nov Iran's foreign ministry called the US blockade military aggression and said it will use 'all available means' against it, citing U"
+  },
+  {
+   "id": "SQ-0108",
+   "captured": "2026-11-25",
+   "url": "https://maritime-executive.com/article/three-tankers-hit-within-minutes-in-strait-of-hormuz",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "On 22 Nov the bulker CTI Helen was hit by a projectile and caught fire at the Dibba OPL anchorage off Khor Fakkan, on the UAE's Gulf of Oman"
+  },
+  {
+   "id": "SQ-0109",
+   "captured": "2026-11-25",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-24-1.500759752",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "The WSJ reports that US authorities are investigating cyberattacks on up to 50 commercial vessels carrying oil, gas and hazardous cargo, wit"
   }
  ],
  "sources": [
