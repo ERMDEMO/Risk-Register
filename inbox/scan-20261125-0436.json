@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-25T04:36:04Z",
+ "by": "claude",
+ "note": "Daily scan 25 Nov: projectile strike at an anchorage off Khor Fakkan plus a three-tanker convoy hit; suspected cyberattacks on about 50 vessels. The US Embassy UAE security alert of 24 Nov could not be opened.",
+ "signals": [
+  {
+   "captured": "2026-11-25",
+   "published": "2026-11-24",
+   "source": "gCaptain: shipping and Hormuz reporting",
+   "url": "https://maritime-executive.com/article/three-tankers-hit-within-minutes-in-strait-of-hormuz",
+   "summary": "On 22 Nov the bulker CTI Helen was hit by a projectile and caught fire at the Dibba OPL anchorage off Khor Fakkan, on the UAE's Gulf of Oman coast. That evening three eastbound VLCCs were hit within 17 minutes east of Musandam, apparently in convoy; all continued their voyages with no casualties (UKMTO).",
+   "level": "Local",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Attacks now reach the east-coast anchorages used to avoid Hormuz. Check whether critical spares are routed via Khor Fakkan or Fujairah, and whether suppliers see extra delays or war-risk charges there.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened Maritime Executive (24 Nov) citing UKMTO. Source not in the list; nearest listed name used. Follows SQ-0104 and SQ-0105."
+  },
+  {
+   "captured": "2026-11-25",
+   "published": "2026-11-24",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-8-things-uae-residents-need-to-know-tonight-november-24-1.500759752",
+   "summary": "The WSJ reports that US authorities are investigating cyberattacks on up to 50 commercial vessels carrying oil, gas and hazardous cargo, with bomb threats, ransom demands and warnings against carrying US goods; US Coast Guard cyber teams are deployed. Iran is suspected but not confirmed; Russia is also being considered.",
+   "level": "Global",
+   "area": "Cyber and technology",
+   "func": "IT and cyber security",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "A state-linked cyber campaign on ships' systems could spread to energy OT. Check that the SOC has current indicators for Iran-linked groups and that ransom or bomb-threat emails reach the right incident process.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (24 Nov, grade C) citing The Wall Street Journal. Attribution unconfirmed."
+  }
+ ],
+ "new_sources": []
+}
