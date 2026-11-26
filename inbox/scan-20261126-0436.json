@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-26T04:36:52Z",
+ "by": "claude",
+ "note": "Daily scan 26 Nov: projectile near a tanker 50 nm off Dubai; Houthi drones at Ras Tanura and threats to Red Sea ports. National drill Exercise Union 55 noted, not added.",
+ "signals": [
+  {
+   "captured": "2026-11-26",
+   "published": "2026-11-25",
+   "source": "News wires: Reuters, AFP, DPA (via republishing sites)",
+   "url": "https://investinglive.com/commodities/projectile-explodes-near-tanker-50-nautical-miles-off-dubai-as-gulf-shipping-attacks-mount/",
+   "summary": "UKMTO reported that an unknown projectile exploded near a tanker about 50 nm west of Dubai at 21:30 GMT on 25 Nov; crew safe, no damage or pollution. It is the first reported attack this deep inside the Gulf near the UAE's main ports. Attacks around Hormuz are at a wartime high, and Kpler puts flows at about half pre-war. Brent rose to about $91.",
+   "level": "Local",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Attacks are moving west toward Jebel Ali and Abu Dhabi port approaches. Check exposure of critical spares arriving through Jebel Ali or Khalifa Port and whether suppliers have contingency routes by land.",
+   "checked": "Yes",
+   "decision": "Add to existing risk",
+   "risk_id": "ER-01",
+   "notes": "Opened investingLive (25 Nov) citing UKMTO, Reuters and Kpler. Follows SQ-0108."
+  },
+  {
+   "captured": "2026-11-26",
+   "published": "2026-11-25",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-25-1.500760833",
+   "summary": "Saudi air defences downed four drones over Ras Tanura on 25 Nov; the Houthis claimed hits on the refinery, and Reuters satellite images showed heavy smoke (not confirmed by Riyadh). The Houthis threatened Jeddah and other Red Sea ports after coalition strikes on Hodeidah. The US Mission to the UAE warned of fast escalation; Trump says war funding lasts to about end January.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Network operations and control",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "Gulf energy sites are being hit again, and the US funding horizon points to a possible push before end January. Keep crisis alert levels and critical-site protection as set after SQ-0106.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (25 Nov, grade C) citing Reuters, the Saudi coalition and the US Mission. Answers yesterday's unopened US Embassy alert. Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
