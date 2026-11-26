@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-25T04:58:07.000Z",
- "next_signal_id": "SQ-0110",
+ "exported_at": "2026-11-26T04:37:09.000Z",
+ "next_signal_id": "SQ-0112",
  "risks": [
   {
    "id": "ER-01",
@@ -358,6 +358,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "The WSJ reports that US authorities are investigating cyberattacks on up to 50 commercial vessels carrying oil, gas and hazardous cargo, wit"
+  },
+  {
+   "id": "SQ-0110",
+   "captured": "2026-11-26",
+   "url": "https://investinglive.com/commodities/projectile-explodes-near-tanker-50-nautical-miles-off-dubai-as-gulf-shipping-attacks-mount/",
+   "decision": "Add to existing risk",
+   "proposed": true,
+   "risk_id": "ER-01",
+   "summary": "UKMTO reported that an unknown projectile exploded near a tanker about 50 nm west of Dubai at 21:30 GMT on 25 Nov; crew safe, no damage or p"
+  },
+  {
+   "id": "SQ-0111",
+   "captured": "2026-11-26",
+   "url": "https://gulfnews.com/uae/middle-east-war-7-things-uae-residents-need-to-know-tonight-november-25-1.500760833",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Saudi air defences downed four drones over Ras Tanura on 25 Nov; the Houthis claimed hits on the refinery, and Reuters satellite images show"
   }
  ],
  "sources": [
