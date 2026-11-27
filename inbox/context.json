@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-26T04:56:55.000Z",
- "next_signal_id": "SQ-0112",
+ "exported_at": "2026-11-27T04:36:50.000Z",
+ "next_signal_id": "SQ-0113",
  "risks": [
   {
    "id": "ER-01",
@@ -376,6 +376,15 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Saudi air defences downed four drones over Ras Tanura on 25 Nov; the Houthis claimed hits on the refinery, and Reuters satellite images show"
+  },
+  {
+   "id": "SQ-0112",
+   "captured": "2026-11-27",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-26-1.500762280",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "Kuwait said an Iranian drone attack on a 'vital facility' killed two Italian nationals and caused damage. The Houthis hit a Jazan refinery i"
   }
  ],
  "sources": [
