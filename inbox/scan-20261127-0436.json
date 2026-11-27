@@ -1,0 +1,26 @@
+{
+ "at": "2026-11-27T04:36:33Z",
+ "by": "claude",
+ "note": "Daily scan 27 Nov: deaths in an Iranian strike on a Kuwaiti vital facility, Houthi hit on Jazan refinery, ADNOC crew death confirmed.",
+ "signals": [
+  {
+   "captured": "2026-11-27",
+   "published": "2026-11-26",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/uae/middle-east-war-9-things-uae-residents-need-to-know-tonight-november-26-1.500762280",
+   "summary": "Kuwait said an Iranian drone attack on a 'vital facility' killed two Italian nationals and caused damage. The Houthis hit a Jazan refinery in Saudi Arabia. ADNOC L&S confirmed the crew member missing since the 17 Nov attack was found dead. Israel said it is ready to strike Iran without US support. No attacks on UAE territory.",
+   "level": "Regional",
+   "area": "Operations",
+   "func": "Health, safety and environment",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Strikes on GCC critical facilities are now causing deaths among contractors and staff. Confirm shelter-in-place and evacuation drills at control centres, major substations and sites with contractor crews.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News evening briefing (26 Nov, grade C) citing Kuwait's Ministry of Defence, the Saudi coalition and ADNOC L&S. Updates SQ-0099 (now one fatality). Another tanker was hit 33 km east of Khasab on 25 Nov (UKMTO). Relevant to ER-02."
+  }
+ ],
+ "new_sources": []
+}
