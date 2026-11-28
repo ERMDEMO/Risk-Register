@@ -1,0 +1,44 @@
+{
+ "at": "2026-11-28T04:36:48Z",
+ "by": "claude",
+ "note": "Daily scan 28 Nov: US fires on a blockade-runner, Trump at Al Dhafra; 17 tankers hit in Hormuz in November, though escorted traffic edges up.",
+ "signals": [
+  {
+   "captured": "2026-11-28",
+   "published": "2026-11-27",
+   "source": "Gulf News / Khaleej Times / TradeArabia: UAE business and utilities",
+   "url": "https://gulfnews.com/world/mena/middle-east-tensions-trump-signals-victory-as-iran-offers-kuwait-drone-probe-1.500762639",
+   "summary": "On 27 Nov Trump said 'victory is at hand', with timing his decision, and spoke to US troops at Al Dhafra Air Base. The US struck a commercial vessel in the Gulf of Oman enforcing its blockade, and Iran's military vowed to break it. Iran denied the Kuwait drone attack and offered a joint probe. A drone strike on the Jazan refinery killed a worker.",
+   "level": "Regional",
+   "area": "Strategy and projects",
+   "func": "Strategy and planning",
+   "horizon": "Short",
+   "touches": "Unsure",
+   "conf": "Medium",
+   "check": "US forces are now firing on blockade-runners and a US base in the Al Dhafra region is in focus. Check site security and access plans for assets near Al Dhafra Air Base, and keep crisis alert levels as set.",
+   "checked": "Unsure",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened Gulf News live coverage (27 Nov, grade C). No attacks on the UAE. Relevant to ER-02; follows SQ-0106 and SQ-0107."
+  },
+  {
+   "captured": "2026-11-28",
+   "published": "2026-11-27",
+   "source": "News wires: Reuters, AFP, DPA (via republishing sites)",
+   "url": "https://safety4sea.com/strait-of-hormuz-tanker-traffic-rises-despite-escalating-attacks/",
+   "summary": "JMIC's 26 Nov advisory counts 17 tankers struck in Hormuz since 1 Nov and keeps the threat at severe; the tanker Kun Peng was hit and set on fire off Oman on 26 Nov. Despite this, Vortexa data show energy tanker traffic slightly up on October, with US-assisted transits about 32 a day. Overall traffic stays below 2025, and anchorages are congested.",
+   "level": "Regional",
+   "area": "Supply chain",
+   "func": "Procurement and supply chain",
+   "horizon": "Short",
+   "touches": "Yes",
+   "conf": "High",
+   "check": "Ships are still moving under US escort but with heavy anchorage congestion. Keep tracking delivery dates for critical spares; no new action beyond SQ-0110.",
+   "checked": "Yes",
+   "decision": "Watch",
+   "risk_id": "",
+   "notes": "Opened SAFETY4SEA (27 Nov) citing JMIC, Vortexa via Bloomberg, and UKMTO. Source not in the list; nearest listed name used. Context for ER-01."
+  }
+ ],
+ "new_sources": []
+}
