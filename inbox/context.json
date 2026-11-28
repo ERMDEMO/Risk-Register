@@ -1,6 +1,6 @@
 {
- "exported_at": "2026-11-27T04:56:35.000Z",
- "next_signal_id": "SQ-0113",
+ "exported_at": "2026-11-28T04:37:04.000Z",
+ "next_signal_id": "SQ-0115",
  "risks": [
   {
    "id": "ER-01",
@@ -385,6 +385,24 @@
    "proposed": true,
    "risk_id": "",
    "summary": "Kuwait said an Iranian drone attack on a 'vital facility' killed two Italian nationals and caused damage. The Houthis hit a Jazan refinery i"
+  },
+  {
+   "id": "SQ-0113",
+   "captured": "2026-11-28",
+   "url": "https://gulfnews.com/world/mena/middle-east-tensions-trump-signals-victory-as-iran-offers-kuwait-drone-probe-1.500762639",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "On 27 Nov Trump said 'victory is at hand', with timing his decision, and spoke to US troops at Al Dhafra Air Base. The US struck a commercia"
+  },
+  {
+   "id": "SQ-0114",
+   "captured": "2026-11-28",
+   "url": "https://safety4sea.com/strait-of-hormuz-tanker-traffic-rises-despite-escalating-attacks/",
+   "decision": "Watch",
+   "proposed": true,
+   "risk_id": "",
+   "summary": "JMIC's 26 Nov advisory counts 17 tankers struck in Hormuz since 1 Nov and keeps the threat at severe; the tanker Kun Peng was hit and set on"
   }
  ],
  "sources": [
